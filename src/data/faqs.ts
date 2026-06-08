@@ -1,3 +1,5 @@
+import { contact } from './contact'
+
 export interface FAQ {
   question: string
   answer: string
@@ -42,6 +44,6 @@ export const faqs: FAQ[] = [
   {
     question: 'How do we get started?',
     answer:
-      'Book a discovery call through the contact page. Share your product goals, timeline, and any existing designs or code. I will follow up with a clear recommendation on scope, approach, and next steps.',
+      `Book a discovery call through the contact page, email ${contact.email}, or message me on WhatsApp at ${contact.whatsapp.display}. Share your product goals, timeline, and any existing designs or code. I will follow up with a clear recommendation on scope, approach, and next steps.`,
   },
 ]

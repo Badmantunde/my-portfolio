@@ -4,9 +4,11 @@ import { useLondonTime } from '../hooks/useLondonTime'
 import { projects } from '../data/projects'
 import { workflowTools } from '../data/tools'
 import { socialLinks } from '../data/social'
+import { contact } from '../data/contact'
 
 const navLinks = [
   { label: 'Work', to: '/work' },
+  { label: 'About', to: '/about' },
   { label: 'Process', to: '/process' },
   { label: 'Writing', to: '/writing' },
   { label: 'Contact', to: '/contact' },
@@ -105,10 +107,18 @@ export function Footer() {
               Connect
             </p>
             <a
-              href="mailto:hello@abiolababatunde.com"
-              className="block text-[14px] text-gray-300 hover:text-[#3DDB84] transition-colors mb-4"
+              href={`mailto:${contact.email}`}
+              className="block text-[14px] text-gray-300 hover:text-[#3DDB84] transition-colors"
             >
-              hello@abiolababatunde.com
+              {contact.email}
+            </a>
+            <a
+              href={contact.whatsapp.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-[14px] text-gray-400 hover:text-[#3DDB84] transition-colors mt-2 mb-4"
+            >
+              {contact.whatsapp.display} · WhatsApp
             </a>
 
             <div className="flex items-center gap-2 text-[13px] text-gray-500 mb-5">

@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { AccentButton } from './AccentButton'
 import { SECTION_PY } from '../lib/section'
+import { contact } from '../data/contact'
 
 export function FinalCTASection() {
   return (
@@ -32,14 +33,16 @@ export function FinalCTASection() {
         </p>
 
         <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
-          <AccentButton text="Start a project" href="mailto:hello@abiolababatunde.com" />
+          <AccentButton text="Start a project" href={`mailto:${contact.email}`} />
           <a
-            href="mailto:hello@abiolababatunde.com"
+            href={contact.whatsapp.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 border border-gray-700 hover:border-[#3DDB84]/50 text-white text-[13px] sm:text-[14px] rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-colors"
           >
             <span className="overflow-hidden h-[20px] flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:-translate-y-1/2">
-              <span>Schedule a call</span>
-              <span>Schedule a call</span>
+              <span>Message on WhatsApp</span>
+              <span>Message on WhatsApp</span>
             </span>
             <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-[#3DDB84] rounded-full transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:-rotate-45">
               <ArrowRight size={16} className="text-gray-900" />

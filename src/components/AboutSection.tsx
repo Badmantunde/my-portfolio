@@ -3,7 +3,7 @@ import { SectionHeader } from './SectionHeader'
 import { SECTION_PY } from '../lib/section'
 
 const HEADSHOT = '/images/abiola-headshot.png'
-const PORTRAIT = '/images/abiola-portrait.png'
+const ABOUT_PORTRAIT = '/images/abiola-about.png'
 
 export function AboutSection() {
   return (
@@ -32,7 +32,7 @@ export function AboutSection() {
                 className="col-span-1 aspect-[3/4] rounded-xl sm:rounded-2xl object-cover object-top w-full"
               />
               <img
-                src={PORTRAIT}
+                src={ABOUT_PORTRAIT}
                 alt="Abiola Babatunde"
                 className="col-span-1 aspect-[3/4] rounded-xl sm:rounded-2xl object-cover object-top w-full mt-8 sm:mt-12"
               />
@@ -49,8 +49,8 @@ export function AboutSection() {
             </p>
 
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <AccentButton text="Read my story" href="/about" />
               <AccentButton text="Explore my process" href="/process" />
-              <AccentButton text="See my stack" href="#stack" />
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useLondonTime } from '../hooks/useLondonTime'
 
 const navLinks = [
   { label: 'Work', to: '/work' },
+  { label: 'About', to: '/about' },
   { label: 'Process', to: '/process' },
   { label: 'Writing', to: '/writing' },
   { label: 'Contact', to: '/contact' },
