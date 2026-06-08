@@ -1,4 +1,5 @@
 import { SectionHeader } from './SectionHeader'
+import { AnimateIn } from './AnimateIn'
 import { SECTION_PY } from '../lib/section'
 
 const testimonials = [
@@ -32,11 +33,8 @@ export function TestimonialsSection() {
         />
 
         <div className="mt-10 sm:mt-14 grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
-          {testimonials.map((t) => (
-            <blockquote
-              key={t.name}
-              className="flex flex-col justify-between bg-[#F5F5F5] rounded-2xl p-6 sm:p-8"
-            >
+          {testimonials.map((t, i) => (
+            <AnimateIn key={t.name} variant="fade-up" delay={i * 120} as="blockquote" className="flex flex-col justify-between bg-[#F5F5F5] rounded-2xl p-6 sm:p-8 hover-lift">
               <p className="text-[15px] sm:text-[16px] leading-[1.65] text-gray-700 font-medium">
                 &ldquo;{t.quote}&rdquo;
               </p>
@@ -46,7 +44,7 @@ export function TestimonialsSection() {
                   {t.role}
                 </p>
               </footer>
-            </blockquote>
+            </AnimateIn>
           ))}
         </div>
       </div>

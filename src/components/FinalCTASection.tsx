@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { AccentButton } from './AccentButton'
+import { AnimateIn } from './AnimateIn'
 import { SECTION_PY } from '../lib/section'
 import { contact } from '../data/contact'
 
@@ -12,6 +13,7 @@ export function FinalCTASection() {
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+        <AnimateIn variant="scale-up">
         <div className="inline-flex items-center gap-2 mb-6 sm:mb-8">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#3DDB84] opacity-40" />
@@ -49,6 +51,7 @@ export function FinalCTASection() {
             </span>
           </a>
         </div>
+        </AnimateIn>
       </div>
     </section>
   )

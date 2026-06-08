@@ -10,7 +10,7 @@ interface AccentButtonProps {
 }
 
 const baseClass =
-  'group inline-flex items-center gap-2 bg-[#2ECF73] hover:bg-[#28B866] text-white text-[13px] sm:text-[14px] rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-colors'
+  'group inline-flex items-center gap-2 bg-[#2ECF73] hover:bg-[#28B866] text-white text-[13px] sm:text-[14px] rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]'
 
 function ButtonContent({ text, icon }: { text: string; icon?: ReactNode }) {
   return (

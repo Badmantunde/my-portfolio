@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { SectionHeader } from './SectionHeader'
+import { AnimateIn } from './AnimateIn'
 import { SECTION_PY } from '../lib/section'
 import { articles } from '../data/articles'
 
@@ -21,21 +22,21 @@ export function WritingSection({ hideHeader = false }: WritingSectionProps) {
           />
         )}
 
-        <p
+        <AnimateIn
           className={`max-w-2xl text-[15px] sm:text-[16px] leading-[1.6] text-gray-600 mb-10 sm:mb-14 ${
             hideHeader ? '' : 'mt-6 sm:mt-8'
           }`}
         >
           Essays on product strategy, engineering craft, design systems, and
           AI-native development.
-        </p>
+        </AnimateIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-          {articles.map((article) => (
+          {articles.map((article, i) => (
+            <AnimateIn key={article.slug} variant="fade-up" delay={i * 100}>
             <Link
-              key={article.slug}
               to={`/writing/${article.slug}`}
-              className="group bg-white rounded-2xl p-5 sm:p-6 hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-shadow duration-300"
+              className="group block bg-white rounded-2xl p-5 sm:p-6 hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 hover-lift"
             >
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[11px] sm:text-[12px] font-medium text-[#28B866]">
@@ -59,6 +60,7 @@ export function WritingSection({ hideHeader = false }: WritingSectionProps) {
                 />
               </div>
             </Link>
+            </AnimateIn>
           ))}
         </div>
       </div>

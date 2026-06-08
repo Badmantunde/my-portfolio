@@ -1,4 +1,5 @@
 import { SectionHeader } from './SectionHeader'
+import { AnimateIn } from './AnimateIn'
 import { SECTION_PY } from '../lib/section'
 
 const steps = [
@@ -36,23 +37,25 @@ export function ProcessSection({ hideHeader = false }: ProcessSectionProps) {
           />
         )}
 
-        <p
+        <AnimateIn
           className={`max-w-2xl text-[15px] sm:text-[16px] leading-[1.6] text-gray-600 mb-12 sm:mb-16 lg:mb-20 ${
             hideHeader ? '' : ''
           }`}
         >
           A systematic approach from idea to scale, bridging strategy, design,
           engineering, and AI at every stage.
-        </p>
+        </AnimateIn>
 
         <div className="relative">
           <div className="hidden lg:block absolute top-[28px] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#3DDB84]/30 to-transparent" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {steps.map((step, i) => (
-              <div
+              <AnimateIn
                 key={step.num}
-                className="group relative bg-[#F5F5F5] hover:bg-[#EDF5F0] rounded-2xl p-5 sm:p-6 transition-colors duration-300"
+                variant="fade-up"
+                delay={(i % 4) * 80}
+                className="group relative bg-[#F5F5F5] hover:bg-[#EDF5F0] rounded-2xl p-5 sm:p-6 transition-colors duration-300 hover-lift"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-[11px] font-semibold text-[#3DDB84] tracking-wider">
@@ -68,7 +71,7 @@ export function ProcessSection({ hideHeader = false }: ProcessSectionProps) {
                 <p className="text-[12px] sm:text-[13px] text-gray-500 leading-relaxed">
                   {step.desc}
                 </p>
-              </div>
+              </AnimateIn>
             ))}
           </div>
         </div>

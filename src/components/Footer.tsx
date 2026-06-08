@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, Clock } from 'lucide-react'
-import { useLondonTime } from '../hooks/useLondonTime'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { WorldClock } from './WorldClock'
 import { projects } from '../data/projects'
 import { workflowTools } from '../data/tools'
 import { socialLinks } from '../data/social'
@@ -15,8 +15,6 @@ const navLinks = [
 ]
 
 export function Footer() {
-  const londonTime = useLondonTime()
-
   return (
     <footer className="bg-gray-950 text-white">
       <div className="h-px bg-gradient-to-r from-transparent via-[#3DDB84]/40 to-transparent" />
@@ -25,14 +23,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <Link to="/" className="inline-flex items-center gap-3 group">
-              <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center ring-2 ring-[#3DDB84]/25 group-hover:ring-[#3DDB84]/50 transition-all">
-                <span className="text-white text-[11px] font-bold">AB</span>
-              </div>
-              <div>
-                <p className="text-[14px] font-semibold text-white">Abiola Babatunde</p>
-                <p className="text-[12px] text-gray-500">Product Engineer</p>
-              </div>
+            <Link to="/" className="inline-block group">
+              <p className="text-[12px] sm:text-[13px] font-bold tracking-[0.1em] text-white uppercase group-hover:text-[#3DDB84] transition-colors">
+                Abiola Babatunde
+              </p>
+              <p className="mt-1 text-[12px] text-gray-500">Product Engineer</p>
             </Link>
 
             <p className="mt-5 text-[14px] leading-[1.65] text-gray-400 max-w-xs">
@@ -121,10 +116,12 @@ export function Footer() {
               {contact.whatsapp.display} · WhatsApp
             </a>
 
-            <div className="flex items-center gap-2 text-[13px] text-gray-500 mb-5">
-              <Clock size={13} />
-              <span>{londonTime} in London</span>
-            </div>
+            <WorldClock
+              className="mb-5"
+              iconSize={13}
+              textClassName="text-gray-500"
+              iconClassName="text-gray-500"
+            />
 
             <ul className="space-y-2">
               {socialLinks.map((link) => (

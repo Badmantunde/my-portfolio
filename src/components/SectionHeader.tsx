@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { AnimateIn } from './AnimateIn'
 
 interface SectionHeaderProps {
   label: string
@@ -16,7 +17,7 @@ export function SectionHeader({
   className = '',
 }: SectionHeaderProps) {
   return (
-    <div className={className}>
+    <AnimateIn className={className}>
       <div className="flex items-center gap-3 mb-6 sm:mb-8">
         <span
           className={`text-[12px] sm:text-[13px] font-medium border ${borderClassName} rounded-full px-3 sm:px-4 py-1 sm:py-1.5`}
@@ -25,6 +26,6 @@ export function SectionHeader({
         </span>
       </div>
       <h2 className={`text-gray-900 ${headingClassName}`}>{heading}</h2>
-    </div>
+    </AnimateIn>
   )
 }

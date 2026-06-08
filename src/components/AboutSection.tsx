@@ -1,5 +1,6 @@
 import { AccentButton } from './AccentButton'
 import { SectionHeader } from './SectionHeader'
+import { AnimateIn } from './AnimateIn'
 import { SECTION_PY } from '../lib/section'
 
 const HEADSHOT = '/images/abiola-headshot.png'
@@ -24,7 +25,7 @@ export function AboutSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Images */}
-          <div className="lg:col-span-5 order-2 lg:order-1">
+          <AnimateIn variant="slide-left" className="lg:col-span-5 order-2 lg:order-1">
             <div className="grid grid-cols-2 gap-4 sm:gap-5">
               <img
                 src={HEADSHOT}
@@ -37,10 +38,10 @@ export function AboutSection() {
                 className="col-span-1 aspect-[3/4] rounded-xl sm:rounded-2xl object-cover object-top w-full mt-8 sm:mt-12"
               />
             </div>
-          </div>
+          </AnimateIn>
 
           {/* Content */}
-          <div className="lg:col-span-7 order-1 lg:order-2">
+          <AnimateIn variant="slide-right" delay={120} className="lg:col-span-7 order-1 lg:order-2">
             <p className="text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.65] font-medium text-gray-900 max-w-xl">
               I bridge product thinking, UX design, and full-stack engineering to
               ship production-ready products. From discovery and roadmapping to
@@ -52,7 +53,7 @@ export function AboutSection() {
               <AccentButton text="Read my story" href="/about" />
               <AccentButton text="Explore my process" href="/process" />
             </div>
-          </div>
+          </AnimateIn>
         </div>
       </div>
     </section>

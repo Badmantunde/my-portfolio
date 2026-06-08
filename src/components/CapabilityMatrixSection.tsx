@@ -1,4 +1,5 @@
 import { SectionHeader } from './SectionHeader'
+import { AnimateIn } from './AnimateIn'
 import { SECTION_PY } from '../lib/section'
 
 type Level = 'Expert' | 'Advanced' | 'Proficient'
@@ -96,16 +97,16 @@ export function CapabilityMatrixSection({ hideHeader = false }: CapabilityMatrix
           />
         )}
 
-        <p
+        <AnimateIn
           className={`max-w-2xl text-[15px] sm:text-[16px] leading-[1.6] text-gray-600 mb-10 sm:mb-14 ${
             hideHeader ? '' : 'mt-6 sm:mt-8'
           }`}
         >
           Depth across the full product stack, from discovery to deployment,
           with measurable outcomes at every layer.
-        </p>
+        </AnimateIn>
 
-        <div className="min-w-[720px]">
+        <AnimateIn variant="fade-up" delay={100} className="min-w-[720px]">
           <div className="grid grid-cols-[100px_repeat(5,1fr)] gap-px bg-gray-200 rounded-2xl overflow-hidden border border-gray-200">
             <div className="bg-gray-50 p-3 sm:p-4" />
             {['Level', 'Years', 'Deliverables', 'Tools', 'Outcome'].map((col) => (
@@ -152,7 +153,7 @@ export function CapabilityMatrixSection({ hideHeader = false }: CapabilityMatrix
               </div>
             ))}
           </div>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   )

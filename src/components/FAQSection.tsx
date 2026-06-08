@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Plus, Minus } from 'lucide-react'
 import { SectionHeader } from './SectionHeader'
+import { AnimateIn } from './AnimateIn'
 import { SECTION_PY } from '../lib/section'
 import { faqs } from '../data/faqs'
 import { AccentButton } from './AccentButton'
@@ -12,7 +13,7 @@ export function FAQSection() {
     <section className={`bg-white ${SECTION_PY}`}>
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-          <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
+          <AnimateIn variant="slide-left" className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
             <SectionHeader
               label="FAQ"
               heading="Common questions"
@@ -22,13 +23,13 @@ export function FAQSection() {
               your next product.
             </p>
             <AccentButton text="Book a discovery call" href="/contact" className="mt-6" />
-          </div>
+          </AnimateIn>
 
           <div className="lg:col-span-8 divide-y divide-gray-200 border-t border-gray-200">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index
               return (
-                <div key={faq.question} className="py-5 sm:py-6">
+                <AnimateIn key={faq.question} variant="fade-up" delay={index * 60} className="py-5 sm:py-6">
                   <button
                     type="button"
                     className="w-full flex items-start justify-between gap-4 text-left group"
@@ -55,7 +56,7 @@ export function FAQSection() {
                       {faq.answer}
                     </p>
                   </div>
-                </div>
+                </AnimateIn>
               )
             })}
           </div>

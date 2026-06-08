@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Clock } from 'lucide-react'
-import { useLondonTime } from '../hooks/useLondonTime'
+import { ArrowRight } from 'lucide-react'
+import { WorldClock } from './WorldClock'
 
 const navLinks = [
   { label: 'Work', to: '/work' },
@@ -16,8 +16,6 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  const londonTime = useLondonTime()
-
   return (
     <div
       className={`fixed inset-0 z-50 md:hidden transition-opacity duration-500 ${
@@ -35,11 +33,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           isOpen ? 'translate-y-0' : 'translate-y-full'
         }`}
       >
-        <div className="inline-flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 mb-8">
-          <Clock size={14} className="text-gray-600" />
-          <span className="text-[13px] text-gray-600">
-            {londonTime} in London
-          </span>
+        <div className="inline-flex items-center bg-gray-100 rounded-full px-4 py-2 mb-8">
+          <WorldClock />
         </div>
 
         <nav className="flex flex-col gap-6 mb-8">

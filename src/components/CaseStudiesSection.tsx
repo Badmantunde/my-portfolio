@@ -1,4 +1,5 @@
 import { SectionHeader } from './SectionHeader'
+import { AnimateIn } from './AnimateIn'
 import { SECTION_PY } from '../lib/section'
 import { ProjectCard } from './ProjectCard'
 import { projects, getFeaturedProjects } from '../data/projects'
@@ -36,18 +37,19 @@ export function CaseStudiesSection({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-7 px-5 sm:px-8 lg:px-12">
           {displayed.map((project, i) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              variant={i % 2 === 1 ? 'green' : 'light'}
-            />
+            <AnimateIn key={project.slug} variant="fade-up" delay={i * 100}>
+              <ProjectCard
+                project={project}
+                variant={i % 2 === 1 ? 'green' : 'light'}
+              />
+            </AnimateIn>
           ))}
         </div>
 
         {showViewAll && (
-          <div className="px-5 sm:px-8 lg:px-12 mt-10 sm:mt-12">
+          <AnimateIn className="px-5 sm:px-8 lg:px-12 mt-10 sm:mt-12">
             <AccentButton text="View all projects" href="/work" />
-          </div>
+          </AnimateIn>
         )}
       </div>
     </section>

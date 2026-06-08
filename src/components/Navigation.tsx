@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ArrowRight, Clock, Menu, X } from 'lucide-react'
-import { useLondonTime } from '../hooks/useLondonTime'
+import { ArrowRight, Menu, X } from 'lucide-react'
 import { MobileMenu } from './MobileMenu'
 import { RotatingAvailability } from './RotatingAvailability'
+import { WorldClock } from './WorldClock'
 
 const navLinks = [
   { label: 'Work', to: '/work' },
@@ -15,14 +15,13 @@ const navLinks = [
 
 export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const londonTime = useLondonTime()
   const { pathname } = useLocation()
   const isHome = pathname === '/'
 
   return (
     <>
       <header
-        className={`sticky top-0 z-50 w-full p-2 sm:p-3 transition-colors duration-300 ${
+        className={`animate-nav-enter sticky top-0 z-50 w-full p-2 sm:p-3 transition-colors duration-300 ${
           isHome
             ? 'bg-[#EDF0ED]/80 backdrop-blur-lg'
             : 'bg-white/90 backdrop-blur-lg border-b border-gray-100'
@@ -33,10 +32,10 @@ export function Navigation() {
             <div className="flex items-center gap-4 sm:gap-6 pl-1 sm:pl-2">
               <Link
                 to="/"
-                className="w-9 h-9 sm:w-10 sm:h-10 bg-gray-900 rounded-full flex items-center justify-center ring-2 ring-[#3DDB84]/20 shrink-0"
+                className="shrink-0 bg-gray-900 rounded-full h-9 sm:h-10 px-3 sm:px-4 ring-2 ring-[#3DDB84]/20 flex items-center"
               >
-                <span className="text-white text-[10px] sm:text-[11px] font-bold tracking-tight">
-                  AB
+                <span className="text-white text-[8px] sm:text-[10px] font-bold tracking-[0.1em] whitespace-nowrap">
+                  ABIOLA BABATUNDE
                 </span>
               </Link>
 
@@ -61,15 +60,14 @@ export function Navigation() {
               </div>
             </div>
 
-            <div className="hidden md:flex items-center gap-4 lg:gap-5 pr-1">
-              <RotatingAvailability className="hidden lg:inline-flex text-[13px]" />
+            <div className="md:hidden flex-1 min-w-0 px-2 sm:px-3 overflow-hidden">
+              <RotatingAvailability className="text-[11px] sm:text-[12px] w-full" />
+            </div>
 
-              <div className="flex items-center gap-1.5">
-                <Clock size={14} className="text-gray-600" />
-                <span className="text-[13px] text-gray-600">
-                  {londonTime} in London
-                </span>
-              </div>
+            <div className="hidden md:flex items-center gap-4 lg:gap-5 pr-1">
+              <RotatingAvailability className="hidden lg:flex text-[13px] shrink-0" />
+
+              <WorldClock className="hidden sm:flex" />
 
               <Link
                 to="/contact"

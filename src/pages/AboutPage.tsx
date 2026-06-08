@@ -1,5 +1,6 @@
 import { PageHeader } from '../components/PageHeader'
 import { AccentButton } from '../components/AccentButton'
+import { AnimateIn } from '../components/AnimateIn'
 import { SECTION_PY } from '../lib/section'
 
 const ABOUT_IMAGE = '/images/abiola-about.png'
@@ -48,7 +49,7 @@ export function AboutPage() {
       <section className={`bg-white ${SECTION_PY}`}>
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            <div className="lg:col-span-5 lg:sticky lg:top-28">
+            <AnimateIn variant="slide-left" className="lg:col-span-5 lg:sticky lg:top-28">
               <img
                 src={ABOUT_IMAGE}
                 alt="Abiola Babatunde"
@@ -57,11 +58,11 @@ export function AboutPage() {
               <p className="mt-4 text-[13px] text-gray-500">
                 Lagos, Nigeria · Product Engineer · Lions Club International
               </p>
-            </div>
+            </AnimateIn>
 
             <div className="lg:col-span-7 space-y-12">
-              {storySections.map((section) => (
-                <div key={section.heading}>
+              {storySections.map((section, i) => (
+                <AnimateIn key={section.heading} variant="fade-up" delay={i * 80}>
                   <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 tracking-[-0.02em] mb-4">
                     {section.heading}
                   </h2>
@@ -75,13 +76,13 @@ export function AboutPage() {
                       </p>
                     ))}
                   </div>
-                </div>
+                </AnimateIn>
               ))}
 
-              <div className="pt-4 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <AnimateIn variant="fade-up" delay={400} className="pt-4 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <AccentButton text="View my work" href="/work" />
                 <AccentButton text="How I work" href="/process" />
-              </div>
+              </AnimateIn>
             </div>
           </div>
         </div>
