@@ -75,13 +75,14 @@ const staticPages: Record<string, PageSeo> = {
   ),
   '/writing': pageSeo(
     'Product Design & Engineering Insights | Abiola Babatunde',
-    'Essays on product design, UI/UX, software development, design systems, Webflow, and AI-native product engineering for startups and product teams.',
+    'Guides on hiring Webflow and WordPress developers, product design, UI/UX, frontend development, and AI product development for startups in Nigeria and worldwide.',
     '/writing',
     [
+      'hire Webflow developer Nigeria',
+      'UI/UX designer vs software developer',
+      'WordPress vs Webflow',
       'product design blog',
-      'UI/UX articles',
-      'software development insights',
-      'Webflow tips',
+      'hire WordPress developer',
     ]
   ),
   '/contact': pageSeo(

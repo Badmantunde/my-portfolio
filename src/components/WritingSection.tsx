@@ -27,8 +27,8 @@ export function WritingSection({ hideHeader = false }: WritingSectionProps) {
             hideHeader ? '' : 'mt-6 sm:mt-8'
           }`}
         >
-          Essays on product strategy, engineering craft, design systems, and
-          AI-native development.
+          Guides on product design, UI/UX, Webflow, WordPress, frontend
+          development, mobile apps, and AI product development for startups.
         </AnimateIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">

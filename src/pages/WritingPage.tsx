@@ -7,7 +7,7 @@ export function WritingPage() {
       <PageHeader
         label="Writing & insights"
         title="Thinking in public"
-        description="Essays on product strategy, engineering craft, design systems, and AI-native development."
+        description="Guides on product design, hiring Webflow and WordPress developers, UI/UX, frontend development, and building startups in Nigeria."
       />
       <WritingSection hideHeader />
     </>

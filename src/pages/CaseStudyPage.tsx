@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { getProject } from '../data/projects'
-import { AccentButton } from '../components/AccentButton'
+import { ProjectContactCTA } from '../components/ProjectContactCTA'
 import { SECTION_PY } from '../lib/section'
 
 export function CaseStudyPage() {
@@ -213,10 +213,15 @@ export function CaseStudyPage() {
                   <ExternalLink size={16} className="text-gray-400" />
                 </a>
               )}
+              <ProjectContactCTA projectTitle={project.title} variant="sidebar" />
             </aside>
           </div>
 
-          <div className="mt-16 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="mt-16">
+            <ProjectContactCTA projectTitle={project.title} />
+          </div>
+
+          <div className="mt-10 pt-8 border-t border-gray-100">
             <Link
               to="/work"
               className="inline-flex items-center gap-2 text-[14px] font-medium text-gray-600 hover:text-[#32C876] transition-colors"
@@ -224,7 +229,6 @@ export function CaseStudyPage() {
               <ArrowLeft size={16} />
               All projects
             </Link>
-            <AccentButton text="Start a project" href="/contact" />
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import { Mail, MapPin, MessageCircle } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
-import { FinalCTASection } from '../components/FinalCTASection'
+import { ContactForm } from '../components/ContactForm'
 import { AnimateIn } from '../components/AnimateIn'
 import { SECTION_PY } from '../lib/section'
 import { contact } from '../data/contact'
@@ -25,8 +25,8 @@ export function ContactPage() {
 
       <section className={`bg-white ${SECTION_PY}`}>
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            <div className="lg:col-span-7 space-y-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5 space-y-10">
               <AnimateIn variant="fade-up">
                 <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 tracking-[-0.02em] mb-4">
                   Who I help
@@ -53,11 +53,6 @@ export function ContactPage() {
                 <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 tracking-[-0.02em] mb-4">
                   What I build
                 </h2>
-                <p className="text-[15px] sm:text-[16px] leading-[1.7] text-gray-600 mb-5">
-                  From product design and frontend development to Webflow, WordPress,
-                  mobile apps, and AI products. Here is what clients hire me for
-                  most often:
-                </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {services.map((service) => (
                     <li
@@ -69,60 +64,44 @@ export function ContactPage() {
                   ))}
                 </ul>
               </AnimateIn>
-            </div>
 
-            <AnimateIn variant="slide-right" delay={120} className="lg:col-span-5">
-              <div className="bg-[#F5F5F5] rounded-2xl p-6 sm:p-8 space-y-6">
-                <div>
-                  <h2 className="text-[18px] font-semibold text-gray-900 mb-2">
-                    Location
-                  </h2>
-                  <p className="flex items-start gap-2 text-[14px] sm:text-[15px] leading-[1.6] text-gray-600">
-                    <MapPin size={16} className="shrink-0 mt-0.5 text-[#32C876]" />
+              <AnimateIn variant="fade-up" delay={160} className="space-y-5 pt-2">
+                <div className="flex items-start gap-3">
+                  <MapPin size={16} className="shrink-0 mt-0.5 text-[#32C876]" />
+                  <p className="text-[14px] sm:text-[15px] leading-[1.6] text-gray-600">
                     Lagos, Nigeria. Available for remote projects across Africa,
                     Europe, and North America.
                   </p>
                 </div>
-
-                <div>
-                  <h2 className="text-[18px] font-semibold text-gray-900 mb-2">
-                    Email
-                  </h2>
+                <div className="flex items-center gap-3">
+                  <Mail size={16} className="shrink-0 text-[#32C876]" />
                   <a
                     href={`mailto:${contact.email}`}
-                    className="flex items-center gap-2 text-[14px] sm:text-[15px] text-gray-700 hover:text-[#32C876] transition-colors"
+                    className="text-[14px] sm:text-[15px] text-gray-700 hover:text-[#32C876] transition-colors"
                   >
-                    <Mail size={16} className="text-[#32C876]" />
                     {contact.email}
                   </a>
                 </div>
-
-                <div>
-                  <h2 className="text-[18px] font-semibold text-gray-900 mb-2">
-                    WhatsApp
-                  </h2>
+                <div className="flex items-center gap-3">
+                  <MessageCircle size={16} className="shrink-0 text-[#32C876]" />
                   <a
                     href={contact.whatsapp.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-[14px] sm:text-[15px] text-gray-700 hover:text-[#32C876] transition-colors"
+                    className="text-[14px] sm:text-[15px] text-gray-700 hover:text-[#32C876] transition-colors"
                   >
-                    <MessageCircle size={16} className="text-[#32C876]" />
                     {contact.whatsapp.display}
                   </a>
                 </div>
+              </AnimateIn>
+            </div>
 
-                <p className="text-[13px] leading-[1.6] text-gray-500 pt-2 border-t border-gray-200">
-                  Share your goals, timeline, budget range, and any existing
-                  designs or code. I typically respond within 24 hours.
-                </p>
-              </div>
+            <AnimateIn variant="slide-right" delay={120} className="lg:col-span-7">
+              <ContactForm />
             </AnimateIn>
           </div>
         </div>
       </section>
-
-      <FinalCTASection />
     </>
   )
 }

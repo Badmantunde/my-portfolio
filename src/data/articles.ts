@@ -1,19 +1,8 @@
-export interface ArticleSection {
-  heading?: string
-  paragraphs: string[]
-}
+import { seoArticles } from './article-seo'
+import type { Article } from './article-types'
+export type { Article, ArticleSection } from './article-types'
 
-export interface Article {
-  slug: string
-  category: string
-  title: string
-  date: string
-  readTime: string
-  excerpt: string
-  sections: ArticleSection[]
-}
-
-export const articles: Article[] = [
+const coreArticles: Article[] = [
   {
     slug: 'designing-agentic-workflows-users-trust',
     category: 'AI Product Development',
@@ -224,6 +213,8 @@ export const articles: Article[] = [
     ],
   },
 ]
+
+export const articles: Article[] = [...seoArticles, ...coreArticles]
 
 export function getArticle(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug)
