@@ -15,10 +15,9 @@ export function ServicesSection() {
         />
 
         <p className="mt-6 sm:mt-8 max-w-2xl text-[15px] sm:text-[16px] leading-[1.65] text-gray-600 mb-10 sm:mb-14">
-          I work as a product designer, UI/UX designer, software developer, and
-          website designer for startups and product teams in Lagos and worldwide.
-          Whether you need a Webflow marketing site, a WordPress build, or a full
-          product from idea to launch, I can own the work end to end.
+          I help startups and product teams in Lagos and worldwide with product
+          design, UI/UX, frontend development, Webflow and WordPress builds,
+          mobile apps, and AI product development from idea to launch.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
@@ -29,7 +28,7 @@ export function ServicesSection() {
               delay={i * 80}
               className="bg-white rounded-2xl p-5 sm:p-6 hover-lift"
             >
-              <h3 className="text-[15px] sm:text-[16px] font-semibold text-gray-900 capitalize">
+              <h3 className="text-[15px] sm:text-[16px] font-semibold text-gray-900">
                 {service.title}
               </h3>
               <p className="mt-3 text-[13px] sm:text-[14px] leading-[1.65] text-gray-600">

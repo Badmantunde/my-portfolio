@@ -54,15 +54,15 @@ export function ContactPage() {
                   What I build
                 </h2>
                 <p className="text-[15px] sm:text-[16px] leading-[1.7] text-gray-600 mb-5">
-                  From product design and mobile UI to Next.js apps, Webflow
-                  marketing sites, and WordPress builds. Here is what clients hire
-                  me for most often:
+                  From product design and frontend development to Webflow, WordPress,
+                  mobile apps, and AI products. Here is what clients hire me for
+                  most often:
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {services.map((service) => (
                     <li
                       key={service.title}
-                      className="text-[14px] font-medium text-gray-900 capitalize bg-[#F5F5F5] rounded-xl px-4 py-3"
+                      className="text-[14px] font-medium text-gray-900 bg-[#F5F5F5] rounded-xl px-4 py-3"
                     >
                       {service.title}
                     </li>
