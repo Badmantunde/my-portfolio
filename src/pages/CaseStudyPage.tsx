@@ -133,6 +133,24 @@ export function CaseStudyPage() {
                   ))}
                 </ul>
               </div>
+
+              {project.galleryImages && project.galleryImages.length > 0 && (
+                <div className="space-y-5">
+                  <h2 className="text-[13px] font-semibold text-[#32C876] uppercase tracking-wider">
+                    More screens
+                  </h2>
+                  <div className="space-y-5">
+                    {project.galleryImages.map((src) => (
+                      <img
+                        key={src}
+                        src={src}
+                        alt={`${project.title} UI design`}
+                        className="w-full rounded-2xl border border-gray-100"
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             <aside className="lg:sticky lg:top-28 lg:self-start space-y-4">

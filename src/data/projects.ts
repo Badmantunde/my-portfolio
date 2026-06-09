@@ -23,9 +23,47 @@ export interface Project {
   aspect: 'aspect-[329/246]' | 'aspect-square' | 'aspect-[4/3]'
   bg: string
   featured?: boolean
+  galleryImages?: string[]
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'muzora',
+    title: 'Muzora',
+    subtitle: 'Campus Music Discovery App',
+    description:
+      'Mobile product design for a campus-first music platform connecting Nigerian university artists with student listeners through discovery, charts, and community.',
+    type: 'case-study',
+    tags: ['Mobile UI', 'Product Design', 'Music', 'Community'],
+    tools: ['Figma'],
+    image: '/images/muzora/hero.png',
+    galleryImages: [
+      '/images/muzora/profile-discovery.png',
+      '/images/muzora/screens.png',
+    ],
+    year: '2025',
+    role: 'Product & UI Designer',
+    overview:
+      'Muzora is a music discovery platform built for university students and emerging campus artists. It addresses a common problem across Nigerian campuses: talented student musicians create great music but struggle to gain visibility beyond their immediate social circles. Muzora creates a dedicated ecosystem where students discover music from their peers, support local talent, and help campus artists build an audience within and across universities.',
+    challenge:
+      'Across universities, thousands of student artists release music every year on Audiomack, SoundCloud, Spotify, and YouTube, yet they face limited exposure outside friend groups, dependence on social media algorithms, no centralized platform for campus talent, and difficulty building loyal school-community audiences. Students who enjoy discovering new music had no easy way to find artists from their own campuses.',
+    approach: [
+      'Designed a discovery-first experience so users find campus music quickly without heavy search',
+      'Built personalization around genres and schools to reinforce community identity',
+      'Structured core flows: onboarding, home discovery, artist profiles, charts, and now playing',
+      'Applied familiar music-app patterns while introducing campus-specific features like school charts and playlists',
+      'Used a bold dark UI with high-contrast accent color to match youth culture and music energy',
+    ],
+    results: [
+      'Full mobile UI system covering onboarding through playback and library experiences',
+      'Campus charts and school playlists designed to increase artist visibility',
+      'Artist profile flows that help student musicians build followers within their university',
+      'Product vision positioned to become the digital home for campus music across African universities',
+    ],
+    aspect: 'aspect-[4/3]',
+    bg: 'bg-[#0f0f0f]',
+    featured: true,
+  },
   {
     slug: 'eclat-studio-paris',
     title: 'Éclat Studio Paris',
@@ -60,7 +98,6 @@ export const projects: Project[] = [
     ],
     aspect: 'aspect-[329/246]',
     bg: 'bg-[#1a1d2e]',
-    featured: true,
   },
   {
     slug: 'dart-agro-systems',
