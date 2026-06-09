@@ -39,8 +39,11 @@ export const projects: Project[] = [
     tools: ['Figma'],
     image: '/images/muzora/hero.png',
     galleryImages: [
-      '/images/muzora/profile-discovery.png',
-      '/images/muzora/screens.png',
+      '/images/muzora/screen-onboarding.png',
+      '/images/muzora/screen-login-personalize.png',
+      '/images/muzora/screen-home-player.png',
+      '/images/muzora/screen-search-charts.png',
+      '/images/muzora/screen-playlists.png',
     ],
     year: '2025',
     role: 'Product & UI Designer',
