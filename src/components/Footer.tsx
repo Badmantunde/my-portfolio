@@ -31,8 +31,9 @@ export function Footer() {
             </Link>
 
             <p className="mt-5 text-[14px] leading-[1.65] text-gray-400 max-w-xs">
-              Designing, engineering, and shipping digital products from strategy
-              and UX to Next.js, Supabase, and AI-native workflows.
+              Product design, UI/UX design, software development, and website
+              design for startups. Webflow developer and WordPress developer based
+              in Lagos, shipping with Next.js, Supabase, and AI-native workflows.
             </p>
 
             <div className="mt-5 inline-flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-full px-4 py-2">

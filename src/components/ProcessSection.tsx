@@ -42,8 +42,9 @@ export function ProcessSection({ hideHeader = false }: ProcessSectionProps) {
             hideHeader ? '' : ''
           }`}
         >
-          A systematic approach from idea to scale, bridging strategy, design,
-          engineering, and AI at every stage.
+          A systematic approach from idea to scale for product design and software
+          development, bridging strategy, UI/UX design, Webflow and WordPress
+          builds, and engineering at every stage.
         </AnimateIn>
 
         <div className="relative">

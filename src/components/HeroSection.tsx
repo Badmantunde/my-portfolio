@@ -32,8 +32,9 @@ export function HeroSection() {
 
           <AnimateIn immediate variant="fade-up" delay={350}>
             <p className="mt-5 sm:mt-6 max-w-xl text-[15px] sm:text-[16px] leading-[1.6] text-gray-600">
-              I help startups transform ideas into scalable products through
-              strategy, design, engineering, and AI-powered execution.
+              Product designer, UI/UX designer, and software developer helping
+              startups transform ideas into scalable products through strategy,
+              website design, engineering, and AI-powered execution.
             </p>
           </AnimateIn>
 

@@ -43,10 +43,11 @@ export function AboutSection() {
           {/* Content */}
           <AnimateIn variant="slide-right" delay={120} className="lg:col-span-7 order-1 lg:order-2">
             <p className="text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.65] font-medium text-gray-900 max-w-xl">
-              I bridge product thinking, UX design, and full-stack engineering to
-              ship production-ready products. From discovery and roadmapping to
-              design systems, Next.js frontends, and AI-native workflows. I own
-              the full lifecycle.
+              I am a UI/UX designer and software developer who bridges product
+              thinking, visual design, and full-stack engineering to ship
+              production-ready products. From discovery and roadmapping to design
+              systems, Next.js frontends, and AI-native workflows, I own the full
+              lifecycle.
             </p>
 
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">

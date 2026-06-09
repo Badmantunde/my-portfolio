@@ -9,7 +9,7 @@ export function WorkPage() {
       <PageHeader
         label="Selected work"
         title="Featured projects"
-        description="Case studies in UI/UX design and live products built with Next.js, Supabase, and Webflow."
+        description="Product design, UI/UX design, software development, and website design case studies. Live products built with Next.js, Supabase, Webflow, and WordPress."
       />
       <section className={`bg-[#F5F5F5] ${SECTION_PY}`}>
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">

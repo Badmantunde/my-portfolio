@@ -24,7 +24,7 @@ const storySections = [
   {
     heading: 'What I do today',
     paragraphs: [
-      'Today I work as a product engineer, bridging strategy, UX design, and engineering to ship real software. I have designed luxury brand experiences, built community platforms, shipped fintech products, and helped startups move from rough ideas to production.',
+      'Today I work as a product designer, UI/UX designer, and software developer, bridging strategy, visual design, and engineering to ship real software. I have designed luxury brand experiences, built community platforms, shipped fintech products, and delivered Webflow and WordPress sites for clients who need to move from rough ideas to production.',
       'The thread from those Lagos street flyers to the products I ship now is the same: understand the audience, design with intention, and build something that works in the real world.',
     ],
   },
@@ -43,7 +43,7 @@ export function AboutPage() {
       <PageHeader
         label="About"
         title="A seasoned techie who never stopped learning"
-        description="From CorelDRAW flyers on the streets of Lagos to product engineering for startups worldwide."
+        description="From CorelDRAW flyers in Lagos to product design, UI/UX design, and software development for startups worldwide. Website designer, Webflow developer, and WordPress developer based in Nigeria."
       />
 
       <section className={`bg-white ${SECTION_PY}`}>

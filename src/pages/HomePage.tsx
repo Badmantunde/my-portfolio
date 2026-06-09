@@ -1,5 +1,6 @@
 import { HeroSection } from '../components/HeroSection'
 import { CredibilitySection } from '../components/CredibilitySection'
+import { ServicesSection } from '../components/ServicesSection'
 import { AboutSection } from '../components/AboutSection'
 import { AIWorkflowSection } from '../components/AIWorkflowSection'
 import { CaseStudiesSection } from '../components/CaseStudiesSection'
@@ -11,6 +12,7 @@ export function HomePage() {
     <>
       <HeroSection />
       <CredibilitySection />
+      <ServicesSection />
       <AboutSection />
       <AIWorkflowSection />
       <CaseStudiesSection featured limit={4} showViewAll />

@@ -47,6 +47,10 @@ export function CaseStudyPage() {
           </h1>
           <p className="mt-2 text-[16px] sm:text-[18px] text-gray-600">{project.subtitle}</p>
 
+          <p className="mt-4 max-w-2xl text-[15px] sm:text-[16px] leading-[1.65] text-gray-600">
+            {project.seoIntro}
+          </p>
+
           <div className="mt-6 flex flex-wrap gap-4 text-[13px] text-gray-500">
             <span>{project.role}</span>
             <span>·</span>

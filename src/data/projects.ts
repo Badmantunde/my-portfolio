@@ -16,6 +16,7 @@ export interface Project {
   figmaUrl?: string
   year: string
   role: string
+  seoIntro: string
   overview: string
   challenge: string
   approach: string[]
@@ -43,6 +44,8 @@ export const projects: Project[] = [
     ],
     year: '2025',
     role: 'Product & UI Designer',
+    seoIntro:
+      'Product design and mobile UI/UX for a campus music discovery app helping Nigerian university artists reach student listeners.',
     overview:
       'Muzora is a music discovery platform built for university students and emerging campus artists. It addresses a common problem across Nigerian campuses: talented student musicians create great music but struggle to gain visibility beyond their immediate social circles. Muzora creates a dedicated ecosystem where students discover music from their peers, support local talent, and help campus artists build an audience within and across universities.',
     challenge:
@@ -81,6 +84,8 @@ export const projects: Project[] = [
       'https://www.behance.net/gallery/242928751/Eclat-Studio-Paris-Website-UIUX-Design',
     year: '2026',
     role: 'UI/UX Designer',
+    seoIntro:
+      'UI/UX design and website design for a luxury beauty studio, with editorial layouts and conversion-focused service discovery.',
     overview:
       'Éclat Studio Paris is a luxury beauty and aesthetics studio. I designed a full website experience that balances editorial elegance with clear service discovery : helping the brand dominate their category online.',
     challenge:
@@ -114,6 +119,8 @@ export const projects: Project[] = [
       'https://www.behance.net/gallery/250772517/Dart-Agro-Systems',
     year: '2026',
     role: 'UI/UX Designer',
+    seoIntro:
+      'Website design and UI/UX for an AgriTech brand, positioning agricultural innovation through immersive storytelling and lead generation.',
     overview:
       'Dart Agro Systems is a modern agricultural technology company transforming farming through intelligent machinery, automation, precision agriculture, and sustainable practices. I designed a premium digital experience that communicates their vision while positioning them as a trusted global leader in agricultural innovation.',
     challenge:
@@ -153,6 +160,8 @@ export const projects: Project[] = [
       'https://www.figma.com/proto/gXsDv31e9GNFMgQI0RCtA3/Web3-Starts-here',
     year: '2024',
     role: 'Product & UI Designer',
+    seoIntro:
+      'Product design and mobile UI/UX for a DeFi wallet app, simplifying staking, lending, and crypto onboarding for new users.',
     overview:
       'RabiCoin is a DeFi wallet and staking application giving users control over digital assets with intuitive access to lending, borrowing, staking, and transaction management.',
     challenge:
@@ -184,6 +193,8 @@ export const projects: Project[] = [
     liveUrl: 'https://www.shightrunningclub.com/',
     year: '2025',
     role: 'Product Engineer',
+    seoIntro:
+      'Software development and product design for a live community platform in Lagos, built with Next.js, Supabase, and conversion-focused UX.',
     overview:
       'Shight Running Club is one of the fastest-growing running communities in Lagos. I designed and engineered the full platform : from membership tiers and event management to community storytelling.',
     challenge:
@@ -221,6 +232,8 @@ export const projects: Project[] = [
       'https://contra.com/p/WvENEe3A-crypto-dispensers-website-redesign-or-figma-to-webflow',
     year: '2025',
     role: 'Product Designer & Webflow Developer',
+    seoIntro:
+      'Webflow development and website design for a regulated fintech platform, from Figma redesign to a live, conversion-focused marketing site.',
     overview:
       'CryptoDispensers is a FinCEN-registered Bitcoin and crypto access platform. I redesigned and rebuilt the site in Webflow : structuring complex purchase flows, education content, and trust signals for a regulated fintech audience.',
     challenge:

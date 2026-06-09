@@ -14,7 +14,7 @@ export const faqs: FAQ[] = [
   {
     question: 'What types of projects do you take on?',
     answer:
-      'I work on SaaS products, fintech platforms, AgriTech and Web3 interfaces, marketing sites, design systems, and MVPs for startups. That includes UI/UX design, Figma to Webflow builds, Next.js and Supabase products, Flutter mobile apps, and AI-native product workflows.',
+      'I work on SaaS products, fintech platforms, AgriTech and Web3 interfaces, marketing sites, design systems, and MVPs for startups. That includes product design, UI/UX design, software development, website design, Figma to Webflow builds, WordPress sites, Next.js and Supabase products, Flutter mobile apps, and AI-native product workflows.',
   },
   {
     question: 'Do you work with startups, agencies, or enterprise teams?',
@@ -29,7 +29,7 @@ export const faqs: FAQ[] = [
   {
     question: 'Which tools and technologies do you use?',
     answer:
-      'Figma for design, Next.js and TypeScript for frontend, Supabase for backend, Webflow and WordPress for marketing sites, Flutter for mobile, and AI tools like Claude, Cursor, and ChatGPT for faster prototyping and engineering. I pick the stack based on speed, scalability, and your team\'s needs.',
+      'Figma for design, Next.js and TypeScript for frontend development, Supabase for backend, Webflow and WordPress for marketing and content sites, Flutter for mobile, and AI tools like Claude, Cursor, and ChatGPT for faster prototyping and engineering. As a Webflow developer and WordPress developer, I pick the stack based on speed, scalability, and your team\'s needs.',
   },
   {
     question: 'Are you available for freelance, contract, or full-time roles?',
