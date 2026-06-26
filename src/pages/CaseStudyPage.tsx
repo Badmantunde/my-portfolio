@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react'
 import { getProject } from '../data/projects'
 import { ProjectContactCTA } from '../components/ProjectContactCTA'
 import { SECTION_PY } from '../lib/section'
@@ -158,6 +158,20 @@ export function CaseStudyPage() {
             </div>
 
             <aside className="lg:sticky lg:top-28 lg:self-start space-y-4">
+              {project.relatedArticleSlug && (
+                <Link
+                  to={`/writing/${project.relatedArticleSlug}`}
+                  className="flex items-center justify-between bg-[#EDF5F0] hover:bg-[#dff5ea] rounded-xl px-5 py-4 transition-colors group"
+                >
+                  <span className="text-[14px] font-semibold text-gray-900">
+                    Read the full story
+                  </span>
+                  <ArrowRight
+                    size={16}
+                    className="text-[#32C876] group-hover:translate-x-0.5 transition-transform"
+                  />
+                </Link>
+              )}
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}

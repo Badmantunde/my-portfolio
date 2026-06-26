@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { WorldClock } from './WorldClock'
 import { projects } from '../data/projects'
+import { articles } from '../data/articles'
 import { workflowTools } from '../data/tools'
 import { socialLinks } from '../data/social'
 import { contact } from '../data/contact'
@@ -75,12 +76,12 @@ export function Footer() {
           </div>
 
           {/* Selected work */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-4">
               Selected work
             </p>
             <ul className="space-y-2.5">
-              {projects.map((project) => (
+              {projects.slice(0, 5).map((project) => (
                 <li key={project.slug}>
                   <Link
                     to={`/work/${project.slug}`}
@@ -97,8 +98,31 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Writing */}
+          <div className="lg:col-span-2">
+            <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-4">
+              Writing
+            </p>
+            <ul className="space-y-2.5">
+              {articles.slice(0, 6).map((article) => (
+                <li key={article.slug}>
+                  <Link
+                    to={`/writing/${article.slug}`}
+                    className="group flex items-start justify-between gap-2 text-[14px] text-gray-300 hover:text-white transition-colors"
+                  >
+                    <span className="line-clamp-2">{article.title}</span>
+                    <ArrowUpRight
+                      size={13}
+                      className="shrink-0 mt-0.5 text-gray-600 group-hover:text-[#3DDB84] transition-colors"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Connect */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-4">
               Connect
             </p>

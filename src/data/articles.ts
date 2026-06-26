@@ -32,6 +32,7 @@ const coreArticles: Article[] = [
       width: 1001,
       height: 1024,
     },
+    relatedProjectSlug: 'asa-oro',
     sections: [
       {
         paragraphs: [

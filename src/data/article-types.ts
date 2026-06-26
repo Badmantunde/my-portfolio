@@ -35,6 +35,7 @@ export interface Article {
   seoTitle?: string
   keywords?: string[]
   ogImage?: ArticleImage
+  relatedProjectSlug?: string
   sections: ArticleSection[]
   cta?: ArticleCta
 }

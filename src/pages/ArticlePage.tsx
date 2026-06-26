@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { getArticle } from '../data/articles'
+import { getProject } from '../data/projects'
 import { AccentButton } from '../components/AccentButton'
 import { AnimateIn } from '../components/AnimateIn'
 import { SECTION_PY } from '../lib/section'
@@ -8,6 +9,9 @@ import { SECTION_PY } from '../lib/section'
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>()
   const article = slug ? getArticle(slug) : undefined
+  const relatedProject = article?.relatedProjectSlug
+    ? getProject(article.relatedProjectSlug)
+    : undefined
 
   if (!article) {
     return (
@@ -147,6 +151,28 @@ export function ArticlePage() {
                   ))}
                 </div>
               </div>
+            </AnimateIn>
+          )}
+
+          {relatedProject && (
+            <AnimateIn variant="fade-up" as="section" className="pt-2">
+              <Link
+                to={`/work/${relatedProject.slug}`}
+                className="group flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-[#F5F5F5] px-6 py-5 hover:border-[#3DDB84]/40 hover:bg-[#EDF5F0] transition-colors"
+              >
+                <div>
+                  <p className="text-[12px] font-semibold uppercase tracking-wider text-[#28B866] mb-1">
+                    Related case study
+                  </p>
+                  <p className="text-[15px] sm:text-[16px] font-medium text-gray-900">
+                    View the {relatedProject.title} project screens and process
+                  </p>
+                </div>
+                <ArrowRight
+                  size={18}
+                  className="shrink-0 text-[#32C876] transition-transform group-hover:translate-x-0.5"
+                />
+              </Link>
             </AnimateIn>
           )}
         </div>

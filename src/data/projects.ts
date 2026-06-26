@@ -21,6 +21,7 @@ export interface Project {
   challenge: string
   approach: string[]
   results: string[]
+  relatedArticleSlug?: string
   aspect: 'aspect-[329/246]' | 'aspect-square' | 'aspect-[4/3]'
   bg: string
   featured?: boolean
@@ -73,6 +74,7 @@ export const projects: Project[] = [
     aspect: 'aspect-[4/3]',
     bg: 'bg-[#e85d2a]',
     featured: true,
+    relatedArticleSlug: 'asa-oro-yoruba-word-game-flutter-case-study',
   },
   {
     slug: 'muzora',

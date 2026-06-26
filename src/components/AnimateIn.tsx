@@ -21,7 +21,7 @@ export function AnimateIn({
   as: Component = 'div',
 }: AnimateInProps) {
   const { ref, inView } = useInView<HTMLElement>()
-  const [immediateVisible, setImmediateVisible] = useState(false)
+  const [immediateVisible, setImmediateVisible] = useState(immediate)
 
   useEffect(() => {
     if (!immediate) return

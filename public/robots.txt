@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abiolababatunde.com/sitemap.xml
+Sitemap: https://www.abiolababatunde.com/sitemap.xml

@@ -1,6 +1,6 @@
 import { articles, getArticle, getArticleOgImage } from '../data/articles'
 import { getProject, projects } from '../data/projects'
-import { defaultDescription, site, siteUrl } from '../data/site'
+import { defaultDescription, postalAddress, site, siteUrl } from '../data/site'
 
 export interface PageSeo {
   title: string
@@ -235,11 +235,7 @@ export function buildJsonLd(seo: PageSeo) {
         'React',
         'Design Systems',
       ],
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Lagos',
-        addressCountry: 'NG',
-      },
+      address: { ...postalAddress },
       sameAs: site.sameAs,
     },
     {
@@ -249,18 +245,9 @@ export function buildJsonLd(seo: PageSeo) {
       url: siteUrl,
       image: absoluteAsset(site.ogImage),
       description: defaultDescription,
+      address: { ...postalAddress },
       areaServed: ['Lagos', 'Nigeria', 'Worldwide'],
-      serviceType: [
-        'Product Design',
-        'UI/UX Design',
-        'Software Development',
-        'Website Design',
-        'Webflow Development',
-        'WordPress Development',
-        'Mobile App Design',
-        'Design Systems',
-      ],
-      provider: { '@id': `${siteUrl}/#person` },
+      founder: { '@id': `${siteUrl}/#person` },
     },
     {
       '@type': 'WebPage',
@@ -336,4 +323,43 @@ export function allSitemapPaths(): string[] {
   for (const project of projects) paths.push(`/work/${project.slug}`)
   for (const article of articles) paths.push(`/writing/${article.slug}`)
   return paths
+}
+
+function sitemapMeta(path: string): { changefreq: string; priority: string } {
+  if (path === '/') return { changefreq: 'weekly', priority: '1.0' }
+  if (path === '/work' || path === '/contact') return { changefreq: 'weekly', priority: '0.9' }
+  if (
+    path === '/about' ||
+    path === '/process' ||
+    path === '/writing' ||
+    path === '/work/asa-oro' ||
+    path === '/writing/asa-oro-yoruba-word-game-flutter-case-study' ||
+    path === '/writing/hire-webflow-developer'
+  ) {
+    return { changefreq: 'monthly', priority: '0.8' }
+  }
+  if (path.startsWith('/work/')) return { changefreq: 'monthly', priority: '0.7' }
+  if (
+    path.includes('hire-') ||
+    path.includes('product-designer') ||
+    path.includes('ui-ux') ||
+    path.includes('wordpress') ||
+    path.includes('website-designer') ||
+    path.includes('mvp-product')
+  ) {
+    return { changefreq: 'monthly', priority: '0.7' }
+  }
+  return { changefreq: 'monthly', priority: '0.6' }
+}
+
+export function generateSitemapXml(): string {
+  const urls = allSitemapPaths()
+    .map((path) => {
+      const { changefreq, priority } = sitemapMeta(path)
+      const loc = absoluteUrl(path)
+      return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
+    })
+    .join('\n')
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
 }

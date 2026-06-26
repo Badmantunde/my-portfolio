@@ -1,8 +1,8 @@
 import { contact } from './contact'
 import { socialLinks } from './social'
 
-/** Override in production via VITE_SITE_URL (e.g. https://abiolababatunde.com) */
-export const siteUrl = import.meta.env.VITE_SITE_URL ?? 'https://abiolababatunde.com'
+/** Override in production via VITE_SITE_URL (e.g. https://www.abiolababatunde.com) */
+export const siteUrl = import.meta.env?.VITE_SITE_URL ?? 'https://www.abiolababatunde.com'
 
 export const site = {
   name: 'Abiola Babatunde',
@@ -41,3 +41,11 @@ export const site = {
 
 export const defaultDescription =
   'Hire Abiola Babatunde for product design, UI/UX design, software development, and website design. Expert Webflow & WordPress developer in Lagos, Nigeria. Available for freelance and full-time roles.'
+
+/** Shared PostalAddress for Person and LocalBusiness JSON-LD */
+export const postalAddress = {
+  '@type': 'PostalAddress',
+  addressLocality: 'Lagos',
+  addressRegion: 'Lagos',
+  addressCountry: 'NG',
+} as const
