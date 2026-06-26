@@ -78,7 +78,7 @@ const staticPages: Record<string, PageSeo> = {
     'Guides on hiring Webflow and WordPress developers, product design, UI/UX, frontend development, and AI product development for startups in Nigeria and worldwide.',
     '/writing',
     [
-      'hire Webflow developer Nigeria',
+      'hire Webflow developer',
       'UI/UX designer vs software developer',
       'WordPress vs Webflow',
       'product design blog',

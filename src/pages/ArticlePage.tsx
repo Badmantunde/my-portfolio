@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { getArticle } from '../data/articles'
+import { AccentButton } from '../components/AccentButton'
 import { AnimateIn } from '../components/AnimateIn'
 import { SECTION_PY } from '../lib/section'
 
@@ -71,9 +72,68 @@ export function ArticlePage() {
                     {paragraph}
                   </p>
                 ))}
+                {section.listItems && (
+                  <ul className="space-y-2 pl-1">
+                    {section.listItems.map((item) => (
+                      <li
+                        key={item}
+                        className="flex gap-3 text-[15px] sm:text-[16px] leading-[1.75] text-gray-700"
+                      >
+                        <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#3DDB84] mt-2.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </AnimateIn>
           ))}
+
+          {article.cta && (
+            <AnimateIn variant="fade-up" as="section" className="pt-6">
+              <div className="rounded-2xl bg-[#EDF0ED] border border-gray-200 px-6 sm:px-8 py-8 sm:py-10">
+                <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 mb-4 tracking-[-0.02em]">
+                  {article.cta.heading}
+                </h2>
+                <div className="space-y-4">
+                  {article.cta.paragraphs.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="text-[15px] sm:text-[16px] leading-[1.75] text-gray-700"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                {article.cta.listSections?.map((listSection) => (
+                  <div key={listSection.heading} className="mt-6">
+                    <h3 className="text-[15px] font-semibold text-gray-900 mb-3">
+                      {listSection.heading}
+                    </h3>
+                    <ul className="space-y-2">
+                      {listSection.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex gap-3 text-[15px] leading-[1.65] text-gray-700"
+                        >
+                          <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#3DDB84] mt-2" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                <p className="mt-6 text-[15px] font-medium text-gray-900">
+                  Ready to discuss your project?
+                </p>
+                <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3">
+                  {article.cta.links.map((link) => (
+                    <AccentButton key={link.text} text={link.text} href={link.href} />
+                  ))}
+                </div>
+              </div>
+            </AnimateIn>
+          )}
         </div>
       </article>
     </>

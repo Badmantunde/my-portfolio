@@ -1,6 +1,6 @@
 import { seoArticles } from './article-seo'
 import type { Article } from './article-types'
-export type { Article, ArticleSection } from './article-types'
+export type { Article, ArticleCta, ArticleCtaLink, ArticleSection } from './article-types'
 
 const coreArticles: Article[] = [
   {
