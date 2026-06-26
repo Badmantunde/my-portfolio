@@ -13,7 +13,6 @@ function prefersReducedMotion() {
 
 function shouldEnableShader() {
   if (prefersReducedMotion()) return false
-  if (window.matchMedia('(max-width: 1023px)').matches) return false
   if (navigator.webdriver) return false
 
   const connection = (
@@ -38,19 +37,13 @@ export function HeroSection() {
 
     const enableShader = () => setShowShader(true)
 
-    // Load only after deliberate interaction — avoids PageSpeed / headless audits.
-    const events = ['pointerdown', 'keydown'] as const
-    const options: AddEventListenerOptions = { once: true, passive: true }
-
-    for (const event of events) {
-      window.addEventListener(event, enableShader, options)
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(enableShader, { timeout: 2500 })
+      return () => window.cancelIdleCallback(id)
     }
 
-    return () => {
-      for (const event of events) {
-        window.removeEventListener(event, enableShader)
-      }
-    }
+    const timer = setTimeout(enableShader, 2000)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
