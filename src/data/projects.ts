@@ -29,6 +29,52 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: 'asa-oro',
+    title: 'Aṣá Ọ̀rọ̀',
+    subtitle: 'Yoruba Word Game · Flutter Mobile App',
+    description:
+      'Educational mobile game designed in Figma and built with Flutter to help preserve the Yoruba language through playful word puzzles, progression systems, and culturally inspired UI.',
+    type: 'case-study',
+    tags: ['Flutter', 'Mobile UI', 'Product Design', 'EdTech', 'Figma'],
+    tools: ['Figma', 'Flutter'],
+    image: '/images/asa-oro/onboarding-flow.png',
+    galleryImages: [
+      '/images/asa-oro/splash.png',
+      '/images/asa-oro/onboarding-learn-through-play.png',
+      '/images/asa-oro/main-menu.png',
+      '/images/asa-oro/name-input.png',
+      '/images/asa-oro/level-selection.png',
+      '/images/asa-oro/gameplay-level-3.png',
+      '/images/asa-oro/level-completed.png',
+      '/images/asa-oro/settings.png',
+    ],
+    year: '2026',
+    role: 'Product Designer & Flutter Developer',
+    seoIntro:
+      'Figma to Flutter case study for a Yoruba word game helping preserve an indigenous language through educational mobile gameplay, African-inspired UI, and cross-platform delivery.',
+    overview:
+      'Aṣá Ọ̀rọ̀ is a mobile word game built to make learning Yoruba feel like play—not homework. Across Africa, many younger people understand their ancestral language but struggle to speak, read, or use it confidently. I designed the full experience in Figma, then rebuilt it in Flutter for iOS and Android from a single codebase: interactive puzzles, progressive levels, daily challenges, score tracking, hearts, and offline-ready gameplay wrapped in warm, culturally rooted visuals.',
+    challenge:
+      'Indigenous languages are fading not from lack of interest, but from lack of daily practice. Most language tools feel like textbooks. African languages are also underrepresented in educational apps. The product needed to feel modern and fun for today’s generation while honoring Yoruba heritage through typography, color, and visual storytelling—then ship as a polished cross-platform app without separate iOS and Android builds.',
+    approach: [
+      'Explored multiple Figma directions with African-inspired palettes, friendly typography, and cartoon-style illustrations',
+      'Designed a carved-wood logo and onboarding flow that introduces the mission before the first puzzle',
+      'Structured core loops: splash, onboarding, main menu, level grid, word puzzles, rewards, and settings',
+      'Built progressive difficulty, hearts, score tracking, daily puzzle mode, and responsive animations in Flutter',
+      'Optimized layouts and interactions for younger players with large touch targets and clear navigation',
+      'Iterated from static designs to a fully interactive app with consistent UI across devices',
+    ],
+    results: [
+      'Complete Figma UI system from splash through gameplay, progression, and settings',
+      'Cross-platform Flutter build with interactive puzzles, level progression, and reward systems',
+      'Culturally grounded visual identity that connects players to Yoruba heritage from the first screen',
+      'Foundation for future features: audio pronunciation, leaderboards, achievements, and more languages',
+    ],
+    aspect: 'aspect-[4/3]',
+    bg: 'bg-[#e85d2a]',
+    featured: true,
+  },
+  {
     slug: 'muzora',
     title: 'Muzora',
     subtitle: 'Campus Music Discovery App',
