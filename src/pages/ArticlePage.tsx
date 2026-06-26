@@ -85,6 +85,21 @@ export function ArticlePage() {
                     ))}
                   </ul>
                 )}
+                {section.image && (
+                  <figure className="pt-2">
+                    <img
+                      src={section.image.src}
+                      alt={section.image.alt}
+                      className="w-full rounded-2xl border border-gray-200"
+                      loading="lazy"
+                    />
+                    {section.image.caption && (
+                      <figcaption className="mt-3 text-[13px] text-gray-500 text-center">
+                        {section.image.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
               </div>
             </AnimateIn>
           ))}

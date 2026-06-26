@@ -1,7 +1,16 @@
+export interface ArticleImage {
+  src: string
+  alt: string
+  caption?: string
+  width?: number
+  height?: number
+}
+
 export interface ArticleSection {
   heading?: string
   paragraphs: string[]
   listItems?: string[]
+  image?: ArticleImage
 }
 
 export interface ArticleCtaLink {
@@ -23,6 +32,9 @@ export interface Article {
   date: string
   readTime: string
   excerpt: string
+  seoTitle?: string
+  keywords?: string[]
+  ogImage?: ArticleImage
   sections: ArticleSection[]
   cta?: ArticleCta
 }

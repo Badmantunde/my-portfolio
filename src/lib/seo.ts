@@ -1,4 +1,4 @@
-import { articles, getArticle } from '../data/articles'
+import { articles, getArticle, getArticleOgImage } from '../data/articles'
 import { getProject, projects } from '../data/projects'
 import { defaultDescription, site, siteUrl } from '../data/site'
 
@@ -9,6 +9,10 @@ export interface PageSeo {
   keywords?: string[]
   type?: 'website' | 'article'
   noIndex?: boolean
+  image?: string
+  imageAlt?: string
+  imageWidth?: number
+  imageHeight?: number
 }
 
 const baseKeywords = [...site.keywords]
@@ -18,9 +22,20 @@ function pageSeo(
   description: string,
   path: string,
   keywords: string[] = baseKeywords,
-  type: 'website' | 'article' = 'website'
+  type: 'website' | 'article' = 'website',
+  image?: Pick<PageSeo, 'image' | 'imageAlt' | 'imageWidth' | 'imageHeight'>
 ): PageSeo {
-  return { title, description, path, keywords, type }
+  return {
+    title,
+    description,
+    path,
+    keywords,
+    type,
+    image: image?.image ?? site.ogImage,
+    imageAlt: image?.imageAlt ?? site.ogImageAlt,
+    imageWidth: image?.imageWidth ?? site.ogImageWidth,
+    imageHeight: image?.imageHeight ?? site.ogImageHeight,
+  }
 }
 
 const staticPages: Record<string, PageSeo> = {
@@ -115,8 +130,23 @@ export function getSeoForPath(pathname: string): PageSeo {
           'product design case study',
           'UI/UX case study',
           'website designer',
-        ]
+        ],
+        'website',
+        {
+          image: project.image,
+          imageAlt: `${project.title} case study by Abiola Babatunde`,
+        }
       )
+    }
+
+    return {
+      ...pageSeo(
+        'Case study not found | Abiola Babatunde',
+        defaultDescription,
+        pathname,
+        baseKeywords
+      ),
+      noIndex: true,
     }
   }
 
@@ -124,22 +154,39 @@ export function getSeoForPath(pathname: string): PageSeo {
   if (articleMatch) {
     const article = getArticle(articleMatch[1])
     if (article) {
+      const cover = getArticleOgImage(article)
       return {
-        title: `${article.title} | Abiola Babatunde`,
+        title: article.seoTitle ?? `${article.title} | Abiola Babatunde`,
         description: article.excerpt,
         path: pathname,
-        keywords: [article.category.toLowerCase(), 'product design', 'software development'],
+        keywords: article.keywords ?? [
+          article.category.toLowerCase(),
+          'product design',
+          'software development',
+        ],
         type: 'article',
+        image: cover?.src ?? site.ogImage,
+        imageAlt: cover?.alt ?? site.ogImageAlt,
+        imageWidth: cover?.width ?? site.ogImageWidth,
+        imageHeight: cover?.height ?? site.ogImageHeight,
       }
+    }
+
+    return {
+      ...pageSeo(
+        'Article not found | Abiola Babatunde',
+        defaultDescription,
+        pathname,
+        baseKeywords
+      ),
+      noIndex: true,
     }
   }
 
-  return pageSeo(
-    site.title,
-    defaultDescription,
-    pathname,
-    baseKeywords
-  )
+  return {
+    ...pageSeo(site.title, defaultDescription, pathname, baseKeywords),
+    noIndex: true,
+  }
 }
 
 export function absoluteUrl(path: string) {
@@ -224,6 +271,14 @@ export function buildJsonLd(seo: PageSeo) {
       isPartOf: { '@id': `${siteUrl}/#website` },
       about: { '@id': `${siteUrl}/#person` },
       inLanguage: site.language,
+      ...(seo.image && {
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: absoluteAsset(seo.image),
+          ...(seo.imageWidth && { width: seo.imageWidth }),
+          ...(seo.imageHeight && { height: seo.imageHeight }),
+        },
+      }),
     },
   ]
 
@@ -231,6 +286,7 @@ export function buildJsonLd(seo: PageSeo) {
     const slug = seo.path.replace('/writing/', '')
     const article = getArticle(slug)
     if (article) {
+      const cover = getArticleOgImage(article)
       graph.push({
         '@type': 'Article',
         headline: article.title,
@@ -241,6 +297,14 @@ export function buildJsonLd(seo: PageSeo) {
         mainEntityOfPage: { '@id': `${absoluteUrl(seo.path)}#webpage` },
         articleSection: article.category,
         inLanguage: site.language,
+        ...(cover && {
+          image: {
+            '@type': 'ImageObject',
+            url: absoluteAsset(cover.src),
+            ...(cover.width && { width: cover.width }),
+            ...(cover.height && { height: cover.height }),
+          },
+        }),
       })
     }
   }

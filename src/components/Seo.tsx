@@ -35,7 +35,10 @@ export function Seo() {
   useEffect(() => {
     const seo = getSeoForPath(pathname)
     const url = absoluteUrl(seo.path)
-    const image = absoluteAsset(site.ogImage)
+    const image = absoluteAsset(seo.image ?? site.ogImage)
+    const imageAlt = seo.imageAlt ?? site.ogImageAlt
+    const imageWidth = seo.imageWidth ?? site.ogImageWidth
+    const imageHeight = seo.imageHeight ?? site.ogImageHeight
     const robots = seo.noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
 
     document.title = seo.title
@@ -58,17 +61,20 @@ export function Seo() {
     upsertMeta('og:title', seo.title, 'property')
     upsertMeta('og:description', seo.description, 'property')
     upsertMeta('og:url', url, 'property')
+    if (seo.type === 'article') {
+      upsertMeta('og:article:author', site.name, 'property')
+    }
     upsertMeta('og:image', image, 'property')
     upsertMeta('og:image:secure_url', image, 'property')
-    upsertMeta('og:image:width', String(site.ogImageWidth), 'property')
-    upsertMeta('og:image:height', String(site.ogImageHeight), 'property')
-    upsertMeta('og:image:alt', site.ogImageAlt, 'property')
+    upsertMeta('og:image:width', String(imageWidth), 'property')
+    upsertMeta('og:image:height', String(imageHeight), 'property')
+    upsertMeta('og:image:alt', imageAlt, 'property')
 
     upsertMeta('twitter:card', 'summary_large_image', 'name')
     upsertMeta('twitter:title', seo.title, 'name')
     upsertMeta('twitter:description', seo.description, 'name')
     upsertMeta('twitter:image', image, 'name')
-    upsertMeta('twitter:image:alt', site.ogImageAlt, 'name')
+    upsertMeta('twitter:image:alt', imageAlt, 'name')
     upsertMeta('twitter:creator', site.twitterHandle, 'name')
 
     let jsonLd = document.getElementById(JSON_LD_ID) as HTMLScriptElement | null

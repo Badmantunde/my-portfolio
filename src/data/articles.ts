@@ -1,8 +1,244 @@
 import { seoArticles } from './article-seo'
-import type { Article } from './article-types'
-export type { Article, ArticleCta, ArticleCtaLink, ArticleSection } from './article-types'
+import type { Article, ArticleImage } from './article-types'
+export type { Article, ArticleCta, ArticleCtaLink, ArticleImage, ArticleSection } from './article-types'
 
 const coreArticles: Article[] = [
+  {
+    slug: 'asa-oro-yoruba-word-game-flutter-case-study',
+    category: 'Mobile App Case Study',
+    title: "I Built a Yoruba Word Game to Help Save a Language That's Slowly Being Forgotten",
+    seoTitle:
+      'Aṣá Ọ̀rọ̀: The Flutter-Powered Yoruba Word Game Helping Preserve an Indigenous Language',
+    date: 'Jun 2026',
+    readTime: '14 min',
+    excerpt:
+      'Discover how I designed Aṣá Ọ̀rọ̀ in Figma and built it with Flutter to help preserve the Yoruba language through fun, educational word puzzles. Learn the story behind the app.',
+    keywords: [
+      'Yoruba word game',
+      'learn Yoruba app',
+      'Yoruba language learning app',
+      'Flutter mobile game',
+      'educational word game',
+      'indigenous language preservation',
+      'Figma to Flutter',
+      'Yoruba vocabulary game',
+      'African language app',
+      'mobile app case study',
+      'educational Flutter app',
+    ],
+    ogImage: {
+      src: '/images/asa-oro/onboarding-flow.png',
+      alt: 'Aṣá Ọ̀rọ̀ Yoruba word game splash, onboarding, and main menu screens',
+      width: 1001,
+      height: 1024,
+    },
+    sections: [
+      {
+        paragraphs: [
+          'For thousands of years, language has been more than just a way to communicate.',
+          'It carries history. It preserves culture. It connects generations.',
+          'But today, something heartbreaking is happening.',
+          'Across Africa—and especially among younger generations—many people can understand their ancestral language but struggle to speak it confidently. Some cannot read it at all. Others only hear it when visiting grandparents or during traditional ceremonies.',
+          'The language slowly disappears... not because people hate it, but because they no longer have opportunities to use it.',
+          'That realization inspired me to build Aṣá Ọ̀rọ̀.',
+          'A mobile word game designed to make learning Yoruba feel fun again.',
+          'Not like a classroom. Not like homework. But like play.',
+        ],
+      },
+      {
+        heading: 'Why I Created Aṣá Ọ̀rọ̀',
+        paragraphs: [
+          'Growing up, I noticed something changing.',
+          'Children increasingly spoke English. Schools focused almost entirely on English. Parents often switched to English at home because it felt more practical.',
+          'Slowly, conversations that once happened naturally in Yoruba became rare.',
+          "The scary part isn't that English is growing. The scary part is that many indigenous languages are shrinking.",
+          "When a language disappears, we don't only lose words. We lose stories. We lose traditions. We lose identity.",
+          "I wanted to build something that could help preserve Yoruba in a way today's generation actually enjoys. Not another dictionary. Not another textbook. A game.",
+        ],
+      },
+      {
+        heading: 'Learning Through Play Works',
+        paragraphs: [
+          "People don't realize how much we learn through games.",
+          'Children memorize Pokémon. Adults solve Wordle every day. Millions spend hours on crossword puzzles and word searches.',
+          "Games create repetition without boredom. That's exactly the experience I wanted.",
+          "Every level introduces Yoruba letters, words, and vocabulary naturally. Players don't feel like they're studying. They're simply solving puzzles.",
+          "And before long, they're recognizing patterns and remembering words. Learning becomes effortless.",
+        ],
+      },
+      {
+        heading: 'Designing the Experience in Figma',
+        paragraphs: [
+          'Before writing a single line of Flutter code, everything started inside Figma.',
+          "I spent weeks exploring different ideas. My goal wasn't just to make another mobile game. I wanted every screen to reflect African culture while remaining clean, modern, and playful.",
+        ],
+        listItems: [
+          'Warm African-inspired colors',
+          'Friendly typography',
+          'Cartoon-inspired illustrations',
+          'Large touch targets for younger players',
+          'Simple navigation',
+          'Reward systems that encourage learning',
+        ],
+        image: {
+          src: '/images/asa-oro/onboarding-flow.png',
+          alt: 'Aṣá Ọ̀rọ̀ onboarding screens showing splash, learn-through-play intro, and main menu with Play, Daily Puzzle, and Settings',
+          caption: 'Onboarding and main menu screens designed in Figma with African-inspired colors and playful typography.',
+        },
+      },
+      {
+        paragraphs: [
+          'Even the logo was carefully designed to resemble a traditional carved wooden sign, giving players an immediate connection to African heritage.',
+          'The onboarding screens introduce the purpose of the game before players begin solving their first puzzle.',
+          'Every design decision asked one question: "Will this encourage someone to keep learning Yoruba?"',
+        ],
+      },
+      {
+        heading: 'Bringing the Design to Life with Flutter',
+        paragraphs: [
+          'After completing the UI in Figma, I rebuilt the entire application using Flutter.',
+          'Flutter allowed me to create a smooth experience for both Android and iOS from a single codebase.',
+        ],
+        listItems: [
+          'Interactive word puzzles',
+          'Progressive difficulty levels',
+          'Daily puzzle mode',
+          'Player progression',
+          'Score tracking',
+          'Hearts and reward system',
+          'Responsive animations',
+          'Settings customization',
+          'Offline gameplay support',
+          'Cross-platform performance',
+        ],
+        image: {
+          src: '/images/asa-oro/gameplay-levels.png',
+          alt: 'Aṣá Ọ̀rọ̀ gameplay screens showing level selection grid, word puzzle board, and settings panel',
+          caption: 'Level progression, interactive word puzzles, and in-game settings built in Flutter.',
+        },
+      },
+      {
+        paragraphs: [
+          'Using Flutter also means updates can be released quickly while maintaining a consistent experience across devices.',
+          'As both the designer and developer, I had complete control over every interaction—from the smallest animation to the overall gameplay flow.',
+        ],
+      },
+      {
+        heading: 'More Than a Game',
+        paragraphs: [
+          "Aṣá Ọ̀rọ̀ isn't trying to replace schools. It isn't trying to replace teachers.",
+          "It's creating something many language learners are missing: consistency.",
+          'Five minutes of play every day is far more sustainable than trying to memorize long vocabulary lists.',
+          'Over time, small moments become lasting knowledge. This approach makes language learning feel natural instead of overwhelming.',
+        ],
+      },
+      {
+        heading: 'Why Indigenous Languages Need Technology',
+        paragraphs: [
+          'Technology has helped spread global languages faster than ever before. Unfortunately, many local languages have not received the same attention.',
+        ],
+        listItems: [
+          'Spanish',
+          'French',
+          'German',
+          'Japanese',
+          'Korean',
+          'Chinese',
+        ],
+      },
+      {
+        paragraphs: [
+          'But African languages remain underrepresented. That is a missed opportunity.',
+          'There are millions of Yoruba speakers around the world. There are also countless second-generation Africans who want to reconnect with their roots but do not know where to begin.',
+          'Mobile technology gives us an opportunity to bridge that gap. Instead of waiting for traditional education to evolve, we can build experiences that people already enjoy using.',
+        ],
+      },
+      {
+        heading: 'The Bigger Vision',
+        paragraphs: [
+          'Although Aṣá Ọ̀rọ̀ begins with Yoruba, the vision extends much further.',
+          'Imagine children learning Igbo, Hausa, Swahili, Twi, Zulu, Xhosa, Amharic, and Efik using engaging games instead of intimidating textbooks.',
+          "Language preservation doesn't have to feel like preservation. It can simply feel like fun.",
+        ],
+      },
+      {
+        heading: 'Building for the Next Generation',
+        paragraphs: [
+          'One of my biggest motivations was thinking about future generations.',
+          'Imagine a child growing up outside Nigeria. Their grandparents speak Yoruba. Their parents understand it. But the child does not.',
+          "Without tools designed for today's world, that cultural connection gradually fades.",
+          'A simple mobile game cannot solve everything. But it can start conversations. It can spark curiosity. It can encourage practice.',
+          "And sometimes, that's enough to begin rebuilding a connection that seemed lost.",
+        ],
+        image: {
+          src: '/images/asa-oro/home-screens.png',
+          alt: 'Aṣá Ọ̀rọ̀ home screen with name input, level completed celebration, and settings overlay',
+          caption: 'Player onboarding, level completion rewards, and customizable settings.',
+        },
+      },
+      {
+        heading: 'Challenges Along the Way',
+        paragraphs: [
+          "Like every software project, this journey wasn't straightforward.",
+          'Transforming static Figma designs into a fully interactive Flutter application meant solving dozens of technical challenges.',
+          'I refined layouts, adjusted animations, optimized screen responsiveness, tested gameplay interactions, and continually improved the overall user experience.',
+          "The goal wasn't simply to make the app functional. It had to feel polished, intuitive, and enjoyable from the very first tap.",
+          'Every iteration brought the experience closer to what I originally imagined.',
+        ],
+      },
+      {
+        heading: 'Why I Chose Flutter',
+        paragraphs: [
+          'Flutter gave me the flexibility to build a high-performance educational game without maintaining separate codebases for Android and iOS.',
+        ],
+        listItems: [
+          'Faster development',
+          'Beautiful animations',
+          'Native performance',
+          'Consistent UI across devices',
+          'Easy future scalability',
+          'Strong community support',
+        ],
+      },
+      {
+        paragraphs: [
+          'For independent developers building ambitious ideas, Flutter continues to be one of the best frameworks available.',
+        ],
+      },
+      {
+        heading: "What's Next for Aṣá Ọ̀rọ̀",
+        paragraphs: ['This is only the beginning.'],
+        listItems: [
+          'Thousands of Yoruba words',
+          'New puzzle mechanics',
+          'Audio pronunciation',
+          'Daily challenges',
+          'Leaderboards',
+          'Achievement badges',
+          'Multiplayer competitions',
+          'Seasonal events',
+          'More learning categories',
+        ],
+      },
+      {
+        paragraphs: [
+          'The long-term goal is simple: make learning Yoruba as enjoyable as playing your favorite mobile game.',
+        ],
+      },
+      {
+        heading: 'Final Thoughts',
+        paragraphs: [
+          'We often think language disappears overnight. It does not.',
+          'It fades quietly. One conversation at a time. One generation at a time. One family at a time.',
+          'But technology also has the power to reverse that trend.',
+          'Aṣá Ọ̀rọ̀ is my contribution to preserving a language that has shaped millions of lives for centuries.',
+          "It's where design meets culture. Where Flutter meets education. Where technology helps reconnect people with their identity.",
+          'If even one child learns a new Yoruba word, speaks more confidently with a grandparent, or develops pride in their heritage because of this game, then every hour spent designing and building it will have been worthwhile.',
+          'The journey started with an idea in Figma. Soon, it will live on the App Store and Google Play, ready to help people around the world rediscover the beauty of the Yoruba language—one puzzle at a time.',
+        ],
+      },
+    ],
+  },
   {
     slug: 'designing-agentic-workflows-users-trust',
     category: 'AI Product Development',
@@ -214,8 +450,20 @@ const coreArticles: Article[] = [
   },
 ]
 
-export const articles: Article[] = [...seoArticles, ...coreArticles]
+export const articles: Article[] = [
+  coreArticles[0],
+  ...seoArticles,
+  ...coreArticles.slice(1),
+]
 
 export function getArticle(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug)
+}
+
+export function getArticleOgImage(article: Article): ArticleImage | undefined {
+  if (article.ogImage) return article.ogImage
+  for (const section of article.sections) {
+    if (section.image) return section.image
+  }
+  return undefined
 }
