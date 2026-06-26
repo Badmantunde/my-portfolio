@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.abiolababatunde.com/sitemap.xml
+LLMs-Txt: https://www.abiolababatunde.com/llms.txt

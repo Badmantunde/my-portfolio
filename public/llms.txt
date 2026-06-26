@@ -1,0 +1,37 @@
+# Abiola Babatunde
+
+> Product designer, UI/UX designer, software developer, and Webflow developer based in Lagos, Nigeria. I help startups ship product design, website design, mobile apps, and engineering from strategy to launch.
+
+## Main pages
+
+- [Home](https://www.abiolababatunde.com/)
+- [Work and case studies](https://www.abiolababatunde.com/work)
+- [About](https://www.abiolababatunde.com/about)
+- [Process](https://www.abiolababatunde.com/process)
+- [Writing](https://www.abiolababatunde.com/writing)
+- [Contact](https://www.abiolababatunde.com/contact)
+
+## Selected case studies
+
+- [Aṣá Ọ̀rọ̀ — Yoruba word game (Flutter)](https://www.abiolababatunde.com/work/asa-oro)
+- [Muzora — campus music discovery app](https://www.abiolababatunde.com/work/muzora)
+- [Dart Agro Systems — AgriTech website](https://www.abiolababatunde.com/work/dart-agro-systems)
+- [Shight Running Club — community platform](https://www.abiolababatunde.com/work/shight-running-club)
+- [CryptoDispensers — fintech website redesign](https://www.abiolababatunde.com/work/crypto-dispensers)
+
+## Popular articles
+
+- [How to hire a Webflow developer](https://www.abiolababatunde.com/writing/hire-webflow-developer)
+- [Aṣá Ọ̀rọ̀: Flutter Yoruba word game case study](https://www.abiolababatunde.com/writing/asa-oro-yoruba-word-game-flutter-case-study)
+- [UI/UX designer vs software developer](https://www.abiolababatunde.com/writing/ui-ux-designer-vs-software-developer)
+- [WordPress vs Webflow for small business](https://www.abiolababatunde.com/writing/wordpress-vs-webflow-small-business)
+- [When Flutter makes sense for your mobile app MVP](https://www.abiolababatunde.com/writing/flutter-mobile-app-mvp)
+
+## Services
+
+Product design, UI/UX design, software development, website design, Webflow development, WordPress development, Flutter mobile apps, design systems, and AI product development.
+
+## Contact
+
+- Email: akinremibadoo@gmail.com
+- [Book a discovery call](https://www.abiolababatunde.com/contact)

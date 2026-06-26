@@ -11,11 +11,29 @@ function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
+function shouldEnableShader() {
+  if (prefersReducedMotion()) return false
+  if (window.matchMedia('(max-width: 1023px)').matches) return false
+
+  const connection = (
+    navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string }
+    }
+  ).connection
+
+  if (connection?.saveData) return false
+  if (connection?.effectiveType === '2g' || connection?.effectiveType === 'slow-2g') {
+    return false
+  }
+
+  return true
+}
+
 export function HeroSection() {
   const [showShader, setShowShader] = useState(false)
 
   useEffect(() => {
-    if (prefersReducedMotion()) return
+    if (!shouldEnableShader()) return
 
     const enableShader = () => setShowShader(true)
 
