@@ -31,7 +31,7 @@ export function ProjectCard({ project, variant = 'light' }: ProjectCardProps) {
   const isGreen = variant === 'green'
   const to = `/work/${project.slug}`
   const cta = project.type === 'live' ? 'View project' : 'View case study'
-  const pillBg = isGreen ? 'bg-[#2ECF73] group-hover:bg-[#28B866]' : 'bg-white'
+  const pillBg = isGreen ? 'bg-[#15803d] group-hover:bg-[#166534]' : 'bg-white'
   const pillText = isGreen ? 'text-white' : 'text-gray-900'
   const pillWidth = isGreen ? 'group-hover:w-[168px]' : 'group-hover:w-[148px]'
 

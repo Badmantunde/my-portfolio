@@ -227,16 +227,16 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="group inline-flex items-center gap-2 bg-[#2ECF73] hover:bg-[#28B866] disabled:opacity-70 disabled:cursor-not-allowed text-white text-[13px] sm:text-[14px] font-medium rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-all duration-300"
+        className="group inline-flex items-center gap-2 bg-[#15803d] hover:bg-[#166534] disabled:opacity-70 disabled:cursor-not-allowed text-white text-[13px] sm:text-[14px] font-medium rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-all duration-300"
       >
         <span>
           {status === 'submitting' ? 'Sending...' : 'Send message'}
         </span>
         <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-full transition-transform duration-500 group-enabled:group-hover:-rotate-45">
           {status === 'submitting' ? (
-            <Loader2 size={16} className="text-[#2ECF73] animate-spin" />
+            <Loader2 size={16} className="text-[#15803d] animate-spin" />
           ) : (
-            <ArrowRight size={16} className="text-[#2ECF73]" />
+            <ArrowRight size={16} className="text-[#15803d]" />
           )}
         </span>
       </button>

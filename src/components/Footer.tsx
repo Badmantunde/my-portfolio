@@ -28,7 +28,7 @@ export function Footer() {
               <p className="text-[12px] sm:text-[13px] font-bold tracking-[0.1em] text-white uppercase group-hover:text-[#3DDB84] transition-colors">
                 Abiola Babatunde
               </p>
-              <p className="mt-1 text-[12px] text-gray-500">Product Engineer</p>
+              <p className="mt-1 text-[12px] text-gray-400">Product Engineer</p>
             </Link>
 
             <p className="mt-5 text-[14px] leading-[1.65] text-gray-400 max-w-xs">
@@ -50,7 +50,7 @@ export function Footer() {
 
           {/* Navigate */}
           <div className="lg:col-span-2">
-            <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-4">
               Navigate
             </p>
             <ul className="space-y-2.5">
@@ -77,7 +77,7 @@ export function Footer() {
 
           {/* Selected work */}
           <div className="lg:col-span-2">
-            <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-4">
               Selected work
             </p>
             <ul className="space-y-2.5">
@@ -100,7 +100,7 @@ export function Footer() {
 
           {/* Writing */}
           <div className="lg:col-span-2">
-            <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-4">
               Writing
             </p>
             <ul className="space-y-2.5">
@@ -123,7 +123,7 @@ export function Footer() {
 
           {/* Connect */}
           <div className="lg:col-span-2">
-            <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-4">
               Connect
             </p>
             <a
@@ -144,8 +144,8 @@ export function Footer() {
             <WorldClock
               className="mb-5"
               iconSize={13}
-              textClassName="text-gray-500"
-              iconClassName="text-gray-500"
+              textClassName="text-gray-400"
+              iconClassName="text-gray-400"
             />
 
             <ul className="space-y-2">
@@ -166,11 +166,11 @@ export function Footer() {
 
             <Link
               to="/contact"
-              className="mt-6 group inline-flex items-center gap-2 bg-[#2ECF73] hover:bg-[#28B866] text-white text-[13px] font-medium rounded-full pl-5 pr-2 py-2 transition-colors"
+              className="mt-6 group inline-flex items-center gap-2 bg-[#15803d] hover:bg-[#166534] text-white text-[13px] font-medium rounded-full pl-5 pr-2 py-2 transition-colors"
             >
               <span>Book a discovery call</span>
               <span className="flex items-center justify-center w-6 h-6 bg-white rounded-full transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] group-hover:-rotate-45">
-                <ArrowRight size={13} className="text-[#2ECF73]" />
+                <ArrowRight size={13} className="text-[#15803d]" />
               </span>
             </Link>
           </div>
@@ -178,7 +178,7 @@ export function Footer() {
 
         {/* Tool stack strip */}
         <div className="mt-12 sm:mt-14 pt-8 border-t border-white/10">
-          <p className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-4">
+          <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-4">
             Stack
           </p>
           <div className="flex flex-wrap gap-2">
@@ -195,16 +195,16 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-[12px] text-gray-600">
+          <p className="text-[12px] text-gray-400">
             © 2026 Abiola Babatunde · Product Engineer
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[12px] text-gray-600">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[12px] text-gray-400">
             <span>Strategy · Design · Engineering · AI</span>
             <button
               type="button"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="inline-flex items-center gap-1 text-gray-500 hover:text-[#3DDB84] transition-colors"
+              className="inline-flex items-center gap-1 text-gray-400 hover:text-[#3DDB84] transition-colors"
             >
               Back to top
               <ArrowRight size={12} className="-rotate-90" />
