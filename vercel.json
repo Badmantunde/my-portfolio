@@ -1,4 +1,17 @@
 {
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "abiolababatunde.com" }],
+      "destination": "https://www.abiolababatunde.com/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

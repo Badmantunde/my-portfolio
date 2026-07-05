@@ -190,7 +190,74 @@ export function getSeoForPath(pathname: string): PageSeo {
 }
 
 export function absoluteUrl(path: string) {
-  return `${siteUrl}${path === '/' ? '' : path}`
+  if (path === '/') return `${siteUrl}/`
+  return `${siteUrl}${path}`
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+export function buildSeoHeadHtml(seo: PageSeo) {
+  const url = absoluteUrl(seo.path)
+  const image = absoluteAsset(seo.image ?? site.ogImage)
+  const imageAlt = seo.imageAlt ?? site.ogImageAlt
+  const imageWidth = seo.imageWidth ?? site.ogImageWidth
+  const imageHeight = seo.imageHeight ?? site.ogImageHeight
+  const keywords = (seo.keywords ?? site.keywords).join(', ')
+  const robots = seo.noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
+  const ogType = seo.type === 'article' ? 'article' : 'website'
+  const jsonLd = JSON.stringify(buildJsonLd(seo)).replace(/</g, '\\u003c')
+
+  return `    <title>${escapeHtml(seo.title)}</title>
+    <meta name="description" content="${escapeHtml(seo.description)}" />
+    <meta name="keywords" content="${escapeHtml(keywords)}" />
+    <meta name="author" content="${escapeHtml(site.name)}" />
+    <meta name="robots" content="${robots}" />
+    <meta name="googlebot" content="${robots}" />
+    <meta name="geo.region" content="NG-LA" />
+    <meta name="geo.placename" content="Lagos" />
+
+    <link rel="canonical" href="${url}" />
+    <link rel="alternate" type="text/markdown" href="${absoluteUrl('/llms.txt')}" title="LLM site summary" />
+
+    <meta property="og:type" content="${ogType}" />
+    <meta property="og:site_name" content="${escapeHtml(site.name)}" />
+    <meta property="og:locale" content="${site.locale}" />
+    <meta property="og:title" content="${escapeHtml(seo.title)}" />
+    <meta property="og:description" content="${escapeHtml(seo.description)}" />
+    <meta property="og:url" content="${url}" />
+    ${
+      seo.type === 'article'
+        ? `<meta property="og:article:author" content="${escapeHtml(site.name)}" />\n    `
+        : ''
+    }<meta property="og:image" content="${image}" />
+    <meta property="og:image:secure_url" content="${image}" />
+    <meta property="og:image:width" content="${imageWidth}" />
+    <meta property="og:image:height" content="${imageHeight}" />
+    <meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="${site.twitterHandle}" />
+    <meta name="twitter:title" content="${escapeHtml(seo.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(seo.description)}" />
+    <meta name="twitter:image" content="${image}" />
+    <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}" />
+
+    <script type="application/ld+json">${jsonLd}</script>`
+}
+
+export function buildPrerenderBodyHtml(seo: PageSeo) {
+  return `    <noscript>
+      <article>
+        <h1>${escapeHtml(seo.title)}</h1>
+        <p>${escapeHtml(seo.description)}</p>
+      </article>
+    </noscript>`
 }
 
 export function absoluteAsset(path: string) {
@@ -201,18 +268,18 @@ export function buildJsonLd(seo: PageSeo) {
   const graph: Record<string, unknown>[] = [
     {
       '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
-      url: siteUrl,
+      '@id': `${absoluteUrl('/')}#website`,
+      url: absoluteUrl('/'),
       name: site.name,
       description: defaultDescription,
       inLanguage: site.language,
-      publisher: { '@id': `${siteUrl}/#person` },
+      publisher: { '@id': `${absoluteUrl('/')}#person` },
     },
     {
       '@type': 'Person',
-      '@id': `${siteUrl}/#person`,
+      '@id': `${absoluteUrl('/')}#person`,
       name: site.name,
-      url: siteUrl,
+      url: absoluteUrl('/'),
       image: absoluteAsset(site.ogImage),
       email: site.email,
       jobTitle: [
@@ -240,14 +307,14 @@ export function buildJsonLd(seo: PageSeo) {
     },
     {
       '@type': 'ProfessionalService',
-      '@id': `${siteUrl}/#service`,
+      '@id': `${absoluteUrl('/')}#service`,
       name: `${site.name}, Product Design and Development`,
-      url: siteUrl,
+      url: absoluteUrl('/'),
       image: absoluteAsset(site.ogImage),
       description: defaultDescription,
       address: { ...postalAddress },
       areaServed: ['Lagos', 'Nigeria', 'Worldwide'],
-      founder: { '@id': `${siteUrl}/#person` },
+      founder: { '@id': `${absoluteUrl('/')}#person` },
     },
     {
       '@type': 'WebPage',
@@ -255,8 +322,8 @@ export function buildJsonLd(seo: PageSeo) {
       url: absoluteUrl(seo.path),
       name: seo.title,
       description: seo.description,
-      isPartOf: { '@id': `${siteUrl}/#website` },
-      about: { '@id': `${siteUrl}/#person` },
+      isPartOf: { '@id': `${absoluteUrl('/')}#website` },
+      about: { '@id': `${absoluteUrl('/')}#person` },
       inLanguage: site.language,
       ...(seo.image && {
         primaryImageOfPage: {
@@ -279,8 +346,8 @@ export function buildJsonLd(seo: PageSeo) {
         headline: article.title,
         description: article.excerpt,
         datePublished: article.date,
-        author: { '@id': `${siteUrl}/#person` },
-        publisher: { '@id': `${siteUrl}/#person` },
+        author: { '@id': `${absoluteUrl('/')}#person` },
+        publisher: { '@id': `${absoluteUrl('/')}#person` },
         mainEntityOfPage: { '@id': `${absoluteUrl(seo.path)}#webpage` },
         articleSection: article.category,
         inLanguage: site.language,
@@ -304,7 +371,7 @@ export function buildJsonLd(seo: PageSeo) {
         '@type': 'CreativeWork',
         name: project.title,
         description: project.description,
-        creator: { '@id': `${siteUrl}/#person` },
+        creator: { '@id': `${absoluteUrl('/')}#person` },
         dateCreated: project.year,
         genre: project.tags,
         image: project.image.startsWith('http') ? project.image : absoluteAsset(project.image),
@@ -323,6 +390,52 @@ export function allSitemapPaths(): string[] {
   for (const project of projects) paths.push(`/work/${project.slug}`)
   for (const article of articles) paths.push(`/writing/${article.slug}`)
   return paths
+}
+
+function parseContentDate(value: string): string | undefined {
+  const isoMatch = value.match(/^(\d{4})-(\d{2})-(\d{2})/)
+  if (isoMatch) return isoMatch[0]
+
+  const monthYearMatch = value.match(/^([A-Za-z]{3})\s+(\d{4})$/)
+  if (monthYearMatch) {
+    const months: Record<string, string> = {
+      Jan: '01',
+      Feb: '02',
+      Mar: '03',
+      Apr: '04',
+      May: '05',
+      Jun: '06',
+      Jul: '07',
+      Aug: '08',
+      Sep: '09',
+      Oct: '10',
+      Nov: '11',
+      Dec: '12',
+    }
+    const month = months[monthYearMatch[1]]
+    if (month) return `${monthYearMatch[2]}-${month}-01`
+  }
+
+  const yearMatch = value.match(/^(\d{4})$/)
+  if (yearMatch) return `${yearMatch[1]}-01-01`
+
+  return undefined
+}
+
+export function lastmodForPath(path: string): string | undefined {
+  const articleMatch = path.match(/^\/writing\/([^/]+)$/)
+  if (articleMatch) {
+    const article = getArticle(articleMatch[1])
+    if (article) return parseContentDate(article.date)
+  }
+
+  const workMatch = path.match(/^\/work\/([^/]+)$/)
+  if (workMatch) {
+    const project = getProject(workMatch[1])
+    if (project) return parseContentDate(project.year)
+  }
+
+  return undefined
 }
 
 function sitemapMeta(path: string): { changefreq: string; priority: string } {
@@ -352,12 +465,14 @@ function sitemapMeta(path: string): { changefreq: string; priority: string } {
   return { changefreq: 'monthly', priority: '0.6' }
 }
 
-export function generateSitemapXml(): string {
+export function generateSitemapXml(buildDate = new Date()): string {
+  const buildLastmod = buildDate.toISOString().slice(0, 10)
   const urls = allSitemapPaths()
     .map((path) => {
       const { changefreq, priority } = sitemapMeta(path)
       const loc = absoluteUrl(path)
-      return `  <url>\n    <loc>${loc}</loc>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
+      const lastmod = lastmodForPath(path) ?? buildLastmod
+      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
     })
     .join('\n')
 
