@@ -11,6 +11,7 @@ const audiences = [
   'Founders who need one person across design and development',
   'Product teams needing UI/UX design or frontend engineering support',
   'Businesses upgrading a marketing site, Webflow build, or WordPress site',
+  'Brands needing a freelance Shopify developer for store builds or redesigns',
   'Fintech, SaaS, community, and AgriTech products',
 ]
 

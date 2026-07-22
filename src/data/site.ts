@@ -6,7 +6,7 @@ export const siteUrl = import.meta.env?.VITE_SITE_URL ?? 'https://www.abiolababa
 
 export const site = {
   name: 'Abiola Babatunde',
-  title: 'Abiola Babatunde | UI/UX Designer & Webflow Developer',
+  title: 'Abiola Babatunde | UI/UX Designer & Shopify Developer',
   tagline: 'Product Engineer',
   locale: 'en_NG',
   language: 'en',
@@ -16,7 +16,7 @@ export const site = {
   ogImageWidth: 1024,
   ogImageHeight: 584,
   ogImageAlt:
-    'Abiola Babatunde portfolio: Product Engineer offering UI/UX design, software development, Webflow and WordPress website design in Lagos.',
+    'Abiola Babatunde portfolio: Product Engineer offering UI/UX design, software development, Webflow, WordPress, and Shopify website design in Lagos.',
   twitterHandle: '@badmantunde',
   sameAs: socialLinks.map((link) => link.href),
   keywords: [
@@ -28,6 +28,8 @@ export const site = {
     'UX designer',
     'Webflow developer',
     'WordPress developer',
+    'Shopify developer',
+    'freelance Shopify developer',
     'product engineer',
     'Lagos web designer',
     'Nigeria UI designer',
@@ -36,11 +38,12 @@ export const site = {
     'freelance product designer',
     'hire Webflow developer',
     'hire WordPress developer',
+    'hire Shopify developer',
   ],
 } as const
 
 export const defaultDescription =
-  'Hire Abiola Babatunde for product design, UI/UX design, software development, and website design. Expert Webflow & WordPress developer in Lagos, Nigeria. Available for freelance and full-time roles.'
+  'Hire Abiola Babatunde for product design, UI/UX design, software development, and website design. Expert Webflow, WordPress, and freelance Shopify developer in Lagos, Nigeria. Available for freelance and full-time roles.'
 
 /** Shared PostalAddress for Person and LocalBusiness JSON-LD */
 export const postalAddress = {

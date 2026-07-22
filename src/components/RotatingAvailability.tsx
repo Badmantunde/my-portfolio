@@ -6,6 +6,7 @@ const roles = [
   'Flutter mobile app development',
   'Webflow development',
   'WordPress development',
+  'Shopify development',
   'software development',
   'website design',
 ]

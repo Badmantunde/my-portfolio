@@ -16,8 +16,8 @@ export function ServicesSection() {
 
         <p className="mt-6 sm:mt-8 max-w-2xl text-[15px] sm:text-[16px] leading-[1.65] text-gray-600 mb-10 sm:mb-14">
           I help startups and product teams in Lagos and worldwide with product
-          design, UI/UX, frontend development, Webflow and WordPress builds,
-          mobile apps, and AI product development from idea to launch.
+          design, UI/UX, frontend development, Webflow, WordPress, and Shopify
+          builds, mobile apps, and AI product development from idea to launch.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">

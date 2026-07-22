@@ -15,5 +15,6 @@ export const workflowTools: Tool[] = [
   { id: 'flutter', name: 'Flutter', role: 'Mobile' },
   { id: 'webflow', name: 'Webflow', role: 'No-Code' },
   { id: 'wordpress', name: 'WordPress', role: 'CMS' },
+  { id: 'shopify', name: 'Shopify', role: 'Ecommerce' },
   { id: 'github', name: 'GitHub', role: 'Ship' },
 ]

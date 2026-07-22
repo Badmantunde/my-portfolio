@@ -8,6 +8,7 @@ import {
   siFlutter,
   siWebflow,
   siWordpress,
+  siShopify,
   siGithub,
 } from 'simple-icons'
 
@@ -26,6 +27,7 @@ const simpleIconMap: Record<string, { path: string; hex: string }> = {
   flutter: siFlutter,
   webflow: siWebflow,
   wordpress: siWordpress,
+  shopify: siShopify,
   github: siGithub,
 }
 

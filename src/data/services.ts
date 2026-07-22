@@ -30,6 +30,11 @@ export const services: Service[] = [
       'Custom WordPress themes and content-driven sites for businesses that need flexible publishing, blogs, and easy client handoff without sacrificing design quality.',
   },
   {
+    title: 'Shopify Developer (Freelance)',
+    description:
+      'Freelance Shopify store builds, theme customization, and conversion-focused ecommerce UX. From product pages and collections to checkout polish and app integrations that help brands sell online.',
+  },
+  {
     title: 'Mobile App Development',
     description:
       'Cross-platform mobile apps built with Flutter, from UI design through to production. MVPs, consumer apps, and product experiences shipped for iOS and Android from a single codebase.',

@@ -51,7 +51,7 @@ const capabilities: Capability[] = [
     level: 'Advanced',
     years: '4+',
     deliverables: 'Marketing sites, CMS, SEO',
-    tools: 'Webflow, WordPress',
+    tools: 'Webflow, WordPress, Shopify',
     outcome: 'Fast go-to-market',
   },
   {

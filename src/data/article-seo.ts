@@ -231,6 +231,7 @@ export const seoArticles: Article[] = [
             'Website Design',
             'Webflow Development',
             'WordPress Development',
+            'Shopify Developer (Freelance)',
             'Frontend Development',
             'Next.js Development',
             'Design Systems',
@@ -245,6 +246,265 @@ export const seoArticles: Article[] = [
             'Company Websites',
             'CMS Implementations',
             'Website Redesigns',
+          ],
+        },
+      ],
+      links: [
+        { text: 'Get in touch', href: '/contact' },
+        { text: 'View selected work', href: '/work' },
+        { text: 'Book a discovery call', href: '/contact' },
+      ],
+    },
+  },
+  {
+    slug: 'hire-shopify-developer',
+    category: 'Shopify',
+    title:
+      'How to Hire a Freelance Shopify Developer (A Practical Guide for Ecommerce Brands)',
+    date: 'Jul 2026',
+    readTime: '10 min',
+    excerpt:
+      'A practical guide for founders and ecommerce teams looking to hire a freelance Shopify developer. Learn what to look for, what questions to ask, and how to avoid store builds that look fine but fail to convert.',
+    keywords: [
+      'hire Shopify developer',
+      'freelance Shopify developer',
+      'Shopify developer Nigeria',
+      'Shopify store development',
+      'ecommerce website developer',
+    ],
+    sections: [
+      {
+        paragraphs: [
+          'Launching or redesigning a Shopify store should feel like progress. Too often it becomes a cycle of theme tweaks, app clutter, and a checkout that still loses shoppers.',
+          'A polished homepage means very little if product pages are slow, collections are confusing, or your team cannot update merchandising without breaking the layout. That is why hiring a freelance Shopify developer requires more than picking a theme and comparing day rates.',
+          'The right Shopify developer can help your brand launch faster, convert better, and keep the store maintainable as you add products, campaigns, and markets. The wrong one can leave you with theme debt, bloated apps, and a store that looks finished but underperforms.',
+          'This guide covers what to look for, what questions to ask, and how to find a freelance Shopify developer who delivers long-term ecommerce value, not just a pretty storefront.',
+        ],
+      },
+      {
+        heading: 'Why brands choose Shopify',
+        paragraphs: [
+          'Shopify has become the default platform for DTC brands, retail startups, and growing ecommerce businesses that want reliable hosting, payments, and a store admin their team can actually use.',
+          'Unlike building a custom storefront from scratch, Shopify gives you commerce primitives out of the box: products, collections, cart, checkout, inventory, and a large app ecosystem. For most brands, that means faster time to revenue and less operational overhead.',
+          'For businesses that need a professional store without maintaining a full custom ecommerce stack, Shopify is often the right foundation.',
+        ],
+        listItems: [
+          'Hosted commerce with strong uptime and security defaults',
+          'Flexible themes and Online Store 2.0 sections',
+          'Native checkout, payments, and shipping tools',
+          'App ecosystem for reviews, subscriptions, and marketing',
+          'Scalable inventory and multi-market selling',
+          'Clear admin workflows for non-technical teams',
+        ],
+      },
+      {
+        heading: 'What does a freelance Shopify developer actually do?',
+        paragraphs: [
+          'Many people assume a Shopify developer only installs a theme and swaps colors. Experienced freelance Shopify developers contribute much more.',
+          'The best developers think beyond the theme editor. They consider conversion, merchandising workflows, performance, and how the store will evolve after launch.',
+        ],
+        listItems: [
+          'Custom Shopify theme development and section architecture',
+          'Figma-to-Shopify builds with responsive product and collection templates',
+          'Checkout UX improvements and conversion-focused page structure',
+          'App evaluation, setup, and lightweight custom integrations',
+          'Performance optimization for images, Liquid, and third-party scripts',
+          'SEO foundations for product and collection pages',
+          'Migration from other platforms into Shopify',
+          'Store handoff, documentation, and team training',
+        ],
+      },
+      {
+        heading: 'What to look for when hiring a freelance Shopify developer',
+        paragraphs: [
+          'Hiring well starts with knowing what separates a conversion-ready store from a fragile theme. These five areas matter most.',
+        ],
+      },
+      {
+        heading: '1. Strong ecommerce UX judgment',
+        paragraphs: [
+          'Even with a finished design, your developer should understand product discovery, trust signals, and checkout friction. Review their live stores carefully.',
+          'Ask yourself: Is the path from collection to product to cart obvious? Do product pages answer objections quickly? Does mobile feel intentional, not squeezed?',
+        ],
+      },
+      {
+        heading: '2. Theme architecture and Online Store 2.0 fluency',
+        paragraphs: [
+          'Modern Shopify stores rely on sections, blocks, and flexible templates so marketing teams can launch campaigns without developer help for every change.',
+          'Ask how they structure sections and metafields. A well-planned theme lets your team merchandize confidently. Poor architecture becomes expensive every time you run a sale.',
+        ],
+      },
+      {
+        heading: '3. App restraint and technical taste',
+        paragraphs: [
+          'Shopify apps are powerful and easy to overuse. Each unnecessary app can slow the storefront, complicate the admin, and create support debt.',
+          'Look for a developer who prefers native features and clean theme solutions before recommending another subscription.',
+        ],
+        listItems: [
+          'Clear criteria for when an app is justified',
+          'Awareness of script impact on Core Web Vitals',
+          'Preference for maintainable Liquid and section settings',
+          'Willingness to remove unused apps during a rebuild',
+        ],
+      },
+      {
+        heading: '4. SEO and product content structure',
+        paragraphs: [
+          'A Shopify store should support search visibility from day one. Themes provide the tools, but the developer still needs to implement them properly.',
+        ],
+        listItems: [
+          'Clean product and collection URL structure',
+          'Title and meta description patterns',
+          'Heading hierarchy on product templates',
+          'Image alt text and optimized media',
+          'Structured data awareness',
+          'Internal linking between collections and content',
+        ],
+      },
+      {
+        heading: '5. Performance on real devices',
+        paragraphs: [
+          'Ecommerce traffic is heavily mobile. A store that only looks good on desktop is not finished.',
+          'Always review candidate stores on a phone, with a realistic connection, before you hire.',
+        ],
+        listItems: [
+          'Image and media optimization',
+          'Lean theme code and limited third-party scripts',
+          'Fast product page interaction',
+          'Stable layout during load',
+        ],
+      },
+      {
+        heading: 'Questions to ask before hiring',
+        paragraphs: [
+          'A portfolio alone rarely tells the full story. During discovery calls, use these questions to understand how a freelance Shopify developer works.',
+        ],
+      },
+      {
+        heading: 'How do you structure Shopify themes for non-technical editors?',
+        paragraphs: [
+          'Look for section-based thinking, clear settings, and documentation. You want a store your team can update for campaigns without breaking templates.',
+        ],
+      },
+      {
+        heading: 'Do you build from Figma or customize an existing theme?',
+        paragraphs: [
+          'Neither approach is automatically better. Custom themes win when brand and UX need precision. Theme customization wins when speed and budget matter more. Understanding their default process clarifies timeline and cost.',
+        ],
+      },
+      {
+        heading: 'How do you decide which apps to install?',
+        paragraphs: [
+          'You want someone who can explain trade-offs: conversion lift versus speed, admin complexity, and long-term cost. App shopping without criteria is a red flag.',
+        ],
+      },
+      {
+        heading: 'What happens after launch?',
+        paragraphs: [
+          'Ask about training, documentation, support windows, and how they handle seasonal campaigns. Launch day is only the start of a store lifecycle.',
+        ],
+      },
+      {
+        heading: 'Can you share stores you have maintained after go-live?',
+        paragraphs: [
+          'Maintenance often reveals the quality of the original build more than launch-day screenshots. Ongoing work shows whether the theme still scales cleanly.',
+        ],
+      },
+      {
+        heading: 'Common mistakes brands make',
+        paragraphs: [
+          'These patterns show up on almost every troubled Shopify project. Avoid them before you sign a contract.',
+        ],
+      },
+      {
+        heading: 'Hiring based solely on price',
+        paragraphs: [
+          'The cheapest proposal often becomes the most expensive store. Themes built without structure, performance discipline, or documentation frequently need costly rebuilds before the next peak season.',
+        ],
+      },
+      {
+        heading: 'Focusing only on visual design',
+        paragraphs: [
+          'A beautiful storefront can still fail. A successful Shopify store should support product discovery, trust, conversion, merchandising speed, search visibility, and operational clarity for your team.',
+        ],
+      },
+      {
+        heading: 'Installing too many apps too early',
+        paragraphs: [
+          'Start lean. Add tools when a clear business need appears. Unchecked app growth is one of the fastest ways to slow a Shopify store and confuse your admin.',
+        ],
+      },
+      {
+        heading: 'Not defining project scope',
+        paragraphs: [
+          'Before hiring, clearly define catalogs, templates, languages or markets, payment and shipping needs, apps, migrations, and launch timeline. The clearer the scope, the smoother the build.',
+        ],
+      },
+      {
+        heading: 'Product-minded developers vs theme installers',
+        paragraphs: [
+          'One of the biggest differences you will notice when hiring is mindset. Some Shopify freelancers focus only on theme setup. Others think like product designers and growth partners.',
+          'This broader perspective often results in stores that convert better long after launch.',
+        ],
+        listItems: [
+          'Shopper journeys and friction points',
+          'Conversion opportunities on product pages',
+          'Information architecture for collections',
+          'Merchandising and campaign workflows',
+          'Trust and brand consistency',
+          'Business outcomes, not just theme settings',
+        ],
+      },
+      {
+        heading: "Signs you've found the right freelance Shopify developer",
+        paragraphs: [
+          'You are likely talking to the right person when they ask about your catalog and margins, challenge unnecessary apps, explain mobile and performance trade-offs, discuss how your team will update content, and think beyond launch day.',
+          'The strongest partnerships are collaborative rather than purely transactional.',
+        ],
+      },
+      {
+        heading: 'How to prepare before starting a project',
+        paragraphs: [
+          'Before reaching out, gather brand assets, product data, photography standards, shipping and payment requirements, competitor stores, campaign calendar needs, and launch timeline. Preparation improves estimates and helps developers recommend the right architecture.',
+        ],
+      },
+      {
+        heading: 'Final thoughts',
+        paragraphs: [
+          'Hiring a freelance Shopify developer is not simply about finding someone who knows the theme editor. The best Shopify developers combine ecommerce UX, clean theme engineering, performance awareness, SEO fundamentals, and business judgment.',
+          'Instead of asking, "Can they build the store?" ask: "Can they help us create a Shopify store that supports sales and operations for the next several years?"',
+          'The answer to that question is often what separates a successful ecommerce investment from an expensive redesign before your next peak season.',
+        ],
+      },
+    ],
+    cta: {
+      heading: 'Need a freelance Shopify developer?',
+      paragraphs: [
+        'Whether you are launching a new brand, redesigning an underperforming store, migrating to Shopify, or improving conversion on product and collection pages, I help ecommerce teams ship stores that balance design quality, performance, and business outcomes.',
+      ],
+      listSections: [
+        {
+          heading: 'Services',
+          items: [
+            'Shopify Developer (Freelance)',
+            'Product Design',
+            'UI/UX Design',
+            'Website Design',
+            'Webflow Development',
+            'WordPress Development',
+            'Frontend Development',
+            'Design Systems',
+          ],
+        },
+        {
+          heading: 'Available for',
+          items: [
+            'Shopify Store Builds',
+            'Theme Customization',
+            'Ecommerce Redesigns',
+            'Product Page Optimization',
+            'Shopify Migrations',
+            'Freelance Shopify Retainer Work',
           ],
         },
       ],

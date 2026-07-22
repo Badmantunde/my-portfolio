@@ -27,7 +27,7 @@ export function WritingSection({ hideHeader = false }: WritingSectionProps) {
             hideHeader ? '' : 'mt-6 sm:mt-8'
           }`}
         >
-          Guides on product design, UI/UX, Webflow, WordPress, frontend
+          Guides on product design, UI/UX, Webflow, WordPress, Shopify, frontend
           development, mobile apps, and AI product development for startups.
         </AnimateIn>
 

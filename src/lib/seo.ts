@@ -40,7 +40,7 @@ function pageSeo(
 
 const staticPages: Record<string, PageSeo> = {
   '/': pageSeo(
-    'Abiola Babatunde | UI/UX Designer, Software Developer & Webflow Expert',
+    'Abiola Babatunde | UI/UX Designer, Software Developer & Shopify Expert',
     defaultDescription,
     '/',
     [
@@ -50,19 +50,22 @@ const staticPages: Record<string, PageSeo> = {
       'UI/UX designer',
       'Webflow developer',
       'WordPress developer',
+      'Shopify developer',
+      'freelance Shopify developer',
       'product engineer Lagos',
       'hire UI designer Nigeria',
     ]
   ),
   '/work': pageSeo(
     'Product Design Portfolio & Case Studies | Abiola Babatunde',
-    'Selected UI/UX design and software development projects: fintech, AgriTech, community platforms, and Webflow websites. Product designer and website designer based in Lagos.',
+    'Selected UI/UX design and software development projects: fintech, AgriTech, community platforms, Webflow, WordPress, and Shopify websites. Product designer and website designer based in Lagos.',
     '/work',
     [
       'product design portfolio',
       'UI/UX case studies',
       'website design portfolio',
       'Webflow projects',
+      'Shopify projects',
       'software developer portfolio',
     ]
   ),
@@ -79,21 +82,23 @@ const staticPages: Record<string, PageSeo> = {
   ),
   '/process': pageSeo(
     'Product Design & Development Process | Abiola Babatunde',
-    'How I work: discovery, product strategy, UI/UX design, design systems, Next.js engineering, Webflow builds, and AI-native delivery from idea to launch.',
+    'How I work: discovery, product strategy, UI/UX design, design systems, Next.js engineering, Webflow, WordPress, and Shopify builds, and AI-native delivery from idea to launch.',
     '/process',
     [
       'product design process',
       'UI/UX design workflow',
       'software development process',
       'Webflow development process',
+      'Shopify development process',
     ]
   ),
   '/writing': pageSeo(
     'Product Design & Engineering Insights | Abiola Babatunde',
-    'Guides on hiring Webflow and WordPress developers, product design, UI/UX, frontend development, and AI product development for startups in Nigeria and worldwide.',
+    'Guides on hiring Webflow, WordPress, and Shopify developers, product design, UI/UX, frontend development, and AI product development for startups in Nigeria and worldwide.',
     '/writing',
     [
       'hire Webflow developer',
+      'hire Shopify developer',
       'UI/UX designer vs software developer',
       'WordPress vs Webflow',
       'product design blog',
@@ -101,13 +106,15 @@ const staticPages: Record<string, PageSeo> = {
     ]
   ),
   '/contact': pageSeo(
-    'Hire a UI/UX Designer & Webflow Developer | Contact Abiola Babatunde',
-    'Book a discovery call or message on WhatsApp. Available for product design, software development, website design, Webflow, and WordPress projects in Lagos and remotely.',
+    'Hire a UI/UX Designer & Shopify Developer | Contact Abiola Babatunde',
+    'Book a discovery call or message on WhatsApp. Available for product design, software development, website design, Webflow, WordPress, and freelance Shopify projects in Lagos and remotely.',
     '/contact',
     [
       'hire UI/UX designer',
       'hire Webflow developer',
       'hire WordPress developer',
+      'hire Shopify developer',
+      'freelance Shopify developer',
       'hire software developer Lagos',
       'freelance website designer',
     ]
@@ -289,6 +296,7 @@ export function buildJsonLd(seo: PageSeo) {
         'Website Designer',
         'Webflow Developer',
         'WordPress Developer',
+        'Shopify Developer',
       ],
       knowsAbout: [
         'Product Design',
@@ -297,6 +305,7 @@ export function buildJsonLd(seo: PageSeo) {
         'Website Design',
         'Webflow Development',
         'WordPress Development',
+        'Shopify Development',
         'Figma',
         'Next.js',
         'React',
