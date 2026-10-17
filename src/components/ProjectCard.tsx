@@ -53,7 +53,7 @@ export function ProjectCard({ project, variant = 'light' }: ProjectCardProps) {
         ) : (
           <img
             src={project.image}
-            alt={project.title}
+            alt={`${project.title}: ${project.subtitle}`}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

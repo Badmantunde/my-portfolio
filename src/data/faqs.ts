@@ -7,43 +7,33 @@ export interface FAQ {
 
 export const faqs: FAQ[] = [
   {
-    question: 'What is a product engineer, and how is that different from a designer or developer?',
+    question: 'What kind of product designer are you?',
     answer:
-      'A product engineer owns the full product lifecycle: discovery, strategy, UX, frontend and backend engineering, and launch. I am not just handing off Figma files or writing code in isolation. I connect business goals, user needs, and technical execution in one workflow.',
+      'A product designer who also builds. I do the research, flows, and UI in Figma, then ship the result in Webflow, Shopify, Next.js, or Flutter. You work with one person from first sketch to live product, so design decisions survive the build.',
   },
   {
-    question: 'What types of projects do you take on?',
+    question: 'How does building my own designs change the design work?',
     answer:
-      'I work on SaaS products, fintech platforms, AgriTech and Web3 interfaces, marketing sites, ecommerce stores, design systems, and MVPs for startups. That includes product design, UI/UX design, software development, website design, Figma to Webflow builds, WordPress sites, freelance Shopify development, Next.js and Supabase products, Flutter mobile apps, and AI-native product workflows.',
+      'I design with real constraints in mind: CMS structure, theme sections, data, and screen sizes. When something does not work in code, I change the design myself instead of filing a handoff ticket, which keeps the final product close to what we agreed on.',
   },
   {
-    question: 'Do you work with startups, agencies, or enterprise teams?',
+    question: 'What have you shipped?',
     answer:
-      'Primarily startups and ambitious product teams that need someone who can move from idea to production quickly. I also collaborate with founders, product managers, and engineering leads who need a single owner across design and build.',
+      'Live client work includes the Shight Running Club membership platform (Next.js and Supabase), the CryptoDispensers website redesign (Figma to Webflow), the JWYN Shopify store for a Lagos retailer, and Aṣá Ọ̀rọ̀, a Yoruba word game built in Flutter. I have also designed mobile apps and websites for fintech, Web3, music, beauty, and AgriTech clients.',
   },
   {
     question: 'What does your process look like from kickoff to launch?',
     answer:
-      'I start with discovery and product strategy, move into research and UX architecture, then design systems and high-fidelity UI. From there I build frontend in React or Next.js, integrate backends like Supabase, and use AI tools to accelerate delivery without sacrificing quality. Launch includes testing, handoff, and iteration support.',
-  },
-  {
-    question: 'Which tools and technologies do you use?',
-    answer:
-      'Figma for design, Next.js and TypeScript for frontend development, Supabase for backend, Webflow and WordPress for marketing and content sites, Shopify for ecommerce, Flutter for mobile, and AI tools like Claude, Cursor, and ChatGPT for faster prototyping and engineering. As a Webflow, WordPress, and freelance Shopify developer, I pick the stack based on speed, scalability, and your team\'s needs.',
-  },
-  {
-    question: 'Are you available for freelance, contract, or full-time roles?',
-    answer:
-      'Yes. I am open to freelance projects, contract engagements, and full-time product engineering roles. I am currently available for new work from Q2 2026. Reach out to discuss scope, timeline, and fit.',
+      'Discovery and goals first, then user flows and wireframes, then high-fidelity UI and a design system in Figma. After you sign off, I build in the right platform for the job, test on real devices, and hand over with documentation so your team can update the product.',
   },
   {
     question: 'How do you use AI in your workflow?',
     answer:
-      'AI accelerates research, copy iteration, prototyping, and code generation. I use it to move faster on repetitive tasks while keeping product judgment, UX quality, and engineering standards human-led. The goal is 7x faster delivery without compromising the outcome.',
+      'AI speeds up research, copy iteration, prototyping, and code generation. Product decisions, UX quality, and engineering standards stay human-led. Across projects this has made delivery up to 7× faster.',
   },
   {
     question: 'How do we get started?',
     answer:
-      `Book a discovery call through the contact page, email ${contact.email}, or message me on WhatsApp at ${contact.whatsapp.display}. Share your product goals, timeline, and any existing designs or code. I will follow up with a clear recommendation on scope, approach, and next steps.`,
+      `Send a message through the contact page, email ${contact.email}, or message me on WhatsApp at ${contact.whatsapp.display}. Share your goals, timeline, and any existing designs or code. I will reply with a clear recommendation on scope, approach, and next steps.`,
   },
 ]

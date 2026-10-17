@@ -20,18 +20,17 @@ export function FinalCTASection() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3DDB84]" />
           </span>
           <span className="text-[12px] sm:text-[13px] font-medium text-[#3DDB84]">
-            Available for Q2 2026
+            Booking new projects
           </span>
         </div>
 
         <h2 className="text-[clamp(1.75rem,5vw,3.5rem)] font-medium leading-[1.1] tracking-[-0.03em] text-white max-w-3xl mx-auto">
-          Need a product engineer who can take an idea from concept to launch?
+          Need a product designer who can also build it?
         </h2>
 
         <p className="mt-5 sm:mt-6 max-w-xl mx-auto text-[15px] sm:text-[16px] leading-[1.6] text-gray-400">
-          I help startups and ambitious teams transform opportunities into
-          production-ready products through strategy, design, engineering, and
-          AI-powered development.
+          Tell me about your product, website, or Shopify store. I'll reply with
+          a clear recommendation on scope, timeline, and next steps.
         </p>
 
         <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">

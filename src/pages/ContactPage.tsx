@@ -10,8 +10,8 @@ const audiences = [
   'Startups launching an MVP or first product version',
   'Founders who need one person across design and development',
   'Product teams needing UI/UX design or frontend engineering support',
-  'Businesses upgrading a marketing site, Webflow build, or WordPress site',
-  'Brands needing a freelance Shopify developer for store builds or redesigns',
+  'Businesses upgrading a marketing site or moving it to Webflow',
+  'Brands that need a Shopify store designed and built, or redesigned',
   'Fintech, SaaS, community, and AgriTech products',
 ]
 
@@ -20,7 +20,7 @@ export function ContactPage() {
     <>
       <PageHeader
         label="Contact"
-        title="Hire a product designer, developer, or website designer"
+        title="Tell me about your project"
         description="Based in Lagos, Nigeria and available for remote work worldwide. Tell me about your product, timeline, and goals. I will reply with a clear recommendation on scope and next steps."
       />
 
@@ -33,9 +33,9 @@ export function ContactPage() {
                   Who I help
                 </h2>
                 <p className="text-[15px] sm:text-[16px] leading-[1.7] text-gray-600 mb-5">
-                  I partner with founders, product managers, and small teams who
-                  need a UI/UX designer, software developer, or website designer
-                  they can trust to move fast without sacrificing quality.
+                  I work with founders, product managers, and small teams who
+                  want one person to design the product and build it, without
+                  quality slipping in the handoff.
                 </p>
                 <ul className="space-y-3">
                   {audiences.map((item) => (

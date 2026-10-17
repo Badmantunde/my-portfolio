@@ -9,28 +9,26 @@ export function WorkPage() {
     <>
       <PageHeader
         label="Selected work"
-        title="Featured projects"
-        description="Product design, UI/UX design, software development, and website design case studies. Live products built with Next.js, Supabase, Webflow, WordPress, and Shopify."
+        title="Product design case studies"
+        description="Client work I designed, and often built: live products in Next.js, Webflow, Shopify, and Flutter, plus mobile and web design projects."
       />
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 py-10 sm:py-12">
           <div className="max-w-3xl space-y-4 text-[15px] sm:text-[16px] leading-[1.75] text-gray-600">
             <p>
-              This portfolio brings together product design, mobile UI, Webflow, WordPress, and
-              Shopify website design, and software development work for startups, fintech teams,
-              AgriTech brands, and community platforms. Each case study documents the problem,
-              design decisions, and shipped outcomes so you can see how strategy, UI/UX, and
-              engineering connect in real projects.
+              Each case study covers the problem, my role, the design decisions, and what shipped.
+              The first four are live builds: a membership platform for a Lagos running club
+              (Next.js and Supabase), a Figma to Webflow redesign for a regulated crypto platform,
+              a Shopify store for a Lagos retailer, and a Yoruba word game built in Flutter.
             </p>
             <p>
-              Recent work includes a campus music discovery app, a Yoruba language learning game
-              built with Flutter, luxury and AgriTech marketing sites, DeFi mobile UI, and live
-              products such as a Lagos running community platform and a regulated crypto access
-              website. Explore the case studies below or{' '}
+              The rest are design projects: a campus music discovery app, a DeFi wallet, and
+              websites for a luxury beauty studio and an AgriTech company. Explore the case studies
+              below or{' '}
               <Link to="/contact" className="text-[#28B866] font-medium hover:underline">
                 get in touch
               </Link>{' '}
-              if you need a product designer, website designer, or developer for your next launch.
+              if you need a product designer who can also build your next launch.
             </p>
           </div>
         </div>

@@ -33,92 +33,61 @@ function pageSeo(
     type,
     image: image?.image ?? site.ogImage,
     imageAlt: image?.imageAlt ?? site.ogImageAlt,
-    imageWidth: image?.imageWidth ?? site.ogImageWidth,
-    imageHeight: image?.imageHeight ?? site.ogImageHeight,
+    // A custom image without known dimensions must not inherit the default OG image's size.
+    imageWidth: image?.image ? image.imageWidth : site.ogImageWidth,
+    imageHeight: image?.image ? image.imageHeight : site.ogImageHeight,
   }
 }
 
 const staticPages: Record<string, PageSeo> = {
-  '/': pageSeo(
-    'Abiola Babatunde | UI/UX Designer, Software Developer & Shopify Expert',
-    defaultDescription,
-    '/',
-    [
-      'product design',
-      'software developer',
-      'website designer',
-      'UI/UX designer',
-      'Webflow developer',
-      'WordPress developer',
-      'Shopify developer',
-      'freelance Shopify developer',
-      'product engineer Lagos',
-      'hire UI designer Nigeria',
-    ]
-  ),
+  '/': pageSeo(site.title, defaultDescription, '/', [
+    'Abiola Babatunde',
+    'product designer',
+    'freelance product designer',
+    'product designer who codes',
+    'Figma to Webflow',
+    'freelance Shopify developer',
+    'product designer Lagos',
+  ]),
   '/work': pageSeo(
-    'Product Design Portfolio & Case Studies | Abiola Babatunde',
-    'Selected UI/UX design and software development projects: fintech, AgriTech, community platforms, Webflow, WordPress, and Shopify websites. Product designer and website designer based in Lagos.',
+    'Product Design Case Studies | Abiola Babatunde',
+    'Product design case studies with live builds: a Next.js membership platform, a Figma to Webflow fintech site, a Shopify store, and a Yoruba word game in Flutter.',
     '/work',
     [
-      'product design portfolio',
-      'UI/UX case studies',
-      'website design portfolio',
-      'Webflow projects',
-      'Shopify projects',
-      'software developer portfolio',
+      'product design case studies',
+      'Figma to Webflow case study',
+      'Shopify store case study',
+      'Flutter app case study',
     ]
   ),
   '/about': pageSeo(
-    'About Abiola Babatunde | Product Designer & Software Developer',
-    'From CorelDRAW flyers in Lagos to product engineering worldwide. Seasoned UI/UX designer, software developer, and Lions Club member building digital products that ship.',
+    'About Abiola Babatunde | Product Designer in Lagos',
+    'From CorelDRAW flyers in Lagos to designing and building digital products. My background, how I work, and the kind of projects I take on.',
     '/about',
-    [
-      'about product designer',
-      'Lagos software developer',
-      'UI/UX designer story',
-      'product engineer Nigeria',
-    ]
+    ['Abiola Babatunde', 'product designer Lagos', 'product designer who codes']
   ),
   '/process': pageSeo(
-    'Product Design & Development Process | Abiola Babatunde',
-    'How I work: discovery, product strategy, UI/UX design, design systems, Next.js engineering, Webflow, WordPress, and Shopify builds, and AI-native delivery from idea to launch.',
+    'How I Design and Build Products | Abiola Babatunde',
+    'My product design process from discovery and Figma to shipped code in Webflow, Shopify, Next.js and Flutter.',
     '/process',
-    [
-      'product design process',
-      'UI/UX design workflow',
-      'software development process',
-      'Webflow development process',
-      'Shopify development process',
-    ]
+    ['product design process', 'design to development workflow']
   ),
   '/writing': pageSeo(
-    'Product Design & Engineering Insights | Abiola Babatunde',
-    'Guides on hiring Webflow, WordPress, and Shopify developers, product design, UI/UX, frontend development, and AI product development for startups in Nigeria and worldwide.',
+    'Writing on Product Design and Building | Abiola Babatunde',
+    'Notes on product design decisions, design-to-code trade-offs, and hiring Webflow and Shopify developers, drawn from client work.',
     '/writing',
-    [
-      'hire Webflow developer',
-      'hire Shopify developer',
-      'UI/UX designer vs software developer',
-      'WordPress vs Webflow',
-      'product design blog',
-      'hire WordPress developer',
-    ]
+    ['product design blog', 'hire Webflow developer', 'hire Shopify developer']
   ),
   '/contact': pageSeo(
-    'Hire a UI/UX Designer & Shopify Developer | Contact Abiola Babatunde',
-    'Book a discovery call or message on WhatsApp. Available for product design, software development, website design, Webflow, WordPress, and freelance Shopify projects in Lagos and remotely.',
+    'Start a Project | Contact Abiola Babatunde, Product Designer',
+    'Need a product designer who can also build it? Tell me about your product, website or Shopify store. Email, WhatsApp, or the project form.',
     '/contact',
-    [
-      'hire UI/UX designer',
-      'hire Webflow developer',
-      'hire WordPress developer',
-      'hire Shopify developer',
-      'freelance Shopify developer',
-      'hire software developer Lagos',
-      'freelance website designer',
-    ]
+    ['hire product designer', 'freelance product designer', 'hire Webflow developer', 'hire Shopify developer']
   ),
+  '/404': {
+    ...pageSeo('Page not found | Abiola Babatunde', defaultDescription, '/404', baseKeywords),
+    noIndex: true,
+  },
 }
 
 export function getSeoForPath(pathname: string): PageSeo {
@@ -129,19 +98,16 @@ export function getSeoForPath(pathname: string): PageSeo {
     const project = getProject(workMatch[1])
     if (project) {
       return pageSeo(
-        `${project.title} Case Study | UI/UX & Product Design by Abiola Babatunde`,
-        `${project.description} ${project.role} case study covering ${project.tags.join(', ')}. Product design and website design by Abiola Babatunde.`,
+        project.seoTitle ?? `${project.title}: ${project.subtitle} | Abiola Babatunde`,
+        project.seoIntro,
         pathname,
-        [
-          ...project.tags.map((t) => t.toLowerCase()),
-          'product design case study',
-          'UI/UX case study',
-          'website designer',
-        ],
+        [...project.tags.map((t) => t.toLowerCase()), 'product design case study'],
         'website',
         {
-          image: project.image,
-          imageAlt: `${project.title} case study by Abiola Babatunde`,
+          image: project.ogImage ?? project.image,
+          imageAlt: `${project.title}: ${project.subtitle}, a case study by Abiola Babatunde`,
+          imageWidth: project.imageWidth,
+          imageHeight: project.imageHeight,
         }
       )
     }
@@ -174,8 +140,8 @@ export function getSeoForPath(pathname: string): PageSeo {
         type: 'article',
         image: cover?.src ?? site.ogImage,
         imageAlt: cover?.alt ?? site.ogImageAlt,
-        imageWidth: cover?.width ?? site.ogImageWidth,
-        imageHeight: cover?.height ?? site.ogImageHeight,
+        imageWidth: cover ? cover.width : site.ogImageWidth,
+        imageHeight: cover ? cover.height : site.ogImageHeight,
       }
     }
 
@@ -190,10 +156,7 @@ export function getSeoForPath(pathname: string): PageSeo {
     }
   }
 
-  return {
-    ...pageSeo(site.title, defaultDescription, pathname, baseKeywords),
-    noIndex: true,
-  }
+  return { ...staticPages['/404'], path: pathname }
 }
 
 export function absoluteUrl(path: string) {
@@ -213,8 +176,6 @@ export function buildSeoHeadHtml(seo: PageSeo) {
   const url = absoluteUrl(seo.path)
   const image = absoluteAsset(seo.image ?? site.ogImage)
   const imageAlt = seo.imageAlt ?? site.ogImageAlt
-  const imageWidth = seo.imageWidth ?? site.ogImageWidth
-  const imageHeight = seo.imageHeight ?? site.ogImageHeight
   const keywords = (seo.keywords ?? site.keywords).join(', ')
   const robots = seo.noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
   const ogType = seo.type === 'article' ? 'article' : 'website'
@@ -244,9 +205,9 @@ export function buildSeoHeadHtml(seo: PageSeo) {
         : ''
     }<meta property="og:image" content="${image}" />
     <meta property="og:image:secure_url" content="${image}" />
-    <meta property="og:image:width" content="${imageWidth}" />
-    <meta property="og:image:height" content="${imageHeight}" />
-    <meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />
+    ${seo.imageWidth ? `<meta property="og:image:width" content="${seo.imageWidth}" />\n    ` : ''}${
+      seo.imageHeight ? `<meta property="og:image:height" content="${seo.imageHeight}" />\n    ` : ''
+    }    <meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="${site.twitterHandle}" />
@@ -258,17 +219,14 @@ export function buildSeoHeadHtml(seo: PageSeo) {
     <script type="application/ld+json">${jsonLd}</script>`
 }
 
-export function buildPrerenderBodyHtml(seo: PageSeo) {
-  return `    <noscript>
-      <article>
-        <h1>${escapeHtml(seo.title)}</h1>
-        <p>${escapeHtml(seo.description)}</p>
-      </article>
-    </noscript>`
+export function absoluteAsset(path: string) {
+  if (/^https?:\/\//.test(path)) return path
+  return `${siteUrl}${path.startsWith('/') ? path : `/${path}`}`
 }
 
-export function absoluteAsset(path: string) {
-  return `${siteUrl}${path.startsWith('/') ? path : `/${path}`}`
+/** "Jun 2026" -> "2026-06" (ISO 8601 month precision, valid for schema.org dates) */
+export function isoMonth(value: string): string | undefined {
+  return parseContentDate(value)?.slice(0, 7)
 }
 
 export function buildJsonLd(seo: PageSeo) {
@@ -287,28 +245,18 @@ export function buildJsonLd(seo: PageSeo) {
       '@id': `${absoluteUrl('/')}#person`,
       name: site.name,
       url: absoluteUrl('/'),
-      image: absoluteAsset(site.ogImage),
+      image: absoluteAsset(site.headshot),
       email: site.email,
-      jobTitle: [
-        'Product Engineer',
-        'UI/UX Designer',
-        'Software Developer',
-        'Website Designer',
-        'Webflow Developer',
-        'WordPress Developer',
-        'Shopify Developer',
-      ],
+      jobTitle: 'Product Designer',
+      description: defaultDescription,
       knowsAbout: [
         'Product Design',
         'UI/UX Design',
-        'Software Development',
-        'Website Design',
-        'Webflow Development',
-        'WordPress Development',
-        'Shopify Development',
         'Figma',
+        'Webflow',
+        'Shopify',
         'Next.js',
-        'React',
+        'Flutter',
         'Design Systems',
       ],
       address: { ...postalAddress },
@@ -317,7 +265,7 @@ export function buildJsonLd(seo: PageSeo) {
     {
       '@type': 'ProfessionalService',
       '@id': `${absoluteUrl('/')}#service`,
-      name: `${site.name}, Product Design and Development`,
+      name: `${site.name}, Product Design and Build`,
       url: absoluteUrl('/'),
       image: absoluteAsset(site.ogImage),
       description: defaultDescription,
@@ -354,7 +302,7 @@ export function buildJsonLd(seo: PageSeo) {
         '@type': 'Article',
         headline: article.title,
         description: article.excerpt,
-        datePublished: article.date,
+        datePublished: isoMonth(article.date),
         author: { '@id': `${absoluteUrl('/')}#person` },
         publisher: { '@id': `${absoluteUrl('/')}#person` },
         mainEntityOfPage: { '@id': `${absoluteUrl(seo.path)}#webpage` },
@@ -395,7 +343,7 @@ export function buildJsonLd(seo: PageSeo) {
 }
 
 export function allSitemapPaths(): string[] {
-  const paths = Object.keys(staticPages)
+  const paths = Object.keys(staticPages).filter((path) => !staticPages[path].noIndex)
   for (const project of projects) paths.push(`/work/${project.slug}`)
   for (const article of articles) paths.push(`/writing/${article.slug}`)
   return paths
@@ -438,12 +386,7 @@ export function lastmodForPath(path: string): string | undefined {
     if (article) return parseContentDate(article.date)
   }
 
-  const workMatch = path.match(/^\/work\/([^/]+)$/)
-  if (workMatch) {
-    const project = getProject(workMatch[1])
-    if (project) return parseContentDate(project.year)
-  }
-
+  // Other pages have no recorded modification date; omit lastmod rather than invent one.
   return undefined
 }
 
@@ -474,14 +417,14 @@ function sitemapMeta(path: string): { changefreq: string; priority: string } {
   return { changefreq: 'monthly', priority: '0.6' }
 }
 
-export function generateSitemapXml(buildDate = new Date()): string {
-  const buildLastmod = buildDate.toISOString().slice(0, 10)
+export function generateSitemapXml(): string {
   const urls = allSitemapPaths()
     .map((path) => {
       const { changefreq, priority } = sitemapMeta(path)
       const loc = absoluteUrl(path)
-      const lastmod = lastmodForPath(path) ?? buildLastmod
-      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
+      const lastmod = lastmodForPath(path)
+      const lastmodTag = lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''
+      return `  <url>\n    <loc>${loc}</loc>${lastmodTag}\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`
     })
     .join('\n')
 

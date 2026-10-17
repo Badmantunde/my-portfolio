@@ -65,32 +65,30 @@ export function HeroSection() {
         <div className="max-w-[1440px] mx-auto w-full px-5 sm:px-8 lg:px-12 pb-14 sm:pb-16 lg:pb-20">
           <AnimateIn immediate variant="fade-in" delay={100}>
             <p className="text-[13px] sm:text-[14px] text-gray-900 tracking-wide mb-5 sm:mb-8">
-              Abiola Babatunde · Product Engineer
+              Abiola Babatunde · Product Designer · Lagos, working remotely
             </p>
           </AnimateIn>
 
           <h1 className="text-[clamp(1.75rem,7vw,4.2rem)] sm:text-[clamp(2.5rem,5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900">
-            From product strategy
+            I design digital products
             <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
-            to production-ready
-            <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>
-            software.
+            — and build them.
           </h1>
 
           <AnimateIn immediate variant="fade-up" delay={350}>
             <p className="mt-5 sm:mt-6 max-w-xl text-[15px] sm:text-[16px] leading-[1.6] text-gray-600">
-              Product designer, UI/UX designer, software developer, and freelance
-              Shopify developer helping startups transform ideas into scalable
-              products through strategy, website design, engineering, and
-              AI-powered execution.
+              I take products from research and Figma to live code in Webflow,
+              Shopify, Next.js, and Flutter. You get one person who designs the
+              product and ships it, so nothing gets lost between design and
+              development.
             </p>
           </AnimateIn>
 
           <AnimateIn immediate variant="fade-up" delay={500}>
             <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
-              <AccentButton text="View selected work" href="/work" />
+              <AccentButton text="Start a project" href="/contact" />
+              <AccentButton text="See case studies" href="/work" />
               <AvailabilityBadge />
             </div>
           </AnimateIn>

@@ -4,6 +4,12 @@ import { getProject } from '../data/projects'
 import { ProjectContactCTA } from '../components/ProjectContactCTA'
 import { SECTION_PY } from '../lib/section'
 
+/** "/images/asa-oro/level-selection.png" -> "level selection" */
+function screenName(src: string) {
+  const file = src.split('/').pop() ?? ''
+  return file.replace(/\.[a-z]+$/i, '').replace(/^screen-/, '').replace(/-/g, ' ')
+}
+
 export function CaseStudyPage() {
   const { slug } = useParams<{ slug: string }>()
   const project = slug ? getProject(slug) : undefined
@@ -75,7 +81,7 @@ export function CaseStudyPage() {
           ) : (
             <img
               src={project.image}
-              alt={project.title}
+              alt={`${project.title}: ${project.subtitle}`}
               className="w-full max-h-[70vh] object-cover"
             />
           )}
@@ -148,7 +154,7 @@ export function CaseStudyPage() {
                       <img
                         key={src}
                         src={src}
-                        alt={`${project.title} UI design`}
+                        alt={`${project.title} ${screenName(src)} screen`}
                         className="w-full rounded-2xl border border-gray-100"
                       />
                     ))}

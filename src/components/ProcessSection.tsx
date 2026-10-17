@@ -42,9 +42,9 @@ export function ProcessSection({ hideHeader = false }: ProcessSectionProps) {
             hideHeader ? '' : ''
           }`}
         >
-          A systematic approach from idea to scale for product design and software
-          development, bridging strategy, UI/UX design, Webflow, WordPress, and
-          Shopify builds, and engineering at every stage.
+          How I take a product from first conversation to live code: research and
+          UX first, then design systems and UI, then the build in Webflow,
+          Shopify, Next.js, or Flutter.
         </AnimateIn>
 
         <div className="relative">

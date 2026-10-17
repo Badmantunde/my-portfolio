@@ -5,43 +5,33 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    title: 'Product Design',
+    title: 'Product & UX Design',
     description:
-      'End-to-end product thinking from discovery and strategy to shipped interfaces. I help startups define MVPs, map user flows, and design products that solve real problems.',
+      'Discovery, user flows, wireframes, prototypes, and high-fidelity UI in Figma. I help founders shape an MVP and design products people understand on first use.',
   },
   {
-    title: 'UI/UX Design',
+    title: 'Design Systems',
     description:
-      'Research-led UX and polished UI for web and mobile. Wireframes, prototypes, design systems, and high-fidelity screens in Figma built for clarity and conversion.',
+      'Token-based components and style guides that hold up in code, so your product stays consistent as new screens and features ship.',
   },
   {
-    title: 'Frontend Development',
+    title: 'Webflow Design & Development',
     description:
-      'Production-ready interfaces with React, Next.js, and TypeScript. From marketing pages to SaaS dashboards, I build fast, responsive frontends that ship.',
+      'Figma to Webflow builds with CMS setup, interactions, and SEO-ready structure, like the CryptoDispensers redesign. Your team can update content without a developer.',
   },
   {
-    title: 'Webflow Development',
+    title: 'Shopify Store Design & Development',
     description:
-      'Figma to Webflow builds with CMS setup, animations, and SEO-ready structure. Ideal for teams that need a beautiful marketing site without a full engineering sprint.',
+      'Shopify stores designed around how your customers shop: need-based navigation, trust signals, and quick mobile checkout, like the JWYN store in Lagos.',
   },
   {
-    title: 'WordPress Development',
+    title: 'Next.js Frontend Development',
     description:
-      'Custom WordPress themes and content-driven sites for businesses that need flexible publishing, blogs, and easy client handoff without sacrificing design quality.',
+      'Production frontends in React, Next.js, and TypeScript, with Supabase for auth and data when needed, like the Shight Running Club membership platform.',
   },
   {
-    title: 'Shopify Developer (Freelance)',
+    title: 'Flutter Mobile Apps',
     description:
-      'Freelance Shopify store builds, theme customization, and conversion-focused ecommerce UX. From product pages and collections to checkout polish and app integrations that help brands sell online.',
-  },
-  {
-    title: 'Mobile App Development',
-    description:
-      'Cross-platform mobile apps built with Flutter, from UI design through to production. MVPs, consumer apps, and product experiences shipped for iOS and Android from a single codebase.',
-  },
-  {
-    title: 'AI Product Development',
-    description:
-      'AI-native product design and engineering: agentic workflows, LLM-powered features, and prototypes that balance speed with trustworthy user experiences.',
+      'Mobile apps designed in Figma and built in Flutter for iOS and Android from one codebase, like the Aṣá Ọ̀rọ̀ Yoruba word game.',
   },
 ]

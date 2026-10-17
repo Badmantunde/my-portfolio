@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { HomePage } from './pages/HomePage'
+import { NotFoundPage } from './pages/NotFoundPage'
 
 const WorkPage = lazy(() =>
   import('./pages/WorkPage').then((module) => ({ default: module.WorkPage }))
@@ -38,6 +39,7 @@ function App() {
           <Route path="writing" element={<WritingPage />} />
           <Route path="writing/:slug" element={<ArticlePage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Suspense>

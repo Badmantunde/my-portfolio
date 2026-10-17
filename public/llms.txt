@@ -1,6 +1,6 @@
 # Abiola Babatunde
 
-> Product designer, UI/UX designer, software developer, Webflow developer, and freelance Shopify developer based in Lagos, Nigeria. I help startups ship product design, website design, ecommerce stores, mobile apps, and engineering from strategy to launch.
+> Freelance product designer based in Lagos, Nigeria, who designs in Figma and builds in Webflow, Shopify, Next.js, and Flutter. I take client products from research and UX through to a live website, store, or app.
 
 ## Main pages
 
@@ -13,11 +13,12 @@
 
 ## Selected case studies
 
-- [Aṣá Ọ̀rọ̀ — Yoruba word game (Flutter)](https://www.abiolababatunde.com/work/asa-oro)
-- [Muzora — campus music discovery app](https://www.abiolababatunde.com/work/muzora)
-- [Dart Agro Systems — AgriTech website](https://www.abiolababatunde.com/work/dart-agro-systems)
-- [Shight Running Club — community platform](https://www.abiolababatunde.com/work/shight-running-club)
-- [CryptoDispensers — fintech website redesign](https://www.abiolababatunde.com/work/crypto-dispensers)
+- [Shight Running Club — membership platform designed and built in Next.js and Supabase](https://www.abiolababatunde.com/work/shight-running-club)
+- [CryptoDispensers — Figma to Webflow redesign for a regulated crypto platform](https://www.abiolababatunde.com/work/crypto-dispensers)
+- [JWYN — Shopify store design and development for a Lagos retailer](https://www.abiolababatunde.com/work/just-what-you-need)
+- [Aṣá Ọ̀rọ̀ — Yoruba word game designed in Figma and built in Flutter](https://www.abiolababatunde.com/work/asa-oro)
+- [Muzora — campus music discovery app design](https://www.abiolababatunde.com/work/muzora)
+- [RabiCoin — DeFi wallet app design](https://www.abiolababatunde.com/work/rabi-coin)
 
 ## Popular articles
 
@@ -30,7 +31,7 @@
 
 ## Services
 
-Product design, UI/UX design, software development, website design, Webflow development, WordPress development, Shopify Developer (Freelance), Flutter mobile apps, design systems, and AI product development.
+Product and UX design, design systems, Webflow design and development, Shopify store design and development, Next.js frontend development, and Flutter mobile apps.
 
 ## Contact
 

@@ -6,7 +6,7 @@ export function AvailabilityBadge() {
         <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#3DDB84] shadow-[0_0_6px_rgba(61,219,132,0.45)]" />
       </span>
       <span className="text-[13px] sm:text-[14px] font-medium text-gray-900">
-        Available for Q2 2026
+        Booking new projects
       </span>
     </div>
   )

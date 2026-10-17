@@ -1,14 +1,12 @@
 import { useRotatingText } from '../hooks/useRotatingText'
 
 const roles = [
-  'product engineering roles',
-  'UI/UX design roles',
-  'Flutter mobile app development',
-  'Webflow development',
-  'WordPress development',
-  'Shopify development',
-  'software development',
-  'website design',
+  'freelance product design',
+  'UI/UX design projects',
+  'Figma to Webflow builds',
+  'Shopify store design',
+  'Next.js frontends',
+  'Flutter mobile apps',
 ]
 
 export function RotatingAvailability({ className = '' }: { className?: string }) {

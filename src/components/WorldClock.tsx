@@ -25,6 +25,8 @@ export function WorldClock({
         <span
           key={city}
           className={`absolute left-0 top-0 whitespace-nowrap text-[13px] ${textClassName} animate-[slideUp_0.5s_cubic-bezier(0.25,0.1,0.25,1)_forwards]`}
+          // The prerendered time is from build time; the client corrects it on hydration.
+          suppressHydrationWarning
         >
           {time} in {city}
         </span>

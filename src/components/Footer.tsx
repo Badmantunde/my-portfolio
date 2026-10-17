@@ -28,14 +28,12 @@ export function Footer() {
               <p className="text-[12px] sm:text-[13px] font-bold tracking-[0.1em] text-white uppercase group-hover:text-[#3DDB84] transition-colors">
                 Abiola Babatunde
               </p>
-              <p className="mt-1 text-[12px] text-gray-400">Product Engineer</p>
+              <p className="mt-1 text-[12px] text-gray-400">Product Designer</p>
             </Link>
 
             <p className="mt-5 text-[14px] leading-[1.65] text-gray-400 max-w-xs">
-              Product design, UI/UX design, software development, and website
-              design for startups. Webflow, WordPress, and freelance Shopify
-              developer based in Lagos, shipping with Next.js, Supabase, and
-              AI-native workflows.
+              Product designer and builder in Lagos, Nigeria. I design in Figma
+              and ship in Webflow, Shopify, Next.js, and Flutter.
             </p>
 
             <div className="mt-5 inline-flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-full px-4 py-2">
@@ -44,7 +42,7 @@ export function Footer() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#3DDB84]" />
               </span>
               <span className="text-[12px] font-medium text-[#3DDB84]">
-                Available Q2 2026
+                Booking new projects
               </span>
             </div>
           </div>
@@ -197,7 +195,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="text-[12px] text-gray-400">
-            © 2026 Abiola Babatunde · Product Engineer
+            © 2026 Abiola Babatunde · Product Designer
           </p>
 
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-[12px] text-gray-400">

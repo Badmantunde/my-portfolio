@@ -24,7 +24,7 @@ const storySections = [
   {
     heading: 'What I do today',
     paragraphs: [
-      'Today I work as a product designer, UI/UX designer, software developer, and freelance Shopify developer, bridging strategy, visual design, and engineering to ship real software. I have designed luxury brand experiences, built community platforms, shipped fintech products, and delivered Webflow, WordPress, and Shopify stores for clients who need to move from rough ideas to production.',
+      'Today I work as a freelance product designer who also builds. I design in Figma and ship in Webflow, Shopify, Next.js, and Flutter. Recent client work includes a membership platform for a Lagos running club, a Webflow redesign for a regulated crypto platform, a Shopify store for a Lagos retailer, and a Flutter game that teaches Yoruba.',
       'The thread from those Lagos street flyers to the products I ship now is the same: understand the audience, design with intention, and build something that works in the real world.',
     ],
   },
@@ -42,8 +42,8 @@ export function AboutPage() {
     <>
       <PageHeader
         label="About"
-        title="A seasoned techie who never stopped learning"
-        description="From CorelDRAW flyers in Lagos to product design, UI/UX design, and software development for startups worldwide. Website designer, Webflow developer, WordPress developer, and freelance Shopify developer based in Nigeria."
+        title="From Lagos print design to product design and code"
+        description="I started with CorelDRAW flyers in Lagos. Today I design digital products in Figma and build them in Webflow, Shopify, Next.js, and Flutter for clients in Nigeria and worldwide."
       />
 
       <section className={`bg-white ${SECTION_PY}`}>
@@ -52,11 +52,11 @@ export function AboutPage() {
             <AnimateIn variant="slide-left" className="lg:col-span-5 lg:sticky lg:top-28">
               <img
                 src={ABOUT_IMAGE}
-                alt="Abiola Babatunde"
+                alt="Portrait of Abiola Babatunde, product designer in Lagos"
                 className="w-full aspect-[3/4] rounded-2xl object-cover object-top"
               />
               <p className="mt-4 text-[13px] text-gray-500">
-                Lagos, Nigeria · Product Engineer · Lions Club International
+                Lagos, Nigeria · Product Designer · Lions Club International
               </p>
             </AnimateIn>
 

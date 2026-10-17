@@ -29,6 +29,15 @@ function upsertLink(rel: string, href: string) {
   el.setAttribute('href', href)
 }
 
+/** Image dimensions are only emitted when known; stale values from a previous route are removed. */
+function setOptionalMeta(key: string, value: number | undefined) {
+  if (value) {
+    upsertMeta(key, String(value), 'property')
+  } else {
+    document.querySelector(`meta[property="${key}"]`)?.remove()
+  }
+}
+
 export function Seo() {
   const { pathname } = useLocation()
 
@@ -37,8 +46,8 @@ export function Seo() {
     const url = absoluteUrl(seo.path)
     const image = absoluteAsset(seo.image ?? site.ogImage)
     const imageAlt = seo.imageAlt ?? site.ogImageAlt
-    const imageWidth = seo.imageWidth ?? site.ogImageWidth
-    const imageHeight = seo.imageHeight ?? site.ogImageHeight
+    const imageWidth = seo.imageWidth
+    const imageHeight = seo.imageHeight
     const robots = seo.noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
 
     document.title = seo.title
@@ -66,8 +75,8 @@ export function Seo() {
     }
     upsertMeta('og:image', image, 'property')
     upsertMeta('og:image:secure_url', image, 'property')
-    upsertMeta('og:image:width', String(imageWidth), 'property')
-    upsertMeta('og:image:height', String(imageHeight), 'property')
+    setOptionalMeta('og:image:width', imageWidth)
+    setOptionalMeta('og:image:height', imageHeight)
     upsertMeta('og:image:alt', imageAlt, 'property')
 
     upsertMeta('twitter:card', 'summary_large_image', 'name')

@@ -8,7 +8,7 @@ export function WritingPage() {
     <>
       <PageHeader
         label="Writing & insights"
-        title="Thinking in public"
+        title="Writing on product design and building"
         description="Guides on product design, hiring Webflow, WordPress, and Shopify developers, UI/UX, frontend development, and building startups in Nigeria."
       />
       <section className={`bg-white border-b border-gray-100 ${SECTION_PY}`}>

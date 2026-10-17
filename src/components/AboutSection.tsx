@@ -11,13 +11,13 @@ export function AboutSection() {
     <section className={`bg-white ${SECTION_PY}`}>
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
         <SectionHeader
-          label="Product thinking"
+          label="About"
           heading={
             <>
-              Strategy, design, and engineering,
+              From Lagos print design
               <br className="hidden sm:block" />
               <span className="sm:hidden"> </span>
-              owned end to end.
+              to product design and code.
             </>
           }
           className="mb-10 sm:mb-14 lg:mb-16"
@@ -29,12 +29,12 @@ export function AboutSection() {
             <div className="grid grid-cols-2 gap-4 sm:gap-5">
               <img
                 src={HEADSHOT}
-                alt="Abiola Babatunde"
+                alt="Abiola Babatunde, product designer, Lagos"
                 className="col-span-1 aspect-[3/4] rounded-xl sm:rounded-2xl object-cover object-top w-full"
               />
               <img
                 src={ABOUT_PORTRAIT}
-                alt="Abiola Babatunde"
+                alt="Portrait of Abiola Babatunde"
                 className="col-span-1 aspect-[3/4] rounded-xl sm:rounded-2xl object-cover object-top w-full mt-8 sm:mt-12"
               />
             </div>
@@ -43,11 +43,12 @@ export function AboutSection() {
           {/* Content */}
           <AnimateIn variant="slide-right" delay={120} className="lg:col-span-7 order-1 lg:order-2">
             <p className="text-[15px] sm:text-[17px] lg:text-[18px] leading-[1.65] font-medium text-gray-900 max-w-xl">
-              I am a UI/UX designer and software developer who bridges product
-              thinking, visual design, and full-stack engineering to ship
-              production-ready products. From discovery and roadmapping to design
-              systems, Next.js frontends, and AI-native workflows, I own the full
-              lifecycle.
+              I started as a print designer in Lagos, making flyers in CorelDRAW
+              for churches and small businesses. That taught me that design is
+              about communication. Today I design products and build them: a
+              membership platform for a Lagos running club, a Webflow rebuild for
+              a regulated crypto platform, a Shopify store, and a Flutter game
+              that teaches Yoruba.
             </p>
 
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">

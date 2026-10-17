@@ -7,7 +7,12 @@
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "abiolababatunde.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "abiolababatunde.com"
+        }
+      ],
       "destination": "https://www.abiolababatunde.com/:path*",
       "permanent": true
     }
@@ -40,6 +45,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  ]
 }
