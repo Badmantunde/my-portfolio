@@ -416,7 +416,8 @@ function sitemapMeta(path: string): { changefreq: string; priority: string } {
     path === '/work/asa-oro' ||
     path === '/work/valgo' ||
     path === '/writing/asa-oro-yoruba-word-game-flutter-case-study' ||
-    path === '/writing/hire-webflow-developer'
+    path === '/writing/hire-webflow-developer' ||
+    path === '/writing/top-mobile-app-developers-lagos'
   ) {
     return { changefreq: 'monthly', priority: '0.8' }
   }

@@ -1,3 +1,4 @@
+import { lagosAppDevelopersArticle } from './article-lagos-app-developers'
 import { seoArticles } from './article-seo'
 import type { Article, ArticleImage } from './article-types'
 export type { Article, ArticleCta, ArticleCtaLink, ArticleImage, ArticleSection } from './article-types'
@@ -452,6 +453,7 @@ const coreArticles: Article[] = [
 ]
 
 export const articles: Article[] = [
+  lagosAppDevelopersArticle,
   coreArticles[0],
   ...seoArticles,
   ...coreArticles.slice(1),

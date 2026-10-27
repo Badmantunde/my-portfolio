@@ -50,9 +50,12 @@ export function ArticlePage() {
               <section key={section.heading ?? section.paragraphs[0] ?? i} className="relative mb-12">
                 {section.heading && (
                   <h2 data-reveal className="mb-5 text-2xl font-normal tracking-tight text-bp-text md:text-[28px]">
-                    <span aria-hidden="true" className="bp-label bp-num mr-4 align-middle text-bp-cyan">
-                      §{++headingNumber}
-                    </span>
+                    {/* Headings that carry their own number (e.g. "2. Name") skip the section marker. */}
+                    {!/^\d+\./.test(section.heading) && (
+                      <span aria-hidden="true" className="bp-label bp-num mr-4 align-middle text-bp-cyan">
+                        §{++headingNumber}
+                      </span>
+                    )}
                     {section.heading}
                   </h2>
                 )}
