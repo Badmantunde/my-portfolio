@@ -9,6 +9,13 @@ export interface Project {
   tags: string[]
   tools: string[]
   image: string
+  /** Social preview image when `image` is a format link previews can't show (e.g. AVIF) */
+  ogImage?: string
+  /** Known pixel size of `image`, used for og:image tags */
+  imageWidth?: number
+  imageHeight?: number
+  /** Overrides the default "<title>: <subtitle> | Abiola Babatunde" page title */
+  seoTitle?: string
   video?: string
   liveUrl?: string
   contraUrl?: string
@@ -29,6 +36,81 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'shight-running-club',
+    title: 'Shight Running Club',
+    subtitle: 'Community Platform',
+    description:
+      'Live running community platform for Lagos : membership, events, and community features built with Next.js and Supabase.',
+    type: 'live',
+    tags: ['Next.js', 'Supabase', 'Product Engineering', 'Community'],
+    tools: ['Next.js', 'Supabase', 'Figma'],
+    image: '/images/shight-running-club.png',
+    liveUrl: 'https://www.shightrunningclub.com/',
+    year: '2025',
+    role: 'Product Designer & Developer',
+    seoTitle: 'Shight Running Club: Designing and Building a Membership Platform',
+    seoIntro:
+      'How I designed and built the membership platform for a Lagos running club: tiered memberships, weekly run sign-ups and events, built with Next.js and Supabase.',
+    overview:
+      'Shight Running Club is one of the fastest-growing running communities in Lagos. I designed and engineered the full platform : from membership tiers and event management to community storytelling.',
+    challenge:
+      'The club needed a digital home that drives consistency, handles membership sign-ups, showcases events, and reflects the energy of their in-person community : not just another fitness landing page.',
+    approach: [
+      'Defined product architecture for events, membership, and community content',
+      'Designed conversion-focused UX for free and premium membership tiers',
+      'Built frontend with Next.js and backend with Supabase for auth and data',
+      'Implemented responsive layouts optimized for mobile-first Lagos audiences',
+    ],
+    results: [
+      'Live production platform serving 200+ active runners',
+      'Membership system with free and premium tiers',
+      'Event pages driving weekly group run sign-ups across Lagos',
+    ],
+    aspect: 'aspect-[4/3]',
+    bg: 'bg-[#1a1a1a]',
+    featured: true,
+  },
+  {
+    slug: 'just-what-you-need',
+    title: 'Just What You Need (JWYN)',
+    subtitle: 'Shopify Store Design & Development',
+    description:
+      'Shopify store for a Lagos lifestyle retailer: curated ergonomic, home, and travel products, naira pricing, need-based categories, and a short path to checkout.',
+    type: 'live',
+    tags: ['Shopify', 'Ecommerce', 'UI/UX', 'Conversion'],
+    tools: ['Shopify'],
+    image:
+      'https://www.shopjustwhatyouneed.com/cdn/shop/t/3/assets/og-image.png?v=72783028609985956181789928368',
+    imageWidth: 1200,
+    imageHeight: 630,
+    liveUrl: 'https://www.shopjustwhatyouneed.com/',
+    year: '2026',
+    role: 'Shopify Designer & Developer',
+    seoTitle: 'JWYN: Shopify Store Design and Development for a Lagos Retailer',
+    seoIntro:
+      'Shopify store design and development for JWYN, a Lagos retailer of curated everyday products, built on a customised Dawn theme with naira pricing and nationwide delivery.',
+    overview:
+      'Just What You Need (JWYN) is a Lagos-based online store selling practical, hand-picked products for everyday living, from ergonomic lumbar supports to kitchen and travel essentials. I designed and built the store on Shopify, customising the Dawn theme into a curated shopping experience for Nigerian customers.',
+    challenge:
+      'JWYN sells a wide mix of products that do not fit one obvious category. The store had to help shoppers find the right item by need, build trust for a newer brand around payment, delivery, and returns, and keep checkout quick on mobile.',
+    approach: [
+      'Organised the catalogue by need (Support, Home & Kitchen, Home Office, Travel, Gifts) instead of by product type',
+      'Put trust answers on the homepage: card, transfer, and USSD payment, Lagos and nationwide delivery times, and 7-day returns',
+      'Added a three-step "how it works" flow and low-stock indicators to support purchase decisions',
+      'Customised Shopify Dawn theme sections for merchandising, product highlights, and customer reviews',
+      'Set up a blog for product guides and organic search',
+    ],
+    results: [
+      'Live Shopify store at shopjustwhatyouneed.com, selling in naira',
+      'Need-based navigation across 9+ product categories',
+      'Payment, delivery, and returns information built into the homepage and footer',
+      'Blog in place for product guides and search traffic',
+    ],
+    aspect: 'aspect-[4/3]',
+    bg: 'bg-[#f4efe6]',
+    featured: true,
+  },
   {
     slug: 'asa-oro',
     title: 'Aṣá Ọ̀rọ̀',
@@ -51,12 +133,13 @@ export const projects: Project[] = [
     ],
     year: '2026',
     role: 'Product Designer & Flutter Developer',
+    seoTitle: 'Aṣá Ọ̀rọ̀: Designing and Building a Yoruba Word Game in Flutter',
     seoIntro:
       'Figma to Flutter case study for a Yoruba word game helping preserve an indigenous language through educational mobile gameplay, African-inspired UI, and cross-platform delivery.',
     overview:
-      'Aṣá Ọ̀rọ̀ is a mobile word game built to make learning Yoruba feel like play—not homework. Across Africa, many younger people understand their ancestral language but struggle to speak, read, or use it confidently. I designed the full experience in Figma, then rebuilt it in Flutter for iOS and Android from a single codebase: interactive puzzles, progressive levels, daily challenges, score tracking, hearts, and offline-ready gameplay wrapped in warm, culturally rooted visuals.',
+      'Aṣá Ọ̀rọ̀ is a mobile word game built to make learning Yoruba feel like play, not homework. Across Africa, many younger people understand their ancestral language but struggle to speak, read, or use it confidently. I designed the full experience in Figma, then rebuilt it in Flutter for iOS and Android from a single codebase: interactive puzzles, progressive levels, daily challenges, score tracking, hearts, and offline-ready gameplay wrapped in warm, culturally rooted visuals.',
     challenge:
-      'Indigenous languages are fading not from lack of interest, but from lack of daily practice. Most language tools feel like textbooks. African languages are also underrepresented in educational apps. The product needed to feel modern and fun for today’s generation while honoring Yoruba heritage through typography, color, and visual storytelling—then ship as a polished cross-platform app without separate iOS and Android builds.',
+      'Indigenous languages are fading not from lack of interest, but from lack of daily practice. Most language tools feel like textbooks. African languages are also underrepresented in educational apps. The product needed to feel modern and fun for today’s generation while honoring Yoruba heritage through typography, color, and visual storytelling, then ship as a polished cross-platform app without separate iOS and Android builds.',
     approach: [
       'Explored multiple Figma directions with African-inspired palettes, friendly typography, and cartoon-style illustrations',
       'Designed a carved-wood logo and onboarding flow that introduces the mission before the first puzzle',
@@ -116,7 +199,45 @@ export const projects: Project[] = [
     ],
     aspect: 'aspect-[4/3]',
     bg: 'bg-[#0f0f0f]',
-    featured: true,
+  },
+  {
+    slug: 'rabi-coin',
+    title: 'RabiCoin',
+    subtitle: 'DeFi Wallet & Staking App',
+    description:
+      'Web3 mobile UI for a crypto wallet : simplifying staking, lending, and multi-wallet connections into an approachable DeFi experience.',
+    type: 'case-study',
+    tags: ['Product Design', 'Mobile UI', 'Web3', 'DeFi'],
+    tools: ['Figma', 'Jitter'],
+    image:
+      'https://media.contra.com/image/upload/fl_progressive/q_auto:best,w_1200/pxhq0mi8lfoujj11dgmf.webp',
+    video:
+      'https://media.contra.com/video/upload/fl_progressive/q_auto:best,w_800/bwqdsaxvuaps8uc1mmnq.mp4',
+    contraUrl:
+      'https://contra.com/p/YlPoMcsM-rabi-coin-de-fi-wallet-and-staking-app-ui-design',
+    figmaUrl:
+      'https://www.figma.com/proto/gXsDv31e9GNFMgQI0RCtA3/Web3-Starts-here',
+    year: '2024',
+    role: 'Product & UI Designer',
+    seoIntro:
+      'Product design and mobile UI/UX for a DeFi wallet app, simplifying staking, lending, and crypto onboarding for new users.',
+    overview:
+      'RabiCoin is a DeFi wallet and staking application giving users control over digital assets with intuitive access to lending, borrowing, staking, and transaction management.',
+    challenge:
+      'DeFi interfaces overwhelm first-time users. The product needed to feel professional yet approachable : building trust for newcomers while providing power for advanced crypto investors.',
+    approach: [
+      'Wireframed core flows: wallet connection, asset overview, DeFi actions, and staking',
+      'Built a token-based design system in Figma for typography, color, and spacing',
+      'Used green/red risk cues for APY, fees, and lock-up transparency',
+      'Designed scalable card-based layouts for dense financial data',
+    ],
+    results: [
+      'Simplified onboarding with MetaMask, TrustWallet, and WalletConnect support',
+      'Clear asset views and transaction histories that build user confidence',
+      'Full UI system delivered in three weeks, ready for development handoff',
+    ],
+    aspect: 'aspect-square',
+    bg: 'bg-[#0f1419]',
   },
   {
     slug: 'eclat-studio-paris',
@@ -129,6 +250,7 @@ export const projects: Project[] = [
     tools: ['Figma', 'ChatGPT'],
     image:
       'https://media.contra.com/image/upload/c_fill,w_1200/wc66egss8owjb3zt8x9s.avif',
+    ogImage: 'https://media.contra.com/image/upload/c_fill,w_1200/wc66egss8owjb3zt8x9s.jpg',
     contraUrl:
       'https://contra.com/p/OEkmlkQO-eclat-studio-paris-website-or-uiux-design',
     behanceUrl:
@@ -138,7 +260,7 @@ export const projects: Project[] = [
     seoIntro:
       'UI/UX design and website design for a luxury beauty studio, with editorial layouts and conversion-focused service discovery.',
     overview:
-      'Éclat Studio Paris is a luxury beauty and aesthetics studio. I designed a full website experience that balances editorial elegance with clear service discovery : helping the brand dominate their category online.',
+      'Éclat Studio Paris is a luxury beauty and aesthetics studio. I designed a full website experience that balances editorial elegance with clear service discovery, so the website feels as premium as the studio itself.',
     challenge:
       'The studio needed a digital presence that matched their in-person premium experience. The site had to showcase services, build trust, and convert high-intent visitors without feeling like a generic salon template.',
     approach: [
@@ -190,119 +312,6 @@ export const projects: Project[] = [
     ],
     aspect: 'aspect-[4/3]',
     bg: 'bg-[#1a2e1a]',
-    featured: true,
-  },
-  {
-    slug: 'rabi-coin',
-    title: 'RabiCoin',
-    subtitle: 'DeFi Wallet & Staking App',
-    description:
-      'Web3 mobile UI for a crypto wallet : simplifying staking, lending, and multi-wallet connections into an approachable DeFi experience.',
-    type: 'case-study',
-    tags: ['Product Design', 'Mobile UI', 'Web3', 'DeFi'],
-    tools: ['Figma', 'Jitter'],
-    image:
-      'https://media.contra.com/image/upload/fl_progressive/q_auto:best,w_1200/pxhq0mi8lfoujj11dgmf.webp',
-    video:
-      'https://media.contra.com/video/upload/fl_progressive/q_auto:best,w_800/bwqdsaxvuaps8uc1mmnq.mp4',
-    contraUrl:
-      'https://contra.com/p/YlPoMcsM-rabi-coin-de-fi-wallet-and-staking-app-ui-design',
-    figmaUrl:
-      'https://www.figma.com/proto/gXsDv31e9GNFMgQI0RCtA3/Web3-Starts-here',
-    year: '2024',
-    role: 'Product & UI Designer',
-    seoIntro:
-      'Product design and mobile UI/UX for a DeFi wallet app, simplifying staking, lending, and crypto onboarding for new users.',
-    overview:
-      'RabiCoin is a DeFi wallet and staking application giving users control over digital assets with intuitive access to lending, borrowing, staking, and transaction management.',
-    challenge:
-      'DeFi interfaces overwhelm first-time users. The product needed to feel professional yet approachable : building trust for newcomers while providing power for advanced crypto investors.',
-    approach: [
-      'Wireframed core flows: wallet connection, asset overview, DeFi actions, and staking',
-      'Built a token-based design system in Figma for typography, color, and spacing',
-      'Used green/red risk cues for APY, fees, and lock-up transparency',
-      'Designed scalable card-based layouts for dense financial data',
-    ],
-    results: [
-      'Simplified onboarding with MetaMask, TrustWallet, and WalletConnect support',
-      'Clear asset views and transaction histories that build user confidence',
-      'Full UI system delivered in three weeks, ready for development handoff',
-    ],
-    aspect: 'aspect-square',
-    bg: 'bg-[#0f1419]',
-  },
-  {
-    slug: 'shight-running-club',
-    title: 'Shight Running Club',
-    subtitle: 'Community Platform',
-    description:
-      'Live running community platform for Lagos : membership, events, and community features built with Next.js and Supabase.',
-    type: 'live',
-    tags: ['Next.js', 'Supabase', 'Product Engineering', 'Community'],
-    tools: ['Next.js', 'Supabase', 'Figma'],
-    image: '/images/shight-running-club.png',
-    liveUrl: 'https://www.shightrunningclub.com/',
-    year: '2025',
-    role: 'Product Engineer',
-    seoIntro:
-      'Software development and product design for a live community platform in Lagos, built with Next.js, Supabase, and conversion-focused UX.',
-    overview:
-      'Shight Running Club is one of the fastest-growing running communities in Lagos. I designed and engineered the full platform : from membership tiers and event management to community storytelling.',
-    challenge:
-      'The club needed a digital home that drives consistency, handles membership sign-ups, showcases events, and reflects the energy of their in-person community : not just another fitness landing page.',
-    approach: [
-      'Defined product architecture for events, membership, and community content',
-      'Designed conversion-focused UX for free and premium membership tiers',
-      'Built frontend with Next.js and backend with Supabase for auth and data',
-      'Implemented responsive layouts optimized for mobile-first Lagos audiences',
-    ],
-    results: [
-      'Live production platform serving 200+ active runners',
-      'Membership system with free and premium tiers',
-      'Event pages driving weekly group run sign-ups across Lagos',
-    ],
-    aspect: 'aspect-[4/3]',
-    bg: 'bg-[#1a1a1a]',
-    featured: true,
-  },
-  {
-    slug: 'crypto-dispensers',
-    title: 'CryptoDispensers',
-    subtitle: 'Fintech Website Redesign',
-    description:
-      'Full website redesign for a Bitcoin access platform : Figma to Webflow build supporting 195+ crypto assets and multiple purchase routes.',
-    type: 'live',
-    tags: ['Webflow', 'Figma', 'Fintech', 'Conversion'],
-    tools: ['Figma', 'Webflow', 'ChatGPT'],
-    image:
-      'https://media.contra.com/image/upload/c_fill,w_1200/yfxu0tilnclajh4ut6lb.avif',
-    video:
-      'https://media.contra.com/video/upload/fl_progressive/w_800/zo4fsgm4vobv2ovmrpjy.mp4',
-    liveUrl: 'https://cryptodispensers.com/',
-    contraUrl:
-      'https://contra.com/p/WvENEe3A-crypto-dispensers-website-redesign-or-figma-to-webflow',
-    year: '2025',
-    role: 'Product Designer & Webflow Developer',
-    seoIntro:
-      'Webflow development and website design for a regulated fintech platform, from Figma redesign to a live, conversion-focused marketing site.',
-    overview:
-      'CryptoDispensers is a FinCEN-registered Bitcoin and crypto access platform. I redesigned and rebuilt the site in Webflow : structuring complex purchase flows, education content, and trust signals for a regulated fintech audience.',
-    challenge:
-      'The platform offers cash loading, cards, ACH, wire, and crypto swap routes : each with different limits, fees, and compliance requirements. The redesign had to simplify this complexity without losing regulatory accuracy.',
-    approach: [
-      'Audited existing IA and mapped multi-route purchase journeys',
-      'Redesigned high-fidelity screens in Figma with conversion-focused hierarchy',
-      'Built responsive Webflow site with CMS for education and support content',
-      'Structured trust signals: SOC 2, FinCEN registration, and customer reviews',
-    ],
-    results: [
-      'Live production site at cryptodispensers.com',
-      'Clear guided flows for cash, card, ACH, and wire purchase routes',
-      'Scalable Webflow CMS for education hub and support content',
-    ],
-    aspect: 'aspect-[329/246]',
-    bg: 'bg-[#0a1628]',
-    featured: true,
   },
 ]
 

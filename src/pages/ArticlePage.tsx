@@ -1,182 +1,166 @@
+import { useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { getArticle } from '../data/articles'
-import { getProject } from '../data/projects'
-import { AccentButton } from '../components/AccentButton'
-import { AnimateIn } from '../components/AnimateIn'
-import { SECTION_PY } from '../lib/section'
+import { articles, getArticle } from '../data/articles'
+import { getWorkProject } from '../data/work'
+import { BlueprintGrid } from '../blueprint/components/BlueprintGrid'
+import { BlueprintSectionLabel } from '../blueprint/components/BlueprintSectionLabel'
+import { ContactCta } from '../blueprint/components/ContactCta'
+import { SHEET, useBlueprintMotion } from '../blueprint/lib/motion'
+import { ArticleList } from '../blueprint/writing/ArticleList'
+import { NotFoundPage } from './NotFoundPage'
+
+const MORE_ARTICLES = 3
 
 export function ArticlePage() {
-  const { slug } = useParams<{ slug: string }>()
-  const article = slug ? getArticle(slug) : undefined
-  const relatedProject = article?.relatedProjectSlug
-    ? getProject(article.relatedProjectSlug)
-    : undefined
+  const { slug = '' } = useParams()
+  const article = getArticle(slug)
+  const bodyRef = useRef<HTMLDivElement>(null)
+  useBlueprintMotion(bodyRef)
 
-  if (!article) {
-    return (
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 py-32 text-center">
-        <h1 className="text-2xl font-medium text-gray-900">Article not found</h1>
-        <Link to="/writing" className="mt-4 inline-block text-[#32C876] text-sm font-medium">
-          Back to writing
-        </Link>
-      </div>
-    )
-  }
+  if (!article) return <NotFoundPage />
+
+  const related = article.relatedProjectSlug ? getWorkProject(article.relatedProjectSlug) : undefined
+  const position = articles.indexOf(article)
+  const more = [...articles.slice(position + 1), ...articles.slice(0, position)].slice(0, MORE_ARTICLES)
+  let headingNumber = 0
 
   return (
     <>
-      <div className="bg-[#EDF0ED] pt-28 sm:pt-32 pb-8 sm:pb-10">
-        <div className="max-w-[800px] mx-auto px-5 sm:px-8 lg:px-12">
-          <AnimateIn immediate variant="fade-in" delay={60}>
-            <Link
-              to="/writing"
-              className="inline-flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#32C876] transition-colors mb-8"
-            >
-              <ArrowLeft size={14} />
-              All articles
-            </Link>
-          </AnimateIn>
-
-          <AnimateIn immediate variant="fade-up" delay={140}>
-            <span className="inline-block text-[11px] font-medium text-[#28B866] bg-white border border-gray-200 rounded-full px-3 py-1 mb-4">
-              {article.category}
-            </span>
-
-            <h1 className="text-[clamp(2rem,5vw,3rem)] font-medium leading-[1.1] tracking-[-0.03em] text-gray-900">
-              {article.title}
-            </h1>
-
-            <p className="mt-4 text-[16px] sm:text-[17px] leading-[1.6] text-gray-600">
-              {article.excerpt}
-            </p>
-
-            <p className="mt-5 text-[13px] text-gray-500">
+      <header className="relative overflow-hidden pb-14 pt-32 md:pb-20 md:pt-44">
+        <BlueprintGrid className="opacity-70" />
+        <div className={SHEET}>
+          <BlueprintSectionLabel index={`W.${String(position + 1).padStart(2, '0')}`} title={article.category} meta={`${article.date} · ${article.readTime} read`} />
+          <div className="mt-12 max-w-4xl md:mt-16">
+            <h1 className="bp-heading text-4xl text-bp-text sm:text-5xl lg:text-[64px]">{article.title}</h1>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-bp-muted">{article.excerpt}</p>
+            <p className="bp-label bp-num mt-6 sm:hidden">
               {article.date} · {article.readTime} read
             </p>
-          </AnimateIn>
+            <Link to="/writing" className="bp-label mt-10 inline-flex items-center gap-2 text-bp-text/80 transition-colors hover:text-bp-cyan">
+              <span aria-hidden="true">←</span> All articles
+            </Link>
+          </div>
         </div>
-      </div>
+      </header>
 
-      <article className={`bg-white ${SECTION_PY}`}>
-        <div className="max-w-[800px] mx-auto px-5 sm:px-8 lg:px-12 space-y-10">
-          {article.sections.map((section, i) => (
-            <AnimateIn key={section.heading ?? section.paragraphs[0]} variant="fade-up" delay={i * 60} as="section">
-              {section.heading && (
-                <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 mb-4 tracking-[-0.02em]">
-                  {section.heading}
-                </h2>
-              )}
-              <div className="space-y-4">
-                {section.paragraphs.map((paragraph) => (
-                  <p
-                    key={paragraph}
-                    className="text-[15px] sm:text-[16px] leading-[1.75] text-gray-700"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-                {section.listItems && (
-                  <ul className="space-y-2 pl-1">
-                    {section.listItems.map((item) => (
-                      <li
-                        key={item}
-                        className="flex gap-3 text-[15px] sm:text-[16px] leading-[1.75] text-gray-700"
-                      >
-                        <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#3DDB84] mt-2.5" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {section.image && (
-                  <figure className="pt-2">
-                    <img
-                      src={section.image.src}
-                      alt={section.image.alt}
-                      className="w-full rounded-2xl border border-gray-200"
-                      loading="lazy"
-                    />
-                    {section.image.caption && (
-                      <figcaption className="mt-3 text-[13px] text-gray-500 text-center">
-                        {section.image.caption}
-                      </figcaption>
+      <article className={`${SHEET} pb-24 md:pb-32`}>
+        <div ref={bodyRef} className="grid lg:grid-cols-12">
+          <div className="border-t border-bp-cyan/30 pt-12 lg:col-span-8 lg:col-start-3">
+            {article.sections.map((section, i) => (
+              <section key={section.heading ?? section.paragraphs[0] ?? i} className="relative mb-12">
+                {section.heading && (
+                  <h2 data-reveal className="mb-5 text-2xl font-normal tracking-tight text-bp-text md:text-[28px]">
+                    {/* Headings that carry their own number (e.g. "2. Name") skip the section marker. */}
+                    {!/^\d+\./.test(section.heading) && (
+                      <span aria-hidden="true" className="bp-label bp-num mr-4 align-middle text-bp-cyan">
+                        §{++headingNumber}
+                      </span>
                     )}
-                  </figure>
+                    {section.heading}
+                  </h2>
                 )}
-              </div>
-            </AnimateIn>
-          ))}
+                <div className="space-y-5">
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="text-[17px] leading-[1.8] text-bp-text/80">
+                      {paragraph}
+                    </p>
+                  ))}
+                  {section.listItems && (
+                    <ul className="border-t border-bp-line">
+                      {section.listItems.map((item) => (
+                        <li key={item} className="flex gap-4 border-b border-bp-line py-3 text-[16px] leading-relaxed text-bp-text/85">
+                          <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 bg-bp-cyan" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {section.image && (
+                    <figure className="pt-3">
+                      <div className="border border-bp-line bg-bp-deep p-2">
+                        <img
+                          src={section.image.src}
+                          alt={section.image.alt}
+                          width={section.image.width}
+                          height={section.image.height}
+                          loading="lazy"
+                          decoding="async"
+                          className="h-auto w-full"
+                        />
+                      </div>
+                      {section.image.caption && (
+                        <figcaption className="bp-label mt-3 text-[9.5px]">{section.image.caption}</figcaption>
+                      )}
+                    </figure>
+                  )}
+                </div>
+              </section>
+            ))}
 
-          {article.cta && (
-            <AnimateIn variant="fade-up" as="section" className="pt-6">
-              <div className="rounded-2xl bg-[#EDF0ED] border border-gray-200 px-6 sm:px-8 py-8 sm:py-10">
-                <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 mb-4 tracking-[-0.02em]">
-                  {article.cta.heading}
-                </h2>
-                <div className="space-y-4">
+            {article.cta && (
+              <aside className="relative mt-16 border border-bp-cyan/40 bg-bp-deep/40 px-6 py-10 md:px-10">
+                <span aria-hidden="true" className="absolute -left-px -top-px h-2.5 w-2.5 border-l border-t border-bp-cyan" />
+                <span aria-hidden="true" className="absolute -bottom-px -right-px h-2.5 w-2.5 border-b border-r border-bp-cyan" />
+                <h2 className="text-2xl font-normal tracking-tight text-bp-text">{article.cta.heading}</h2>
+                <div className="mt-5 space-y-4">
                   {article.cta.paragraphs.map((paragraph) => (
-                    <p
-                      key={paragraph}
-                      className="text-[15px] sm:text-[16px] leading-[1.75] text-gray-700"
-                    >
+                    <p key={paragraph} className="text-[16px] leading-relaxed text-bp-muted">
                       {paragraph}
                     </p>
                   ))}
                 </div>
-                {article.cta.listSections?.map((listSection) => (
-                  <div key={listSection.heading} className="mt-6">
-                    <h3 className="text-[15px] font-semibold text-gray-900 mb-3">
-                      {listSection.heading}
-                    </h3>
-                    <ul className="space-y-2">
-                      {listSection.items.map((item) => (
-                        <li
-                          key={item}
-                          className="flex gap-3 text-[15px] leading-[1.65] text-gray-700"
-                        >
-                          <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#3DDB84] mt-2" />
+                {article.cta.listSections?.map((list) => (
+                  <div key={list.heading} className="mt-6">
+                    <h3 className="bp-label text-bp-cyan">{list.heading}</h3>
+                    <ul className="mt-3 space-y-2">
+                      {list.items.map((item) => (
+                        <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-bp-text/85">
+                          <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-bp-cyan" />
                           {item}
                         </li>
                       ))}
                     </ul>
                   </div>
                 ))}
-                <p className="mt-6 text-[15px] font-medium text-gray-900">
-                  Ready to discuss your project?
-                </p>
-                <div className="mt-4 flex flex-col sm:flex-row flex-wrap gap-3">
+                <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
                   {article.cta.links.map((link) => (
-                    <AccentButton key={link.text} text={link.text} href={link.href} />
+                    <Link key={link.text} to={link.href} className="bp-label group inline-flex items-center gap-2 text-bp-cyan">
+                      {link.text} <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+                    </Link>
                   ))}
                 </div>
-              </div>
-            </AnimateIn>
-          )}
+              </aside>
+            )}
 
-          {relatedProject && (
-            <AnimateIn variant="fade-up" as="section" className="pt-2">
+            {related && (
               <Link
-                to={`/work/${relatedProject.slug}`}
-                className="group flex items-center justify-between gap-4 rounded-2xl border border-gray-200 bg-[#F5F5F5] px-6 py-5 hover:border-[#3DDB84]/40 hover:bg-[#EDF5F0] transition-colors"
+                to={`/work/${related.slug}`}
+                className="group mt-10 flex items-center justify-between gap-6 border-y border-bp-line py-6 transition-colors hover:text-bp-cyan"
               >
-                <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-wider text-[#28B866] mb-1">
-                    Related case study
-                  </p>
-                  <p className="text-[15px] sm:text-[16px] font-medium text-gray-900">
-                    View the {relatedProject.title} project screens and process
-                  </p>
-                </div>
-                <ArrowRight
-                  size={18}
-                  className="shrink-0 text-[#32C876] transition-transform group-hover:translate-x-0.5"
-                />
+                <span>
+                  <span className="bp-label block text-bp-cyan">Related case study</span>
+                  <span className="mt-2 block text-lg text-bp-text transition-colors group-hover:text-bp-cyan">
+                    {related.title}: {related.category}
+                  </span>
+                </span>
+                <span aria-hidden="true" className="text-bp-cyan transition-transform group-hover:translate-x-1">→</span>
               </Link>
-            </AnimateIn>
-          )}
+            )}
+          </div>
         </div>
       </article>
+
+      <section aria-labelledby="bp-more-title" className="border-t border-bp-line bg-bp-deep/25 py-24 md:py-32">
+        <div className={SHEET}>
+          <BlueprintSectionLabel index="W" title="Keep reading" />
+          <h2 id="bp-more-title" className="bp-heading mt-10 text-4xl text-bp-text md:text-5xl">
+            More from the drawing board.
+          </h2>
+          <ArticleList articles={more} headingLevel="h3" className="mt-12" />
+        </div>
+      </section>
+
+      <ContactCta />
     </>
   )
 }

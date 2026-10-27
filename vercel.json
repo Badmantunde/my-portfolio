@@ -1,13 +1,23 @@
 {
   "redirects": [
     {
+      "source": "/work/crypto-dispensers",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "abiolababatunde.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "abiolababatunde.com"
+        }
+      ],
       "destination": "https://www.abiolababatunde.com/:path*",
       "permanent": true
     }
@@ -40,6 +50,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  ]
 }

@@ -6,44 +6,37 @@ export const siteUrl = import.meta.env?.VITE_SITE_URL ?? 'https://www.abiolababa
 
 export const site = {
   name: 'Abiola Babatunde',
-  title: 'Abiola Babatunde | UI/UX Designer & Shopify Developer',
-  tagline: 'Product Engineer',
+  title: 'Abiola Babatunde | Product Designer Who Builds | Lagos',
+  tagline: 'Product Designer',
   locale: 'en_NG',
   language: 'en',
   location: 'Lagos, Nigeria',
   email: contact.email,
-  ogImage: '/og-image.png',
-  ogImageWidth: 1024,
-  ogImageHeight: 584,
+  headshot: '/images/abiola-headshot.png',
+  ogImage: '/og-image.jpg',
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   ogImageAlt:
-    'Abiola Babatunde portfolio: Product Engineer offering UI/UX design, software development, Webflow, WordPress, and Shopify website design in Lagos.',
+    'Abiola Babatunde drawn as a blueprint: product designer, Webflow developer and mobile app developer.',
   twitterHandle: '@badmantunde',
   sameAs: socialLinks.map((link) => link.href),
   keywords: [
-    'product design',
     'product designer',
-    'software developer',
-    'website designer',
-    'UI/UX designer',
-    'UX designer',
-    'Webflow developer',
-    'WordPress developer',
-    'Shopify developer',
-    'freelance Shopify developer',
-    'product engineer',
-    'Lagos web designer',
-    'Nigeria UI designer',
-    'Figma designer',
-    'Next.js developer',
     'freelance product designer',
-    'hire Webflow developer',
-    'hire WordPress developer',
-    'hire Shopify developer',
+    'product designer who codes',
+    'UI/UX designer',
+    'Figma to Webflow',
+    'Webflow developer',
+    'Shopify store design',
+    'freelance Shopify developer',
+    'Flutter app design',
+    'Next.js developer',
+    'product designer Lagos',
   ],
 } as const
 
 export const defaultDescription =
-  'Hire Abiola Babatunde for product design, UI/UX design, software development, and website design. Expert Webflow, WordPress, and freelance Shopify developer in Lagos, Nigeria. Available for freelance and full-time roles.'
+  'Freelance product designer in Lagos who designs in Figma and builds in Webflow, Shopify, Next.js and Flutter. Case studies: ValGo, Shight Running Club, JWYN and Aṣá Ọ̀rọ̀.'
 
 /** Shared PostalAddress for Person and LocalBusiness JSON-LD */
 export const postalAddress = {

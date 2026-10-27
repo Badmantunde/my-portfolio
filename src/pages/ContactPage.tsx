@@ -1,105 +1,101 @@
-import { Mail, MapPin, MessageCircle } from 'lucide-react'
-import { PageHeader } from '../components/PageHeader'
-import { ContactForm } from '../components/ContactForm'
-import { AnimateIn } from '../components/AnimateIn'
-import { SECTION_PY } from '../lib/section'
+import { useRef } from 'react'
+import { blueprintContact } from '../data/blueprint'
 import { contact } from '../data/contact'
+import { audiences } from '../data/practice'
 import { services } from '../data/services'
-
-const audiences = [
-  'Startups launching an MVP or first product version',
-  'Founders who need one person across design and development',
-  'Product teams needing UI/UX design or frontend engineering support',
-  'Businesses upgrading a marketing site, Webflow build, or WordPress site',
-  'Brands needing a freelance Shopify developer for store builds or redesigns',
-  'Fintech, SaaS, community, and AgriTech products',
-]
+import { site } from '../data/site'
+import { BlueprintPageHeader } from '../blueprint/components/BlueprintPageHeader'
+import { CoordinateMarker } from '../blueprint/components/CoordinateMarker'
+import { ContactForm } from '../blueprint/contact/ContactForm'
+import { SHEET, useBlueprintMotion } from '../blueprint/lib/motion'
 
 export function ContactPage() {
+  const ref = useRef<HTMLElement>(null)
+  useBlueprintMotion(ref, { start: 'top 80%', end: 'center 50%' })
+
+  const channels = [
+    { label: 'Email', value: contact.email, href: `mailto:${contact.email}`, external: false },
+    { label: 'WhatsApp', value: contact.whatsapp.display, href: contact.whatsapp.href, external: true },
+    ...blueprintContact.links
+      .filter((link) => link.label !== 'Email' && link.label !== 'WhatsApp')
+      .map((link) => ({
+        label: link.label,
+        value: link.href.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''),
+        href: link.href,
+        external: true,
+      })),
+  ]
+
   return (
     <>
-      <PageHeader
+      <BlueprintPageHeader
+        index="06"
         label="Contact"
-        title="Hire a product designer, developer, or website designer"
-        description="Based in Lagos, Nigeria and available for remote work worldwide. Tell me about your product, timeline, and goals. I will reply with a clear recommendation on scope and next steps."
+        meta="New project"
+        title="Let’s build something meaningful."
+        intro={
+          <p>
+            Based in Lagos, Nigeria and available for remote work worldwide. Tell me about your product, timeline, and
+            goals. I will reply with a clear recommendation on scope and next steps.
+          </p>
+        }
       />
 
-      <section className={`bg-white ${SECTION_PY}`}>
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-5 space-y-10">
-              <AnimateIn variant="fade-up">
-                <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 tracking-[-0.02em] mb-4">
-                  Who I help
-                </h2>
-                <p className="text-[15px] sm:text-[16px] leading-[1.7] text-gray-600 mb-5">
-                  I partner with founders, product managers, and small teams who
-                  need a UI/UX designer, software developer, or website designer
-                  they can trust to move fast without sacrificing quality.
-                </p>
-                <ul className="space-y-3">
-                  {audiences.map((item) => (
-                    <li
-                      key={item}
-                      className="flex gap-3 text-[14px] sm:text-[15px] leading-[1.6] text-gray-700"
-                    >
-                      <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#3DDB84] mt-2" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </AnimateIn>
+      <section ref={ref} aria-label="Contact" className={`${SHEET} pb-28 md:pb-40`}>
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-7">
+            <h2 className="bp-label text-bp-cyan">Send a message</h2>
+            <p className="mt-3 text-[15px] text-bp-muted">Tell me about your project and I will follow up with next steps.</p>
+            <div className="mt-10">
+              <ContactForm />
+            </div>
+          </div>
 
-              <AnimateIn variant="fade-up" delay={100}>
-                <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 tracking-[-0.02em] mb-4">
-                  What I build
-                </h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {services.map((service) => (
-                    <li
-                      key={service.title}
-                      className="text-[14px] font-medium text-gray-900 bg-[#F5F5F5] rounded-xl px-4 py-3"
-                    >
-                      {service.title}
-                    </li>
-                  ))}
-                </ul>
-              </AnimateIn>
-
-              <AnimateIn variant="fade-up" delay={160} className="space-y-5 pt-2">
-                <div className="flex items-start gap-3">
-                  <MapPin size={16} className="shrink-0 mt-0.5 text-[#32C876]" />
-                  <p className="text-[14px] sm:text-[15px] leading-[1.6] text-gray-600">
-                    Lagos, Nigeria. Available for remote projects across Africa,
-                    Europe, and North America.
-                  </p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail size={16} className="shrink-0 text-[#32C876]" />
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="text-[14px] sm:text-[15px] text-gray-700 hover:text-[#32C876] transition-colors"
-                  >
-                    {contact.email}
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MessageCircle size={16} className="shrink-0 text-[#32C876]" />
-                  <a
-                    href={contact.whatsapp.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[14px] sm:text-[15px] text-gray-700 hover:text-[#32C876] transition-colors"
-                  >
-                    {contact.whatsapp.display}
-                  </a>
-                </div>
-              </AnimateIn>
+          <div className="space-y-14 lg:col-span-4 lg:col-start-9">
+            <div>
+              <h2 className="bp-label text-bp-cyan">Direct lines</h2>
+              <dl className="mt-6 border-t border-bp-line">
+                {channels.map((channel) => (
+                  <div key={channel.label} className="grid grid-cols-[88px_1fr] items-baseline gap-4 border-b border-bp-line py-4">
+                    <dt className="bp-label text-[9.5px]">{channel.label}</dt>
+                    <dd className="min-w-0">
+                      <a
+                        href={channel.href}
+                        {...(channel.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        className="break-words text-[15px] text-bp-text transition-colors hover:text-bp-cyan"
+                      >
+                        {channel.value}
+                        {channel.external && <span className="sr-only"> (opens in a new tab)</span>}
+                      </a>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <CoordinateMarker className="mt-6" label={`${site.location} · Remote worldwide`} />
             </div>
 
-            <AnimateIn variant="slide-right" delay={120} className="lg:col-span-7">
-              <ContactForm />
-            </AnimateIn>
+            <div>
+              <h2 className="bp-label text-bp-cyan">Who I help</h2>
+              <ul className="mt-6 border-t border-bp-line">
+                {audiences.map((audience) => (
+                  <li key={audience} data-reveal className="flex gap-3 border-b border-bp-line py-3 text-[14px] leading-relaxed text-bp-text/85">
+                    <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-bp-cyan" />
+                    {audience}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h2 className="bp-label text-bp-cyan">What I build</h2>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {services.map((service) => (
+                  <li key={service.title} className="border border-bp-line px-3 py-2 text-[13px] text-bp-text/85">
+                    {service.title}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
