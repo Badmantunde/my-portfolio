@@ -1,92 +1,100 @@
-import { PageHeader } from '../components/PageHeader'
-import { AccentButton } from '../components/AccentButton'
-import { AnimateIn } from '../components/AnimateIn'
-import { SECTION_PY } from '../lib/section'
-
-const ABOUT_IMAGE = '/images/abiola-about.png'
-
-const storySections = [
-  {
-    heading: 'Where it started',
-    paragraphs: [
-      'Long before product engineering was a title I could put on a business card, I was a graphics designer on the streets of Lagos. CorelDRAW was my first real tool. I designed flyers for churches, posters for small businesses, and anything a client needed to stand out in a crowded market.',
-      'Those early projects taught me something that still shapes my work today: design is not decoration. It is communication. Every flyer had to grab attention in seconds, carry a clear message, and move people to act.',
-    ],
-  },
-  {
-    heading: 'Curiosity became the career',
-    paragraphs: [
-      'I did not set out to become a developer or product engineer. I followed curiosity. A question here, a tutorial there, then a side project, then another tool in the stack. Photoshop led to web design. Web design led to code. Code led to full products.',
-      'I kept stacking skills because the problems kept getting more interesting. Clients no longer just needed a flyer. They needed a landing page, then a platform, then something that could scale. I learned to meet those problems wherever they showed up.',
-      'That learning never stopped. It is still the core of how I work. New frameworks, new AI workflows, new product challenges. I treat every project as a chance to get sharper.',
-    ],
-  },
-  {
-    heading: 'What I do today',
-    paragraphs: [
-      'Today I work as a freelance product designer who also builds. I design in Figma and ship in Webflow, Shopify, Next.js, and Flutter. Recent client work includes a membership platform for a Lagos running club, a Webflow redesign for a regulated crypto platform, a Shopify store for a Lagos retailer, and a Flutter game that teaches Yoruba.',
-      'The thread from those Lagos street flyers to the products I ship now is the same: understand the audience, design with intention, and build something that works in the real world.',
-    ],
-  },
-  {
-    heading: 'Beyond the screen',
-    paragraphs: [
-      'Outside of work, I am a member of Lions Club International. Service and community have always mattered to me, whether that meant helping a local church promote an event or contributing to initiatives that improve lives beyond business.',
-      'That same mindset carries into how I collaborate with teams: show up, solve problems, and leave things better than you found them.',
-    ],
-  },
-]
+import { useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { about } from '../data/blueprint'
+import { aboutStory } from '../data/practice'
+import { BlueprintPageHeader } from '../blueprint/components/BlueprintPageHeader'
+import { ContactCta } from '../blueprint/components/ContactCta'
+import { CoordinateMarker } from '../blueprint/components/CoordinateMarker'
+import { DimensionLine } from '../blueprint/components/DimensionLine'
+import { SHEET, useBlueprintMotion } from '../blueprint/lib/motion'
+import { Disciplines } from '../blueprint/sections/Disciplines'
 
 export function AboutPage() {
+  const storyRef = useRef<HTMLElement>(null)
+  useBlueprintMotion(storyRef)
+
+  const record = [
+    { label: 'Based', value: about.location },
+    { label: 'Practice', value: 'Design & development' },
+    { label: 'Community', value: 'Lions Club International' },
+  ]
+
   return (
     <>
-      <PageHeader
+      <BlueprintPageHeader
+        index="03"
         label="About"
-        title="From Lagos print design to product design and code"
-        description="I started with CorelDRAW flyers in Lagos. Today I design digital products in Figma and build them in Webflow, Shopify, Next.js, and Flutter for clients in Nigeria and worldwide."
+        meta="Elevation · portrait"
+        title="From Lagos print design to product design and code."
+        intro={<p>{aboutStory.intro}</p>}
       />
 
-      <section className={`bg-white ${SECTION_PY}`}>
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-            <AnimateIn variant="slide-left" className="lg:col-span-5 lg:sticky lg:top-28">
-              <img
-                src={ABOUT_IMAGE}
-                alt="Portrait of Abiola Babatunde, product designer in Lagos"
-                className="w-full aspect-[3/4] rounded-2xl object-cover object-top"
-              />
-              <p className="mt-4 text-[13px] text-gray-500">
-                Lagos, Nigeria · Product Designer · Lions Club International
-              </p>
-            </AnimateIn>
+      <section ref={storyRef} aria-label="My story" className={`${SHEET} pb-28 md:pb-40`}>
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-28">
+              <DimensionLine label="Portrait · 3:4" className="mb-4" />
+              <figure>
+                <div className="relative aspect-[3/4] overflow-hidden border border-bp-cyan/25 bg-bp-deep">
+                  <img
+                    src={aboutStory.image}
+                    alt="Portrait of Abiola Babatunde, product designer in Lagos"
+                    decoding="async"
+                    width={768}
+                    height={1024}
+                    className="absolute inset-0 h-full w-full object-cover object-top grayscale-[0.85] contrast-[1.05]"
+                  />
+                  <div aria-hidden="true" className="absolute inset-0 bg-bp-cyan/15 mix-blend-soft-light" />
+                  <div aria-hidden="true" className="bp-grid absolute inset-0 opacity-40 mix-blend-screen" />
+                </div>
+                <figcaption className="mt-4 space-y-2">
+                  <CoordinateMarker label={`${about.location} · ${about.coordinates}`} />
+                  <p className="bp-label text-[9.5px]">{aboutStory.caption}</p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
 
-            <div className="lg:col-span-7 space-y-12">
-              {storySections.map((section, i) => (
-                <AnimateIn key={section.heading} variant="fade-up" delay={i * 80}>
-                  <h2 className="text-[20px] sm:text-[22px] font-medium text-gray-900 tracking-[-0.02em] mb-4">
-                    {section.heading}
-                  </h2>
-                  <div className="space-y-4">
-                    {section.paragraphs.map((paragraph) => (
-                      <p
-                        key={paragraph}
-                        className="text-[15px] sm:text-[16px] leading-[1.75] text-gray-700"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                </AnimateIn>
+          <div className="lg:col-span-6 lg:col-start-7">
+            {aboutStory.sections.map((section, i) => (
+              <div key={section.heading} className="border-t border-bp-line py-10 first:pt-0 first:border-t-0">
+                <span className="bp-label bp-num text-bp-cyan">{String.fromCharCode(65 + i)}</span>
+                <h2 data-reveal className="mt-3 text-3xl font-light tracking-tight text-bp-text md:text-4xl">
+                  {section.heading}
+                </h2>
+                <div className="mt-6 space-y-5">
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph} data-reveal className="text-[17px] leading-relaxed text-bp-muted">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            <dl data-reveal className="mt-4 grid border-t border-bp-line sm:grid-cols-3">
+              {record.map((item) => (
+                <div key={item.label} className="border-b border-bp-line py-4 sm:border-b-0 sm:border-r sm:px-4 sm:first:pl-0 sm:last:border-r-0">
+                  <dt className="bp-label text-[9.5px]">{item.label}</dt>
+                  <dd className="mt-2 text-sm text-bp-text/90">{item.value}</dd>
+                </div>
               ))}
+            </dl>
 
-              <AnimateIn variant="fade-up" delay={400} className="pt-4 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                <AccentButton text="View my work" href="/work" />
-                <AccentButton text="How I work" href="/process" />
-              </AnimateIn>
+            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3">
+              <Link to="/work" className="bp-label group inline-flex items-center gap-2 text-bp-cyan">
+                View my work <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+              <Link to="/process" className="bp-label group inline-flex items-center gap-2 text-bp-text transition-colors hover:text-bp-cyan">
+                How I work <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
+
+      <Disciplines index="03.1" />
+      <ContactCta />
     </>
   )
 }

@@ -19,7 +19,7 @@ export const faqs: FAQ[] = [
   {
     question: 'What have you shipped?',
     answer:
-      'Live client work includes the Shight Running Club membership platform (Next.js and Supabase), the CryptoDispensers website redesign (Figma to Webflow), the JWYN Shopify store for a Lagos retailer, and Aṣá Ọ̀rọ̀, a Yoruba word game built in Flutter. I have also designed mobile apps and websites for fintech, Web3, music, beauty, and AgriTech clients.',
+      'Shipped work includes ValGo, a food delivery app built in Flutter on Supabase, the Shight Running Club membership platform (Next.js and Supabase), the JWYN Shopify store for a Lagos retailer, and Aṣá Ọ̀rọ̀, a Yoruba word game built in Flutter. I have also designed mobile apps and websites for fintech, Web3, music, beauty, and AgriTech clients.',
   },
   {
     question: 'What does your process look like from kickoff to launch?',

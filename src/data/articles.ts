@@ -39,7 +39,7 @@ const coreArticles: Article[] = [
           'For thousands of years, language has been more than just a way to communicate.',
           'It carries history. It preserves culture. It connects generations.',
           'But today, something heartbreaking is happening.',
-          'Across Africa—and especially among younger generations—many people can understand their ancestral language but struggle to speak it confidently. Some cannot read it at all. Others only hear it when visiting grandparents or during traditional ceremonies.',
+          'Across Africa, and especially among younger generations, many people can understand their ancestral language but struggle to speak it confidently. Some cannot read it at all. Others only hear it when visiting grandparents or during traditional ceremonies.',
           'The language slowly disappears... not because people hate it, but because they no longer have opportunities to use it.',
           'That realization inspired me to build Aṣá Ọ̀rọ̀.',
           'A mobile word game designed to make learning Yoruba feel fun again.',
@@ -121,7 +121,7 @@ const coreArticles: Article[] = [
       {
         paragraphs: [
           'Using Flutter also means updates can be released quickly while maintaining a consistent experience across devices.',
-          'As both the designer and developer, I had complete control over every interaction—from the smallest animation to the overall gameplay flow.',
+          'As both the designer and developer, I had complete control over every interaction, from the smallest animation to the overall gameplay flow.',
         ],
       },
       {
@@ -235,7 +235,7 @@ const coreArticles: Article[] = [
           'Aṣá Ọ̀rọ̀ is my contribution to preserving a language that has shaped millions of lives for centuries.',
           "It's where design meets culture. Where Flutter meets education. Where technology helps reconnect people with their identity.",
           'If even one child learns a new Yoruba word, speaks more confidently with a grandparent, or develops pride in their heritage because of this game, then every hour spent designing and building it will have been worthwhile.',
-          'The journey started with an idea in Figma. Soon, it will live on the App Store and Google Play, ready to help people around the world rediscover the beauty of the Yoruba language—one puzzle at a time.',
+          'The journey started with an idea in Figma. Soon, it will live on the App Store and Google Play, ready to help people around the world rediscover the beauty of the Yoruba language, one puzzle at a time.',
         ],
       },
     ],

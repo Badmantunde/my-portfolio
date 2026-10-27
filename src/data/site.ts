@@ -6,7 +6,7 @@ export const siteUrl = import.meta.env?.VITE_SITE_URL ?? 'https://www.abiolababa
 
 export const site = {
   name: 'Abiola Babatunde',
-  title: 'Abiola Babatunde — Product Designer Who Builds | Lagos',
+  title: 'Abiola Babatunde | Product Designer Who Builds | Lagos',
   tagline: 'Product Designer',
   locale: 'en_NG',
   language: 'en',
@@ -36,7 +36,7 @@ export const site = {
 } as const
 
 export const defaultDescription =
-  'Freelance product designer in Lagos who designs in Figma and builds in Webflow, Shopify, Next.js and Flutter. Case studies: Shight Running Club, CryptoDispensers, JWYN.'
+  'Freelance product designer in Lagos who designs in Figma and builds in Webflow, Shopify, Next.js and Flutter. Case studies: ValGo, Shight Running Club, JWYN and Aṣá Ọ̀rọ̀.'
 
 /** Shared PostalAddress for Person and LocalBusiness JSON-LD */
 export const postalAddress = {

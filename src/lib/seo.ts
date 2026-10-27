@@ -1,5 +1,6 @@
 import { articles, getArticle, getArticleOgImage } from '../data/articles'
-import { getProject, projects } from '../data/projects'
+import { experiments } from '../data/blueprint'
+import { getWorkProject, workProjects } from '../data/work'
 import { defaultDescription, postalAddress, site, siteUrl } from '../data/site'
 
 export interface PageSeo {
@@ -16,6 +17,15 @@ export interface PageSeo {
 }
 
 const baseKeywords = [...site.keywords]
+
+/** Every route to prerender: indexable pages plus noindex ones (e.g. 404, empty experiments). */
+export function prerenderPaths(): string[] {
+  return [
+    ...Object.keys(staticPages),
+    ...workProjects.map((project) => `/work/${project.slug}`),
+    ...articles.map((article) => `/writing/${article.slug}`),
+  ]
+}
 
 function pageSeo(
   title: string,
@@ -51,13 +61,14 @@ const staticPages: Record<string, PageSeo> = {
   ]),
   '/work': pageSeo(
     'Product Design Case Studies | Abiola Babatunde',
-    'Product design case studies with live builds: a Next.js membership platform, a Figma to Webflow fintech site, a Shopify store, and a Yoruba word game in Flutter.',
+    'Product design case studies with live builds: the ValGo food delivery app in Flutter, a Next.js membership platform, a Shopify store, and a Yoruba word game in Flutter.',
     '/work',
     [
       'product design case studies',
       'Figma to Webflow case study',
       'Shopify store case study',
       'Flutter app case study',
+      'food delivery app design',
     ]
   ),
   '/about': pageSeo(
@@ -84,6 +95,15 @@ const staticPages: Record<string, PageSeo> = {
     '/contact',
     ['hire product designer', 'freelance product designer', 'hire Webflow developer', 'hire Shopify developer']
   ),
+  '/experiments': {
+    ...pageSeo(
+      'Experiments | Abiola Babatunde',
+      'Creative coding, interaction experiments, prototypes and visual explorations by Abiola Babatunde.',
+      '/experiments'
+    ),
+    // Kept out of the index until the first experiments are published.
+    noIndex: experiments.length === 0,
+  },
   '/404': {
     ...pageSeo('Page not found | Abiola Babatunde', defaultDescription, '/404', baseKeywords),
     noIndex: true,
@@ -95,30 +115,25 @@ export function getSeoForPath(pathname: string): PageSeo {
 
   const workMatch = pathname.match(/^\/work\/([^/]+)$/)
   if (workMatch) {
-    const project = getProject(workMatch[1])
+    const project = getWorkProject(workMatch[1])
     if (project) {
       return pageSeo(
-        project.seoTitle ?? `${project.title}: ${project.subtitle} | Abiola Babatunde`,
-        project.seoIntro,
+        project.seoTitle ?? `${project.title}: ${project.category} | Abiola Babatunde`,
+        project.seoDescription ?? project.summary,
         pathname,
         [...project.tags.map((t) => t.toLowerCase()), 'product design case study'],
         'website',
         {
-          image: project.ogImage ?? project.image,
-          imageAlt: `${project.title}: ${project.subtitle}, a case study by Abiola Babatunde`,
-          imageWidth: project.imageWidth,
-          imageHeight: project.imageHeight,
+          image: project.ogImage?.src ?? project.image,
+          imageAlt: `${project.title}: ${project.category}, a case study by Abiola Babatunde`,
+          imageWidth: project.ogImage?.width,
+          imageHeight: project.ogImage?.height,
         }
       )
     }
 
     return {
-      ...pageSeo(
-        'Case study not found | Abiola Babatunde',
-        defaultDescription,
-        pathname,
-        baseKeywords
-      ),
+      ...pageSeo('Case study not found | Abiola Babatunde', defaultDescription, pathname, baseKeywords),
       noIndex: true,
     }
   }
@@ -322,16 +337,17 @@ export function buildJsonLd(seo: PageSeo) {
 
   const workSlug = seo.path.match(/^\/work\/([^/]+)$/)?.[1]
   if (workSlug) {
-    const project = getProject(workSlug)
+    const project = getWorkProject(workSlug)
+    const image = project?.ogImage?.src ?? project?.image
     if (project) {
       graph.push({
         '@type': 'CreativeWork',
         name: project.title,
-        description: project.description,
+        description: project.summary,
         creator: { '@id': `${absoluteUrl('/')}#person` },
-        dateCreated: project.year,
+        ...(project.year && { dateCreated: project.year }),
         genre: project.tags,
-        image: project.image.startsWith('http') ? project.image : absoluteAsset(project.image),
+        ...(image && { image: absoluteAsset(image) }),
       })
     }
   }
@@ -344,7 +360,7 @@ export function buildJsonLd(seo: PageSeo) {
 
 export function allSitemapPaths(): string[] {
   const paths = Object.keys(staticPages).filter((path) => !staticPages[path].noIndex)
-  for (const project of projects) paths.push(`/work/${project.slug}`)
+  for (const project of workProjects) paths.push(`/work/${project.slug}`)
   for (const article of articles) paths.push(`/writing/${article.slug}`)
   return paths
 }
@@ -398,6 +414,7 @@ function sitemapMeta(path: string): { changefreq: string; priority: string } {
     path === '/process' ||
     path === '/writing' ||
     path === '/work/asa-oro' ||
+    path === '/work/valgo' ||
     path === '/writing/asa-oro-yoruba-word-game-flutter-case-study' ||
     path === '/writing/hire-webflow-developer'
   ) {

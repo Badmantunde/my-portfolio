@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/work/crypto-dispensers",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true

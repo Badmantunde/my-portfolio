@@ -72,47 +72,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: 'crypto-dispensers',
-    title: 'CryptoDispensers',
-    subtitle: 'Fintech Website Redesign',
-    description:
-      'Full website redesign for a Bitcoin access platform : Figma to Webflow build supporting 195+ crypto assets and multiple purchase routes.',
-    type: 'live',
-    tags: ['Webflow', 'Figma', 'Fintech', 'Conversion'],
-    tools: ['Figma', 'Webflow', 'ChatGPT'],
-    image:
-      'https://media.contra.com/image/upload/c_fill,w_1200/yfxu0tilnclajh4ut6lb.avif',
-    ogImage: 'https://media.contra.com/image/upload/c_fill,w_1200/yfxu0tilnclajh4ut6lb.jpg',
-    video:
-      'https://media.contra.com/video/upload/fl_progressive/w_800/zo4fsgm4vobv2ovmrpjy.mp4',
-    liveUrl: 'https://cryptodispensers.com/',
-    contraUrl:
-      'https://contra.com/p/WvENEe3A-crypto-dispensers-website-redesign-or-figma-to-webflow',
-    year: '2025',
-    role: 'Product Designer & Webflow Developer',
-    seoTitle: 'CryptoDispensers: Figma to Webflow Redesign for a Crypto Platform',
-    seoIntro:
-      'Webflow development and website design for a regulated fintech platform, from Figma redesign to a live, conversion-focused marketing site.',
-    overview:
-      'CryptoDispensers is a FinCEN-registered Bitcoin and crypto access platform. I redesigned and rebuilt the site in Webflow : structuring complex purchase flows, education content, and trust signals for a regulated fintech audience.',
-    challenge:
-      'The platform offers cash loading, cards, ACH, wire, and crypto swap routes : each with different limits, fees, and compliance requirements. The redesign had to simplify this complexity without losing regulatory accuracy.',
-    approach: [
-      'Audited existing IA and mapped multi-route purchase journeys',
-      'Redesigned high-fidelity screens in Figma with conversion-focused hierarchy',
-      'Built responsive Webflow site with CMS for education and support content',
-      'Structured trust signals: SOC 2, FinCEN registration, and customer reviews',
-    ],
-    results: [
-      'Live production site at cryptodispensers.com',
-      'Clear guided flows for cash, card, ACH, and wire purchase routes',
-      'Scalable Webflow CMS for education hub and support content',
-    ],
-    aspect: 'aspect-[329/246]',
-    bg: 'bg-[#0a1628]',
-    featured: true,
-  },
-  {
     slug: 'just-what-you-need',
     title: 'Just What You Need (JWYN)',
     subtitle: 'Shopify Store Design & Development',
@@ -178,9 +137,9 @@ export const projects: Project[] = [
     seoIntro:
       'Figma to Flutter case study for a Yoruba word game helping preserve an indigenous language through educational mobile gameplay, African-inspired UI, and cross-platform delivery.',
     overview:
-      'Aṣá Ọ̀rọ̀ is a mobile word game built to make learning Yoruba feel like play—not homework. Across Africa, many younger people understand their ancestral language but struggle to speak, read, or use it confidently. I designed the full experience in Figma, then rebuilt it in Flutter for iOS and Android from a single codebase: interactive puzzles, progressive levels, daily challenges, score tracking, hearts, and offline-ready gameplay wrapped in warm, culturally rooted visuals.',
+      'Aṣá Ọ̀rọ̀ is a mobile word game built to make learning Yoruba feel like play, not homework. Across Africa, many younger people understand their ancestral language but struggle to speak, read, or use it confidently. I designed the full experience in Figma, then rebuilt it in Flutter for iOS and Android from a single codebase: interactive puzzles, progressive levels, daily challenges, score tracking, hearts, and offline-ready gameplay wrapped in warm, culturally rooted visuals.',
     challenge:
-      'Indigenous languages are fading not from lack of interest, but from lack of daily practice. Most language tools feel like textbooks. African languages are also underrepresented in educational apps. The product needed to feel modern and fun for today’s generation while honoring Yoruba heritage through typography, color, and visual storytelling—then ship as a polished cross-platform app without separate iOS and Android builds.',
+      'Indigenous languages are fading not from lack of interest, but from lack of daily practice. Most language tools feel like textbooks. African languages are also underrepresented in educational apps. The product needed to feel modern and fun for today’s generation while honoring Yoruba heritage through typography, color, and visual storytelling, then ship as a polished cross-platform app without separate iOS and Android builds.',
     approach: [
       'Explored multiple Figma directions with African-inspired palettes, friendly typography, and cartoon-style illustrations',
       'Designed a carved-wood logo and onboarding flow that introduces the mission before the first puzzle',

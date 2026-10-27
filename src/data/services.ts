@@ -17,7 +17,7 @@ export const services: Service[] = [
   {
     title: 'Webflow Design & Development',
     description:
-      'Figma to Webflow builds with CMS setup, interactions, and SEO-ready structure, like the CryptoDispensers redesign. Your team can update content without a developer.',
+      'Figma to Webflow builds with CMS setup, interactions, and SEO-ready structure, so your team can update content without a developer.',
   },
   {
     title: 'Shopify Store Design & Development',

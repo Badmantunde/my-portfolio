@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { allSitemapPaths, buildSeoHeadHtml, getSeoForPath } from '../src/lib/seo.ts'
+import { buildSeoHeadHtml, getSeoForPath, prerenderPaths } from '../src/lib/seo.ts'
 
 const rootDir = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(rootDir, '../dist')
@@ -42,7 +42,7 @@ if (!template.includes(rootMarkup)) {
   throw new Error(`Missing ${rootMarkup} in dist/index.html`)
 }
 
-for (const path of [...allSitemapPaths(), '/404']) {
+for (const path of prerenderPaths()) {
   const appHtml = await render(path)
   const html = replaceBetween(template, seoStart, seoEnd, buildSeoHeadHtml(getSeoForPath(path)))
     .replace(rootMarkup, `<div id="root">${appHtml}</div>`)

@@ -9,16 +9,19 @@
 - [About](https://www.abiolababatunde.com/about)
 - [Process](https://www.abiolababatunde.com/process)
 - [Writing](https://www.abiolababatunde.com/writing)
+- [Experiments](https://www.abiolababatunde.com/experiments)
 - [Contact](https://www.abiolababatunde.com/contact)
 
 ## Selected case studies
 
-- [Shight Running Club — membership platform designed and built in Next.js and Supabase](https://www.abiolababatunde.com/work/shight-running-club)
-- [CryptoDispensers — Figma to Webflow redesign for a regulated crypto platform](https://www.abiolababatunde.com/work/crypto-dispensers)
-- [JWYN — Shopify store design and development for a Lagos retailer](https://www.abiolababatunde.com/work/just-what-you-need)
-- [Aṣá Ọ̀rọ̀ — Yoruba word game designed in Figma and built in Flutter](https://www.abiolababatunde.com/work/asa-oro)
-- [Muzora — campus music discovery app design](https://www.abiolababatunde.com/work/muzora)
-- [RabiCoin — DeFi wallet app design](https://www.abiolababatunde.com/work/rabi-coin)
+- [ValGo: food and essentials delivery app designed in Figma and built in Flutter with Supabase and Firebase](https://www.abiolababatunde.com/work/valgo)
+- [Shight Running Club: membership platform designed and built in Next.js and Supabase](https://www.abiolababatunde.com/work/shight-running-club)
+- [JWYN: Shopify store design and development for a Lagos retailer](https://www.abiolababatunde.com/work/just-what-you-need)
+- [Aṣá Ọ̀rọ̀: Yoruba word game designed in Figma and built in Flutter](https://www.abiolababatunde.com/work/asa-oro)
+- [Muzora: campus music discovery app design](https://www.abiolababatunde.com/work/muzora)
+- [RabiCoin: DeFi wallet app design](https://www.abiolababatunde.com/work/rabi-coin)
+- [Éclat Studio Paris: photography studio website design](https://www.abiolababatunde.com/work/eclat-studio-paris)
+- [Dart Agro Systems: AgriTech website design](https://www.abiolababatunde.com/work/dart-agro-systems)
 
 ## Popular articles
 
