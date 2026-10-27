@@ -74,7 +74,7 @@ export function StageLine({ stages, className }: StageLineProps) {
             aria-hidden="true"
             className="absolute left-0 top-0 block h-[15px] w-[15px] border border-bp-cyan/40 bg-bp-ink transition-colors duration-300 group-data-[active=true]:border-bp-cyan group-data-[active=true]:bg-bp-cyan"
           />
-          <div className="transition-opacity duration-500 group-data-[active=false]:opacity-35 md:pt-12">
+          <div className="transition-opacity duration-300 group-data-[active=false]:opacity-35 md:pt-12">
             <span className="bp-label bp-num text-bp-cyan">{String(i + 1).padStart(2, '0')}</span>
             <h3 className="mt-3 text-xl font-normal uppercase tracking-[0.14em] text-bp-text">{stage.title}</h3>
             <p className="mt-3 max-w-[240px] text-[15px] leading-relaxed text-bp-muted">{stage.body}</p>

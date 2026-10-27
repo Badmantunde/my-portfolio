@@ -3,8 +3,8 @@ import type { FrameRenderer } from './types'
 
 interface ScrollControlledVideoProps {
   src: string
-  mobileSrc?: string
-  poster: string
+  /** 9:16 cut for portrait screens. */
+  portraitSrc?: string
   fps: number
   className?: string
   onError: () => void
@@ -16,7 +16,7 @@ interface ScrollControlledVideoProps {
  * so fast scrolling never builds a backlog; the next seek simply jumps to the latest target.
  */
 export const ScrollControlledVideo = forwardRef<FrameRenderer, ScrollControlledVideoProps>(
-  function ScrollControlledVideo({ src, mobileSrc, poster, fps, className, onError }, ref) {
+  function ScrollControlledVideo({ src, portraitSrc, fps, className, onError }, ref) {
     const videoRef = useRef<HTMLVideoElement>(null)
     const state = useRef({ target: 0, raf: 0, ready: false })
     const onErrorRef = useRef(onError)
@@ -53,6 +53,7 @@ export const ScrollControlledVideo = forwardRef<FrameRenderer, ScrollControlledV
       const onMetadata = () => {
         if (!Number.isFinite(video.duration) || video.duration <= 0) return
         s.ready = true
+        video.addEventListener('loadeddata', prime, { once: true })
         schedule()
       }
       // iOS Safari won't decode frames for seeking until playback has been started once.
@@ -68,18 +69,23 @@ export const ScrollControlledVideo = forwardRef<FrameRenderer, ScrollControlledV
       const fail = () => onErrorRef.current()
 
       video.addEventListener('loadedmetadata', onMetadata)
-      video.addEventListener('loadeddata', prime, { once: true })
       video.addEventListener('seeked', schedule)
       video.addEventListener('play', onPlay)
       video.addEventListener('error', fail)
 
       video.muted = true
-      // Chosen on the client so only one rendition is downloaded.
-      const useMobile = mobileSrc && window.matchMedia('(max-width: 767px)').matches
-      video.src = useMobile ? mobileSrc : src
-      video.load()
+      // Chosen on the client so only one cut is downloaded; rotating the device swaps it and keeps the frame.
+      const portrait = window.matchMedia('(orientation: portrait)')
+      const load = () => {
+        s.ready = false
+        video.src = portraitSrc && portrait.matches ? portraitSrc : src
+        video.load()
+      }
+      load()
+      if (portraitSrc) portrait.addEventListener('change', load)
 
       return () => {
+        portrait.removeEventListener('change', load)
         cancelAnimationFrame(s.raf)
         s.raf = 0
         s.ready = false
@@ -92,13 +98,12 @@ export const ScrollControlledVideo = forwardRef<FrameRenderer, ScrollControlledV
         video.load()
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [src, mobileSrc])
+    }, [src, portraitSrc])
 
     return (
       <video
         ref={videoRef}
         className={className}
-        poster={poster}
         muted
         playsInline
         preload="auto"

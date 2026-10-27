@@ -54,7 +54,7 @@ export function PartyTicket({ className }: { className?: string }) {
       <path d="M96 118l10 -6M548 270l12 4M84 250l-8 10M572 112l6 -10" stroke={GOLD} strokeWidth="2.5" strokeLinecap="round" />
 
       <g
-        className="transition-transform duration-500 ease-out group-hover:[transform:translate(90px,100px)_rotate(0deg)]"
+        className="transition-transform duration-300 ease-out group-hover:[transform:translate(90px,100px)_rotate(0deg)]"
         style={{ transform: 'translate(90px, 104px) rotate(-5deg)', transformOrigin: '230px 100px', transformBox: 'view-box' }}
       >
         {/* Shadow */}

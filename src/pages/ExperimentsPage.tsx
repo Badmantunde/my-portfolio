@@ -26,7 +26,7 @@ function ExperimentSheet({ experiment, code }: { experiment?: Experiment; code: 
             decoding="async"
             width={1280}
             height={800}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
           />
         ) : (
           <>

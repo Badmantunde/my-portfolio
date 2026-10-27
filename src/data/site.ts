@@ -13,11 +13,11 @@ export const site = {
   location: 'Lagos, Nigeria',
   email: contact.email,
   headshot: '/images/abiola-headshot.png',
-  ogImage: '/og-image.png',
-  ogImageWidth: 1024,
-  ogImageHeight: 584,
+  ogImage: '/og-image.jpg',
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   ogImageAlt:
-    'Abiola Babatunde, product designer in Lagos who designs in Figma and builds in Webflow, Shopify, Next.js and Flutter.',
+    'Abiola Babatunde drawn as a blueprint: product designer, Webflow developer and mobile app developer.',
   twitterHandle: '@badmantunde',
   sameAs: socialLinks.map((link) => link.href),
   keywords: [

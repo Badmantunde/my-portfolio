@@ -7,22 +7,24 @@ import { socialLinks } from './social'
  */
 
 export type HeroSource =
-  | { type: 'video'; src: string; mobileSrc?: string; fps: number }
+  | { type: 'video'; src: string; portraitSrc?: string; fps: number }
   | { type: 'sequence'; frameCount: number; frameUrl: (index: number) => string }
 
 export const heroMedia = {
   /** Switch to { type: 'sequence', ... } (see scripts/build-blueprint-frames.sh) if video seeking proves unreliable. */
   source: {
     type: 'video',
-    src: '/video/blueprint-identity.mp4',
-    mobileSrc: '/video/blueprint-identity-mobile.mp4',
+    /** 16:9, 1920 × 1080. Encoded with a keyframe every 6 frames so scrubbing lands quickly in both directions. */
+    src: '/video/hero-landscape.mp4',
+    /** 9:16, 720 × 1280, for portrait screens. */
+    portraitSrc: '/video/hero-portrait.mp4',
     fps: 24,
   } as HeroSource,
-  /** First frame (blank canvas) and last frame (completed blueprint). */
-  startPoster: '/video/blueprint-start.jpg',
-  finalPoster: '/video/blueprint-final.jpg',
-  /** Canvas colour sampled from the video, so letterboxing has no visible edge. */
-  canvasColor: '#031d35',
+  /** Last frame (completed blueprint), shown instead of the film under reduced motion. */
+  finalPoster: '/video/hero-landscape-final.jpg',
+  portraitFinalPoster: '/video/hero-portrait-final.jpg',
+  /** Canvas colour sampled from the film's edges, so letterboxing has no visible edge. */
+  canvasColor: '#02182d',
 }
 
 export const disciplines = [

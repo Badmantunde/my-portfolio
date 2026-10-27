@@ -2,18 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import { heroMedia } from '../../data/blueprint'
 import { BlueprintGrid } from '../components/BlueprintGrid'
 import { CoordinateMarker } from '../components/CoordinateMarker'
-import { clamp01, getGsap, REDUCED_MOTION, useMediaQuery } from '../lib/motion'
+import { clamp01, cn, getGsap, REDUCED_MOTION, useMediaQuery } from '../lib/motion'
 import { BlueprintFallback } from './BlueprintFallback'
 import { ImageSequenceCanvas } from './ImageSequenceCanvas'
 import { ScrollControlledVideo } from './ScrollControlledVideo'
-import { HeroLegend } from './HeroLegend'
 import { ScrollIndicator } from './ScrollIndicator'
 import type { FrameRenderer } from './types'
 
 /** Share of the pinned scroll spent constructing; the rest holds the finished blueprint before release. */
 const CONSTRUCT_SHARE = 0.88
-/** The film opens on a faint ghost of the finished drawing; a canvas-coloured veil lifts over this much progress so the first view is blank. */
-const VEIL_SHARE = 0.1
 
 type Mode = 'media' | 'fallback'
 
@@ -34,8 +31,6 @@ export function BlueprintHero() {
   const indicatorRef = useRef<HTMLDivElement>(null)
   const readoutRef = useRef<HTMLSpanElement>(null)
   const completeRef = useRef<HTMLDivElement>(null)
-  const veilRef = useRef<HTMLDivElement>(null)
-  const legendRef = useRef<FrameRenderer>(null)
   const reducedMotion = useMediaQuery(REDUCED_MOTION)
   const [mode, setMode] = useState<Mode>('media')
 
@@ -52,8 +47,6 @@ export function BlueprintHero() {
       const progress = clamp01(scrollProgress / CONSTRUCT_SHARE)
       progressRef.current = progress
       rendererRef.current?.setProgress(progress)
-      legendRef.current?.setProgress(progress)
-      if (veilRef.current) veilRef.current.style.opacity = String(1 - clamp01(progress / VEIL_SHARE))
       if (indicatorRef.current) indicatorRef.current.style.opacity = String(1 - clamp01(scrollProgress * 14))
       if (readoutRef.current) readoutRef.current.textContent = String(Math.round(progress * 100)).padStart(3, '0')
       if (completeRef.current) completeRef.current.style.opacity = String(clamp01((progress - 0.97) / 0.03))
@@ -83,10 +76,14 @@ export function BlueprintHero() {
 
   const fill = 'absolute inset-0 h-full w-full object-contain'
   const source = heroMedia.source
+  const portraitCut = mode === 'media' && source.type === 'video' && Boolean(source.portraitSrc)
   let stageMedia
   if (reducedMotion && mode === 'media') {
     stageMedia = (
-      <img src={heroMedia.finalPoster} alt="" className={fill} width={1264} height={720} decoding="async" />
+      <picture>
+        <source media="(orientation: portrait)" srcSet={heroMedia.portraitFinalPoster} width={720} height={1280} />
+        <img src={heroMedia.finalPoster} alt="" className={fill} width={1600} height={900} decoding="async" />
+      </picture>
     )
   } else if (mode === 'fallback') {
     stageMedia = <BlueprintFallback ref={rendererRef} className={fill} />
@@ -105,8 +102,7 @@ export function BlueprintHero() {
       <ScrollControlledVideo
         ref={rendererRef}
         src={source.src}
-        mobileSrc={source.mobileSrc}
-        poster={heroMedia.startPoster}
+        portraitSrc={source.portraitSrc}
         fps={source.fps}
         className={fill}
         onError={() => setMode('fallback')}
@@ -131,22 +127,20 @@ export function BlueprintHero() {
         <BlueprintGrid className="opacity-40" />
 
         {/*
-          Landscape: the film is contained in the viewport. Portrait: it is enlarged so only its empty side margins
-          fall outside the screen, and a legend fills the space below it.
+          The film is contained in the viewport: the 16:9 cut on landscape screens, the 9:16 cut on portrait ones.
+          The SVG fallback only exists in 16:9, so on portrait screens it is enlarged until its empty margins crop.
         */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center portrait:pb-16 portrait:pt-24">
-          <div className="bp-video-feather relative aspect-video w-full max-w-[calc(100svh*16/9)] shrink-0 portrait:w-[118vw] portrait:max-w-none">
-            {stageMedia}
-            {!reducedMotion && mode === 'media' && (
-              <div
-                ref={veilRef}
-                aria-hidden="true"
-                className="absolute inset-0"
-                style={{ backgroundColor: heroMedia.canvasColor, opacity: 1 }}
-              />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div
+            className={cn(
+              'bp-video-feather relative aspect-video w-full max-w-[calc(100svh*16/9)] shrink-0',
+              portraitCut
+                ? 'portrait:aspect-[9/16] portrait:max-w-[calc(100svh*9/16)]'
+                : 'portrait:w-[118vw] portrait:max-w-none'
             )}
+          >
+            {stageMedia}
           </div>
-          <HeroLegend ref={legendRef} complete={reducedMotion} className="mt-2 hidden portrait:block sm:mt-6" />
         </div>
 
         {/* Sheet furniture */}

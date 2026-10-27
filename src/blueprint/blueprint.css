@@ -1,4 +1,4 @@
-/* Blueprint version (/blueprint). Utilities come from Tailwind's `bp` colours; this file holds what utilities can't express. */
+/* Blueprint design. Utilities come from Tailwind's `bp` colours; this file holds what utilities can't express. */
 
 .bp {
   --bp-ink: #071a2d;
@@ -63,8 +63,12 @@
 
 /* Feathers the video into the matching canvas colour so letterboxing never shows an edge. */
 .bp-video-feather {
-  -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%);
-  mask-image: radial-gradient(ellipse 72% 70% at 50% 50%, #000 62%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent),
+    linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent),
+    linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent);
+  mask-composite: intersect;
 }
 
 @media (prefers-reduced-motion: reduce) {

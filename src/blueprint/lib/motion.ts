@@ -14,6 +14,8 @@ export function getGsap() {
 }
 
 export const MOTION_OK = '(prefers-reduced-motion: no-preference)'
+/** Strong ease-out (fast start, long settle): reads as responsive, unlike the default curves. */
+export const EASE_OUT = 'expo.out'
 export const REDUCED_MOTION = '(prefers-reduced-motion: reduce)'
 
 export function cn(...classes: (string | false | null | undefined)[]) {
@@ -58,14 +60,12 @@ export function useBlueprintMotion(scope: RefObject<HTMLElement | null>, options
   useEffect(() => {
     const el = scope.current
     if (!el) return
-    const { gsap } = getGsap()
+    const { gsap, ScrollTrigger } = getGsap()
     const mm = gsap.matchMedia()
 
     mm.add(MOTION_OK, () => {
-      const scrollTrigger = scrub
-        ? { trigger: el, start, end, scrub }
-        : { trigger: el, start, toggleActions: 'play none none reverse' }
-      const timing = scrub ? {} : { duration: 1.1, ease: 'power2.inOut' }
+      const scrollTrigger = scrub ? { trigger: el, start, end, scrub } : { trigger: el, start, once: true }
+      const timing = scrub ? {} : { duration: 0.8, ease: EASE_OUT }
 
       const growers = gsap.utils.toArray<HTMLElement>('[data-grow]', el)
       if (growers.length) {
@@ -94,16 +94,19 @@ export function useBlueprintMotion(scope: RefObject<HTMLElement | null>, options
         )
       }
 
+      // Content already on screen when the page loads stays put: hiding prerendered text only to fade it back in
+      // delays the first meaningful paint. Everything else fades up once and is never hidden again.
       el.querySelectorAll<HTMLElement>('[data-reveal]').forEach((item) => {
+        if (ScrollTrigger.isInViewport(item, 0.12)) return
         gsap.fromTo(
           item,
-          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 0, y: 12 },
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.9,
-            ease: 'power3.out',
-            scrollTrigger: { trigger: item, start: 'top 88%', toggleActions: 'play none none reverse' },
+            duration: 0.6,
+            ease: EASE_OUT,
+            scrollTrigger: { trigger: item, start: 'top 92%', once: true },
           }
         )
       })

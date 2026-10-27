@@ -5,7 +5,7 @@
 set -euo pipefail
 fps="${1:-12}"
 width="${2:-960}"
-src="public/video/blueprint-identity.mp4"
+src="public/video/hero-landscape.mp4"
 out="public/video/blueprint-frames"
 rm -rf "$out" && mkdir -p "$out"
 ffmpeg -v error -i "$src" -vf "fps=${fps},scale=${width}:-2" -q:v 5 "$out/frame-%03d.jpg"

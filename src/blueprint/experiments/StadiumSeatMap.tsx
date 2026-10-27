@@ -410,7 +410,7 @@ export function StadiumSeatMap() {
                   </p>
                 </div>
                 <div className="mt-3 h-1 bg-bp-cyan/15">
-                  <div className="h-full bg-bp-cyan transition-[width] duration-300" style={{ width: `${availability(focus) * 100}%` }} />
+                  <div className="h-full origin-left bg-bp-cyan transition-transform duration-300 ease-out" style={{ transform: `scaleX(${availability(focus)})` }} />
                 </div>
               </>
             ) : (

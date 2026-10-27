@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import type { WorkProject } from '../../data/work'
 import { ConstructionLine } from '../components/ConstructionLine'
 import { DimensionLine } from '../components/DimensionLine'
-import { cn, getGsap, MOTION_OK } from '../lib/motion'
+import { cn, EASE_OUT, getGsap, MOTION_OK } from '../lib/motion'
 
 /** Drawing frame offset 12px outside the image. */
 const FRAME = [
@@ -38,7 +38,9 @@ export function ProjectFrame({ project, label, from = 'left', eager }: ProjectFr
   useEffect(() => {
     const visual = visualRef.current
     if (!visual) return
-    const { gsap } = getGsap()
+    const { gsap, ScrollTrigger } = getGsap()
+    // A visual already on screen at load (a case study's cover) is the page's largest paint: never mask it.
+    if (ScrollTrigger.isInViewport(visual, 0.12)) return
     const mm = gsap.matchMedia()
     mm.add(MOTION_OK, () => {
       gsap.fromTo(
@@ -46,9 +48,9 @@ export function ProjectFrame({ project, label, from = 'left', eager }: ProjectFr
         { clipPath: from === 'right' ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' },
         {
           clipPath: 'inset(0 0% 0 0%)',
-          duration: 1.3,
-          ease: 'power3.inOut',
-          scrollTrigger: { trigger: visual, start: 'top 85%', toggleActions: 'play none none reverse' },
+          duration: 0.9,
+          ease: EASE_OUT,
+          scrollTrigger: { trigger: visual, start: 'top 85%', once: true },
         }
       )
     })
