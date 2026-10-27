@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { heroMedia } from '../../data/blueprint'
 import { BlueprintGrid } from '../components/BlueprintGrid'
 import { CoordinateMarker } from '../components/CoordinateMarker'
-import { clamp01, cn, getGsap, REDUCED_MOTION, useMediaQuery } from '../lib/motion'
+import { clamp01, cn, REDUCED_MOTION, useMediaQuery, withGsap } from '../lib/motion'
 import { BlueprintFallback } from './BlueprintFallback'
 import { ImageSequenceCanvas } from './ImageSequenceCanvas'
 import { ScrollControlledVideo } from './ScrollControlledVideo'
@@ -41,32 +41,32 @@ export function BlueprintHero() {
   useEffect(() => {
     const section = sectionRef.current
     if (!section || reducedMotion) return
-    const { gsap, ScrollTrigger } = getGsap()
+    return withGsap(({ gsap, ScrollTrigger }) => {
+      const render = (scrollProgress: number) => {
+        const progress = clamp01(scrollProgress / CONSTRUCT_SHARE)
+        progressRef.current = progress
+        rendererRef.current?.setProgress(progress)
+        if (indicatorRef.current) indicatorRef.current.style.opacity = String(1 - clamp01(scrollProgress * 14))
+        if (readoutRef.current) readoutRef.current.textContent = String(Math.round(progress * 100)).padStart(3, '0')
+        if (completeRef.current) completeRef.current.style.opacity = String(clamp01((progress - 0.97) / 0.03))
+      }
 
-    const render = (scrollProgress: number) => {
-      const progress = clamp01(scrollProgress / CONSTRUCT_SHARE)
-      progressRef.current = progress
-      rendererRef.current?.setProgress(progress)
-      if (indicatorRef.current) indicatorRef.current.style.opacity = String(1 - clamp01(scrollProgress * 14))
-      if (readoutRef.current) readoutRef.current.textContent = String(Math.round(progress * 100)).padStart(3, '0')
-      if (completeRef.current) completeRef.current.style.opacity = String(clamp01((progress - 0.97) / 0.03))
-    }
+      // A proxy tween gives a short scrub lag (smooths wheel steps) without a second timeline fighting the film.
+      const proxy = { progress: 0 }
+      const tween = gsap.to(proxy, {
+        progress: 1,
+        ease: 'none',
+        onUpdate: () => render(proxy.progress),
+        scrollTrigger: { trigger: section, start: 'top top', end: 'bottom bottom', scrub: 0.35 },
+      })
+      render(tween.scrollTrigger?.progress ?? 0)
+      ScrollTrigger.refresh()
 
-    // A proxy tween gives a short scrub lag (smooths wheel steps) without a second timeline fighting the film.
-    const proxy = { progress: 0 }
-    const tween = gsap.to(proxy, {
-      progress: 1,
-      ease: 'none',
-      onUpdate: () => render(proxy.progress),
-      scrollTrigger: { trigger: section, start: 'top top', end: 'bottom bottom', scrub: 0.35 },
+      return () => {
+        tween.scrollTrigger?.kill()
+        tween.kill()
+      }
     })
-    render(tween.scrollTrigger?.progress ?? 0)
-    ScrollTrigger.refresh()
-
-    return () => {
-      tween.scrollTrigger?.kill()
-      tween.kill()
-    }
   }, [reducedMotion])
 
   // A renderer that mounts later (after a fallback switch) picks up the current frame.
@@ -99,14 +99,29 @@ export function BlueprintHero() {
     )
   } else {
     stageMedia = (
-      <ScrollControlledVideo
-        ref={rendererRef}
-        src={source.src}
-        portraitSrc={source.portraitSrc}
-        fps={source.fps}
-        className={fill}
-        onError={() => setMode('fallback')}
-      />
+      <>
+        <picture>
+          <source media="(orientation: portrait)" srcSet={heroMedia.portraitStartPoster} width={720} height={1280} />
+          <img
+            src={heroMedia.startPoster}
+            alt=""
+            className={fill}
+            width={1600}
+            height={900}
+            // React 18 does not know fetchPriority yet; the lowercase attribute passes straight through.
+            {...{ fetchpriority: 'high' }}
+            decoding="async"
+          />
+        </picture>
+        <ScrollControlledVideo
+          ref={rendererRef}
+          src={source.src}
+          portraitSrc={source.portraitSrc}
+          fps={source.fps}
+          className={fill}
+          onError={() => setMode('fallback')}
+        />
+      </>
     )
   }
 

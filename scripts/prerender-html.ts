@@ -6,7 +6,7 @@ import { buildSeoHeadHtml, getSeoForPath, prerenderPaths } from '../src/lib/seo.
 const rootDir = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(rootDir, '../dist')
 const ssrDir = resolve(rootDir, '../dist-ssr')
-const template = readFileSync(resolve(distDir, 'index.html'), 'utf8')
+const template = inlineStylesheet(readFileSync(resolve(distDir, 'index.html'), 'utf8'))
 
 const { render } = (await import(pathToFileURL(resolve(ssrDir, 'entry-server.js')).href)) as {
   render: (url: string) => Promise<string>
@@ -29,6 +29,18 @@ function replaceBetween(
   }
 
   return `${html.slice(0, start + startMarker.length)}\n${replacement}\n    ${html.slice(end)}`
+}
+
+/**
+ * Inlines the stylesheet (about 8 KB compressed) so first paint does not wait on a second request. Inter uses
+ * font-display: swap, so text paints in the fallback font straight away and needs no preload competing with it.
+ */
+function inlineStylesheet(html: string) {
+  const stylesheet = /<link rel="stylesheet" crossorigin href="\/assets\/([^"]+\.css)">/
+  const match = html.match(stylesheet)
+  if (!match) throw new Error('Missing the built stylesheet link in dist/index.html')
+  const css = readFileSync(resolve(distDir, 'assets', match[1]), 'utf8')
+  return html.replace(stylesheet, () => `<style>${css}</style>`)
 }
 
 function outputPathForRoute(path: string) {

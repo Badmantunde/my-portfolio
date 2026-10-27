@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react'
 import { siFigma, siFlutter, siWebflow } from 'simple-icons'
-import { getGsap } from '../lib/motion'
+import { withGsap } from '../lib/motion'
 import type { FrameRenderer } from './types'
 
 const W = 1264
@@ -74,29 +74,30 @@ export const BlueprintFallback = forwardRef<FrameRenderer, { className?: string 
   useEffect(() => {
     const svg = svgRef.current
     if (!svg) return
-    const { gsap } = getGsap()
-    const q = gsap.utils.selector(svg)
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ paused: true, defaults: { ease: 'none' } })
-      tl.fromTo(q('[data-part="grid"]'), { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0)
-        .fromTo(q('[data-part="guide"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.18, stagger: 0.02 }, 0.04)
-        .fromTo(q('[data-part="circle"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.2, stagger: 0.04 }, 0.16)
-        .fromTo(q('[data-part="logo"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.22, stagger: 0.05 }, 0.26)
-        .fromTo(q('[data-part="connector"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.18, stagger: 0.03 }, 0.34)
-        .fromTo(q('[data-part="logo"]'), { fillOpacity: 0 }, { fillOpacity: 0.9, duration: 0.12, stagger: 0.04 }, 0.5)
-        .fromTo(q('[data-part="name"]'), { strokeDashoffset: 420 }, { strokeDashoffset: 0, duration: 0.24 }, 0.5)
-        .fromTo(q('[data-part="name"]'), { fillOpacity: 0 }, { fillOpacity: 1, duration: 0.14 }, 0.7)
-        .fromTo(q('[data-part="dimension"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.1 }, 0.78)
-        .fromTo(q('[data-part="descriptor"]'), { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.82)
-        .fromTo(q('[data-part="dot"]'), { opacity: 0 }, { opacity: 1, duration: 0.08, stagger: 0.008 }, 0.86)
-        .to({}, { duration: 0.02 }, 0.98)
-      tl.progress(pending.current)
-      timeline.current = tl
-    }, svg)
-    return () => {
-      ctx.revert()
-      timeline.current = null
-    }
+    return withGsap(({ gsap }) => {
+      const q = gsap.utils.selector(svg)
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({ paused: true, defaults: { ease: 'none' } })
+        tl.fromTo(q('[data-part="grid"]'), { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0)
+          .fromTo(q('[data-part="guide"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.18, stagger: 0.02 }, 0.04)
+          .fromTo(q('[data-part="circle"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.2, stagger: 0.04 }, 0.16)
+          .fromTo(q('[data-part="logo"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.22, stagger: 0.05 }, 0.26)
+          .fromTo(q('[data-part="connector"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.18, stagger: 0.03 }, 0.34)
+          .fromTo(q('[data-part="logo"]'), { fillOpacity: 0 }, { fillOpacity: 0.9, duration: 0.12, stagger: 0.04 }, 0.5)
+          .fromTo(q('[data-part="name"]'), { strokeDashoffset: 420 }, { strokeDashoffset: 0, duration: 0.24 }, 0.5)
+          .fromTo(q('[data-part="name"]'), { fillOpacity: 0 }, { fillOpacity: 1, duration: 0.14 }, 0.7)
+          .fromTo(q('[data-part="dimension"]'), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.1 }, 0.78)
+          .fromTo(q('[data-part="descriptor"]'), { opacity: 0 }, { opacity: 1, duration: 0.1 }, 0.82)
+          .fromTo(q('[data-part="dot"]'), { opacity: 0 }, { opacity: 1, duration: 0.08, stagger: 0.008 }, 0.86)
+          .to({}, { duration: 0.02 }, 0.98)
+        tl.progress(pending.current)
+        timeline.current = tl
+      }, svg)
+      return () => {
+        ctx.revert()
+        timeline.current = null
+      }
+    })
   }, [])
 
   return (
@@ -106,7 +107,7 @@ export const BlueprintFallback = forwardRef<FrameRenderer, { className?: string 
       preserveAspectRatio="xMidYMid meet"
       className={className}
       aria-hidden="true"
-      fontFamily="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+      fontFamily="'Inter Variable', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
     >
       <defs>
         <pattern id="bp-fallback-fine" width="24" height="24" patternUnits="userSpaceOnUse">

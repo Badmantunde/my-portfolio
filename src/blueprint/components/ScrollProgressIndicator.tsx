@@ -1,23 +1,26 @@
 import { useEffect, useRef } from 'react'
-import { getGsap } from '../lib/motion'
+import { withGsap } from '../lib/motion'
 
 /** Fixed vertical scale on the right margin that tracks page progress. Desktop only. */
 export function ScrollProgressIndicator() {
   const fillRef = useRef<HTMLSpanElement>(null)
   const valueRef = useRef<HTMLSpanElement>(null)
 
-  useEffect(() => {
-    const { ScrollTrigger } = getGsap()
-    const trigger = ScrollTrigger.create({
-      start: 0,
-      end: 'max',
-      onUpdate: (self) => {
-        if (fillRef.current) fillRef.current.style.transform = `scaleY(${self.progress})`
-        if (valueRef.current) valueRef.current.textContent = String(Math.round(self.progress * 100)).padStart(3, '0')
-      },
-    })
-    return () => trigger.kill()
-  }, [])
+  useEffect(
+    () =>
+      withGsap(({ ScrollTrigger }) => {
+        const trigger = ScrollTrigger.create({
+          start: 0,
+          end: 'max',
+          onUpdate: (self) => {
+            if (fillRef.current) fillRef.current.style.transform = `scaleY(${self.progress})`
+            if (valueRef.current) valueRef.current.textContent = String(Math.round(self.progress * 100)).padStart(3, '0')
+          },
+        })
+        return () => trigger.kill()
+      }),
+    []
+  )
 
   return (
     <div

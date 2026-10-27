@@ -1,16 +1,35 @@
 import { useEffect, useState, type RefObject } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-let registered = false
+type Gsap = { gsap: typeof import('gsap').gsap; ScrollTrigger: typeof import('gsap/ScrollTrigger').ScrollTrigger }
 
-/** GSAP with ScrollTrigger registered. Only call from effects (never during render) so SSR stays clean. */
-export function getGsap() {
-  if (!registered) {
+let loading: Promise<Gsap> | undefined
+
+/**
+ * GSAP with ScrollTrigger registered, loaded on first use. It is kept out of the initial bundle so the first paint
+ * never waits on it: every page is prerendered and readable before any animation code arrives.
+ */
+function loadGsap() {
+  loading ??= Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([{ gsap }, { ScrollTrigger }]) => {
     gsap.registerPlugin(ScrollTrigger)
-    registered = true
+    return { gsap, ScrollTrigger }
+  })
+  return loading
+}
+
+/**
+ * Runs `setup` once GSAP has loaded and returns a cleanup for useEffect, which also covers an effect that is torn
+ * down before the load finishes. Only call from effects so SSR stays clean.
+ */
+export function withGsap(setup: (lib: Gsap) => void | (() => void)) {
+  let cleanup: void | (() => void)
+  let cancelled = false
+  loadGsap().then((lib) => {
+    if (!cancelled) cleanup = setup(lib)
+  })
+  return () => {
+    cancelled = true
+    cleanup?.()
   }
-  return { gsap, ScrollTrigger }
 }
 
 export const MOTION_OK = '(prefers-reduced-motion: no-preference)'
@@ -60,59 +79,60 @@ export function useBlueprintMotion(scope: RefObject<HTMLElement | null>, options
   useEffect(() => {
     const el = scope.current
     if (!el) return
-    const { gsap, ScrollTrigger } = getGsap()
-    const mm = gsap.matchMedia()
+    return withGsap(({ gsap, ScrollTrigger }) => {
+      const mm = gsap.matchMedia()
 
-    mm.add(MOTION_OK, () => {
-      const scrollTrigger = scrub ? { trigger: el, start, end, scrub } : { trigger: el, start, once: true }
-      const timing = scrub ? {} : { duration: 0.8, ease: EASE_OUT }
+      mm.add(MOTION_OK, () => {
+        const scrollTrigger = scrub ? { trigger: el, start, end, scrub } : { trigger: el, start, once: true }
+        const timing = scrub ? {} : { duration: 0.8, ease: EASE_OUT }
 
-      const growers = gsap.utils.toArray<HTMLElement>('[data-grow]', el)
-      if (growers.length) {
-        gsap.fromTo(
-          growers,
-          {
-            scaleX: (_: number, target: HTMLElement) => (target.dataset.grow === 'x' ? 0 : 1),
-            scaleY: (_: number, target: HTMLElement) => (target.dataset.grow === 'y' ? 0 : 1),
-          },
-          { scaleX: 1, scaleY: 1, ease: 'none', stagger, scrollTrigger, ...timing }
-        )
-      }
+        const growers = gsap.utils.toArray<HTMLElement>('[data-grow]', el)
+        if (growers.length) {
+          gsap.fromTo(
+            growers,
+            {
+              scaleX: (_: number, target: HTMLElement) => (target.dataset.grow === 'x' ? 0 : 1),
+              scaleY: (_: number, target: HTMLElement) => (target.dataset.grow === 'y' ? 0 : 1),
+            },
+            { scaleX: 1, scaleY: 1, ease: 'none', stagger, scrollTrigger, ...timing }
+          )
+        }
 
-      const strokes = el.querySelectorAll('[data-draw]')
-      if (strokes.length) {
-        gsap.fromTo(
-          strokes,
-          { strokeDashoffset: 1 },
-          {
-            strokeDashoffset: 0,
-            ease: 'none',
-            stagger,
-            scrollTrigger,
-            ...timing,
-          }
-        )
-      }
+        const strokes = el.querySelectorAll('[data-draw]')
+        if (strokes.length) {
+          gsap.fromTo(
+            strokes,
+            { strokeDashoffset: 1 },
+            {
+              strokeDashoffset: 0,
+              ease: 'none',
+              stagger,
+              scrollTrigger,
+              ...timing,
+            }
+          )
+        }
 
-      // Content already on screen when the page loads stays put: hiding prerendered text only to fade it back in
-      // delays the first meaningful paint. Everything else fades up once and is never hidden again.
-      el.querySelectorAll<HTMLElement>('[data-reveal]').forEach((item) => {
-        if (ScrollTrigger.isInViewport(item, 0.12)) return
-        gsap.fromTo(
-          item,
-          { autoAlpha: 0, y: 12 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.6,
-            ease: EASE_OUT,
-            scrollTrigger: { trigger: item, start: 'top 92%', once: true },
-          }
-        )
+        // Content already on screen when the page loads stays put: hiding prerendered text only to fade it back in
+        // delays the first meaningful paint. Everything else fades up once and is never hidden again.
+        el.querySelectorAll<HTMLElement>('[data-reveal]').forEach((item) => {
+          if (ScrollTrigger.isInViewport(item, 0.12)) return
+          gsap.fromTo(
+            item,
+            { autoAlpha: 0, y: 12 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.6,
+              ease: EASE_OUT,
+              scrollTrigger: { trigger: item, start: 'top 92%', once: true },
+            }
+          )
+        })
       })
-    })
 
-    return () => mm.revert()
+      return () => mm.revert()
+    })
   }, [scope, start, end, scrub, stagger])
 }
 

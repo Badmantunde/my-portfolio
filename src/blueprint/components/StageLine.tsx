@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { cn, getGsap, MOTION_OK, REDUCED_MOTION } from '../lib/motion'
+import { cn, MOTION_OK, REDUCED_MOTION, withGsap } from '../lib/motion'
 
 interface StageLineProps {
   stages: { title: string; body: string }[]
@@ -22,29 +22,30 @@ export function StageLine({ stages, className }: StageLineProps) {
   useEffect(() => {
     const track = trackRef.current
     if (!track) return
-    const { gsap, ScrollTrigger } = getGsap()
-    const items = Array.from(track.querySelectorAll<HTMLElement>('[data-stage]'))
-    const apply = (progress: number) => {
-      track.style.setProperty('--p', String(progress))
-      items.forEach((item, i) => {
-        item.dataset.active = String(progress >= i / Math.max(1, items.length - 1) - 0.001)
-      })
-    }
+    return withGsap(({ gsap, ScrollTrigger }) => {
+      const items = Array.from(track.querySelectorAll<HTMLElement>('[data-stage]'))
+      const apply = (progress: number) => {
+        track.style.setProperty('--p', String(progress))
+        items.forEach((item, i) => {
+          item.dataset.active = String(progress >= i / Math.max(1, items.length - 1) - 0.001)
+        })
+      }
 
-    const mm = gsap.matchMedia()
-    mm.add(MOTION_OK, () => {
-      apply(0)
-      const trigger = ScrollTrigger.create({
-        trigger: track,
-        start: 'top 75%',
-        end: 'bottom 45%',
-        scrub: true,
-        onUpdate: (self) => apply(self.progress),
+      const mm = gsap.matchMedia()
+      mm.add(MOTION_OK, () => {
+        apply(0)
+        const trigger = ScrollTrigger.create({
+          trigger: track,
+          start: 'top 75%',
+          end: 'bottom 45%',
+          scrub: true,
+          onUpdate: (self) => apply(self.progress),
+        })
+        return () => trigger.kill()
       })
-      return () => trigger.kill()
+      mm.add(REDUCED_MOTION, () => apply(1))
+      return () => mm.revert()
     })
-    mm.add(REDUCED_MOTION, () => apply(1))
-    return () => mm.revert()
   }, [stages.length])
 
   // The horizontal track only makes sense when every stage sits on one row.

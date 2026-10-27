@@ -5,7 +5,7 @@ const GOLD = '#FFD678'
 const DEEP = '#0D2D4A'
 const TEXT = '#EAF7FF'
 const MUTED = '#93AEC3'
-const FONT = "Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
+const FONT = "'Inter Variable', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif"
 
 // Barcode bar heights for the stub: a fixed pattern, laid out top to bottom with a 2.2px gap.
 const BARS = [3, 1, 2, 1, 1, 3, 2, 1, 3, 1, 2, 2, 1, 3, 1, 1, 2, 3, 1, 2, 1, 3, 2, 1, 1, 2].reduce<{ y: number; h: number }[]>(

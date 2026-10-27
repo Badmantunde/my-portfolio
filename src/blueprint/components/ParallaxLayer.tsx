@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from 'react'
-import { cn, getGsap } from '../lib/motion'
+import { cn, withGsap } from '../lib/motion'
 
 interface ParallaxLayerProps {
   children: ReactNode
@@ -15,16 +15,17 @@ export function ParallaxLayer({ children, distance = -40, className }: ParallaxL
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    const { gsap } = getGsap()
-    const mm = gsap.matchMedia()
-    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo(
-        el,
-        { y: -distance / 2 },
-        { y: distance / 2, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } }
-      )
+    return withGsap(({ gsap }) => {
+      const mm = gsap.matchMedia()
+      mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+        gsap.fromTo(
+          el,
+          { y: -distance / 2 },
+          { y: distance / 2, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } }
+        )
+      })
+      return () => mm.revert()
     })
-    return () => mm.revert()
   }, [distance])
 
   return (

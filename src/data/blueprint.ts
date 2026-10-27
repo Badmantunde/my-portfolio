@@ -20,6 +20,12 @@ export const heroMedia = {
     portraitSrc: '/video/hero-portrait.mp4',
     fps: 24,
   } as HeroSource,
+  /**
+   * First frame of each cut, in the prerendered HTML under the film. It paints before any script runs, so it is
+   * the page's largest paint instead of the film, whose source is only chosen after hydration.
+   */
+  startPoster: '/video/hero-landscape-start.jpg',
+  portraitStartPoster: '/video/hero-portrait-start.jpg',
   /** Last frame (completed blueprint), shown instead of the film under reduced motion. */
   finalPoster: '/video/hero-landscape-final.jpg',
   portraitFinalPoster: '/video/hero-portrait-final.jpg',

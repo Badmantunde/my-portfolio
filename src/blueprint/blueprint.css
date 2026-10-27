@@ -1,5 +1,18 @@
 /* Blueprint design. Utilities come from Tailwind's `bp` colours; this file holds what utilities can't express. */
 
+/*
+ * Inter 4.1 (OFL, see assets/fonts/Inter-LICENSE.txt), cut down to one small file: weights 300 to 500 and only the
+ * characters the site uses, including the Yoruba letters in Aṣá Ọ̀rọ̀ and ₦. Add a character's code point to the
+ * subset if new copy needs one (the full font is the inter-ui npm package, variable/InterVariable.woff2).
+ */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url('../assets/fonts/inter-subset.woff2') format('woff2');
+}
+
 .bp {
   --bp-ink: #071a2d;
   --bp-deep: #0d2d4a;
@@ -7,7 +20,7 @@
   --bp-text: #eaf7ff;
   --bp-muted: #93aec3;
   --bp-line: rgba(66, 217, 255, 0.16);
-  font-family: Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Inter Variable', Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: var(--bp-ink);
   color: var(--bp-text);
   -webkit-font-smoothing: antialiased;
